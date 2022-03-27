@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7928071932982007150
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7928071932982007148}
+  - component: {fileID: 7928071932982007151}
+  m_Layer: 0
+  m_Name: AsteroidSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7928071932982007148
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7928071932982007150}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 69}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7928071932982007151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7928071932982007150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddbaa1247cd745c46ab8ac9cadf5057b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asteroidObjects:
+  - {fileID: 2336193350198226626, guid: 6541a50e1b38ef743bf87980d9e193c8, type: 3}
+  - {fileID: 4761674866769072454, guid: 69a6378e424d5314bb0d0bb80c239271, type: 3}
+  - {fileID: 2066332597024880864, guid: dcf8788912ce04146818e8cdedcc095e, type: 3}
+  - {fileID: 6179800151575630815, guid: df391fefe5190c245b1ec4aa070fcd7d, type: 3}
+  - {fileID: 2034922048537941760, guid: cb317d0a4adad1049a9497f669aa2635, type: 3}
+  - {fileID: 4765625049401826562, guid: 512226af185d7d8488c426f079ad3d53, type: 3}
+  - {fileID: 6695932094592234148, guid: e1c5b653159228b4db1137c5d3e54054, type: 3}
+  - {fileID: 3747523078541193112, guid: e3d8945ad429b9741b79f70b91a528d0, type: 3}
+  - {fileID: 4968727233037697153, guid: e271107c6ba253b4b9d2db2f542407cf, type: 3}
+  amountAsteroidsToSpawn: 50
+  minRandomSpawn: -250
+  maxRandomSpawn: 250
