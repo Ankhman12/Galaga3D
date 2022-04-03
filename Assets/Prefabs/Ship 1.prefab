@@ -44365,6 +44365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLives: 5
+  mouseSensitivity: 0.4
   tpYawTorque: 175
   tpPitchTorque: 175
   tpRollTorque: 75
@@ -44416,7 +44417,7 @@ MonoBehaviour:
   boostTrail: {fileID: 5245975907310770783}
   boostFX:
   - {fileID: 2369509302819394747}
-  - {fileID: 5602630717794369778}
+  - {fileID: 0}
   destructFX:
   - {fileID: 4989004457031396160, guid: 84673edf24758e64db0d9d006f1181aa, type: 3}
   - {fileID: 2870776174496232127, guid: 8c060349c43266945b6271759c580897, type: 3}
@@ -44682,6 +44683,8 @@ MonoBehaviour:
   firing: 0
   fireMode: 1
   blasterBolt: {fileID: 5346939210349603817, guid: e7035e0ba48989347bf9d0cc24d31a79, type: 3}
+  blasterMuzzleL: {fileID: 0}
+  blasterMuzzleR: {fileID: 0}
   blastRate: 5
   blasterSFX: {fileID: 7965060754582023823}
 --- !u!1 &5245975907119384999
@@ -98549,23 +98552,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6025932341221012948, guid: 39181f65d79df5b4fa19fd8b16bfffd7, type: 3}
+      propertyPath: VelocityModule.speedModifier.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6025932341221012948, guid: 39181f65d79df5b4fa19fd8b16bfffd7, type: 3}
       propertyPath: VelocityModule.orbitalOffsetY.scalar
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39181f65d79df5b4fa19fd8b16bfffd7, type: 3}
---- !u!198 &2369509302819394747 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 6025932341221012948, guid: 39181f65d79df5b4fa19fd8b16bfffd7, type: 3}
-  m_PrefabInstance: {fileID: 8305299213022699887}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6839320998822368536 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3290019817769268343, guid: 39181f65d79df5b4fa19fd8b16bfffd7, type: 3}
   m_PrefabInstance: {fileID: 8305299213022699887}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &5602630717794369778 stripped
+--- !u!198 &2369509302819394747 stripped
 ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4504394942241563037, guid: 39181f65d79df5b4fa19fd8b16bfffd7, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6025932341221012948, guid: 39181f65d79df5b4fa19fd8b16bfffd7, type: 3}
   m_PrefabInstance: {fileID: 8305299213022699887}
   m_PrefabAsset: {fileID: 0}

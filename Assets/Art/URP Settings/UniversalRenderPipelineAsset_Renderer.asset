@@ -29,7 +29,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85e95b8f39a94ac46a8fe1e3dbe9ba07, type: 3}
   m_Name: NewBlitMaterialFeature
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   settings:
     material: {fileID: 2100000, guid: a8ee4d21c9654ca4eba8eec5cf1ad274, type: 2}
     materialPassIndex: 0

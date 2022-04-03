@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class BlasterBolt : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class BlasterBolt : MonoBehaviour
     public float lifeTime;
     public float damage;
     [SerializeField]
-    List<ParticleSystem> hitFX;
+    List<GameObject> hitFX;
 
     
     // Start is called before the first frame update
@@ -35,11 +36,25 @@ public class BlasterBolt : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Asteroid a = collision.collider.GetComponentInParent<Asteroid>();
-        if (a) {
+        bool hit = collision.gameObject.CompareTag("Asteroid");
+        if (hit) {
             a.TakeDamage(damage);
             Debug.Log("Applying damage to: " + a.gameObject.name);
+            foreach (GameObject v in hitFX)
+            {
+                
+                Instantiate(v, collision.transform.position, collision.transform.rotation);
+                //Debug.Log("dkfgh;jhs;fh");
+            }
             Destroy(this.gameObject);
+            //StartCoroutine(Kill());
         }
         
     }
+
+    //IEnumerator Kill() {
+    //   yield return new WaitForSeconds(.1f);
+    //    Destroy(this.gameObject);
+        //yield return null;
+    //}
 }
