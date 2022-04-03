@@ -69,20 +69,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!64 &1882638452269705944
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7801042121023284106}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1845931679895651543, guid: 53b4e6887ffe9dd428e714562a501846, type: 3}
 --- !u!1001 &6954604198172221147
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -137,7 +123,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 53b4e6887ffe9dd428e714562a501846, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: d2158b11aedd9c44181d0e047341d2cf, type: 2}
+      objectReference: {fileID: 2100000, guid: 2da1e4afbd7fd8e4eb89ce1fd1be3445, type: 2}
     - target: {fileID: 919132149155446097, guid: 53b4e6887ffe9dd428e714562a501846, type: 3}
       propertyPath: m_Name
       value: asteroidS-2
@@ -162,3 +148,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 53b4e6887ffe9dd428e714562a501846, type: 3}
   m_PrefabInstance: {fileID: 6954604198172221147}
   m_PrefabAsset: {fileID: 0}
+--- !u!64 &1882638452269705944
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7801042121023284106}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1845931679895651543, guid: 53b4e6887ffe9dd428e714562a501846, type: 3}

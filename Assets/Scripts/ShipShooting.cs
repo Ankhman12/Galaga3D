@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.VFX;
 using Cinemachine;
 
 public class ShipShooting : MonoBehaviour
@@ -51,6 +52,10 @@ public class ShipShooting : MonoBehaviour
     [Header("Blaster Settings")]
     [SerializeField]
     private GameObject blasterBolt;
+    [SerializeField]
+    private VisualEffect blasterMuzzleL;
+    [SerializeField]
+    private VisualEffect blasterMuzzleR;
     [SerializeField]
     private float blastRate;
     bool canBlast;
@@ -111,6 +116,8 @@ public class ShipShooting : MonoBehaviour
     {
         foreach (Transform t in hardPoints) {
             Instantiate(blasterBolt, t.position, t.rotation);
+            blasterMuzzleL.Play();
+            blasterMuzzleR.Play();
         }
     }
 

@@ -11,6 +11,8 @@ public class ShipMovement : MonoBehaviour
     [Header("Ship General Setting")]
     [SerializeField]
     public int currentLives = 5;
+    [SerializeField]
+    private float mouseSensitivity = 1f;
 
     [Header("Ship Third Person Movement Setting")]
     [SerializeField]
@@ -438,7 +440,7 @@ public class ShipMovement : MonoBehaviour
     }
     public void OnPitchYaw(InputAction.CallbackContext context)
     {
-        pitchYaw = context.ReadValue<Vector2>();
+        pitchYaw = context.ReadValue<Vector2>() * mouseSensitivity;
         
     }
     public void OnBoost(InputAction.CallbackContext context)
