@@ -61,14 +61,19 @@ crashlytics-build.properties
 # Default ignored files
 /shelf/
 /workspace.xml
+
 # Rider ignored files
 /.idea.Galaga3D.iml
 /projectSettingsUpdater.xml
 /contentModel.xml
 /modules.xml
+
 # Editor-based HTTP Client requests
 /httpRequests/
+
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
 
+
+.idea/.idea.Galaga3D/.idea/
