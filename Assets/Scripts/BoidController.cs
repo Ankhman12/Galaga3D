@@ -132,7 +132,7 @@ public class BoidController : MonoBehaviour
         //move 
         transform.position += transform.TransformDirection(new Vector3(0, 0, speed)) * time;
     }
-    public void SimulateMovement(List<BoidController> other, float time, float separationWeight, float alignmentWeight, float cohesionWeight)
+    public void SimulateMovement(List<BoidController> other, float time, float separationWeight, float alignmentWeight, float cohesionWeight, float targetAggression)
     {
         //default vars
         steering = Vector3.zero;
@@ -215,7 +215,7 @@ public class BoidController : MonoBehaviour
         if (target != null)
         {
             follow -= transform.position;
-            steering += follow.normalized;
+            steering += follow.normalized * targetAggression;
         }
             
         //obstacle avoidance

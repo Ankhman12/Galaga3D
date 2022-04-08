@@ -28,6 +28,8 @@ public class BoidSpawner : MonoBehaviour
     private float alignmentWeight;
     [SerializeField, Range(0f, 10f)]
     private float cohesionWeight;
+    [SerializeField, Range(0f, 10f)]
+    private float targetAggressionWeight;
     
     [Header("Default Flocking Variables")]
     // Separation
@@ -69,7 +71,7 @@ public class BoidSpawner : MonoBehaviour
     {
         foreach (var boid in wasps)
         {
-            boid.GetComponent<BoidController>().SimulateMovement(wasps, Time.deltaTime, separationWeight, alignmentWeight, cohesionWeight);
+            boid.GetComponent<BoidController>().SimulateMovement(wasps, Time.deltaTime, separationWeight, alignmentWeight, cohesionWeight, targetAggressionWeight);
 
             var boidPos = boid.transform.position;
 
@@ -93,7 +95,7 @@ public class BoidSpawner : MonoBehaviour
         
         foreach (var boid in beetles)
         {
-            boid.GetComponent<BoidController>().SimulateMovement(beetles, Time.deltaTime, separationWeight, alignmentWeight, cohesionWeight);
+            boid.GetComponent<BoidController>().SimulateMovement(beetles, Time.deltaTime, separationWeight, alignmentWeight, cohesionWeight, targetAggressionWeight);
 
             var boidPos = boid.transform.position;
 
@@ -117,7 +119,7 @@ public class BoidSpawner : MonoBehaviour
         
         foreach (var boid in scorpions)
         {
-            boid.GetComponent<BoidController>().SimulateMovement(scorpions, Time.deltaTime, separationWeight, alignmentWeight, cohesionWeight);
+            boid.GetComponent<BoidController>().SimulateMovement(scorpions, Time.deltaTime, separationWeight, alignmentWeight, cohesionWeight, targetAggressionWeight);
 
             var boidPos = boid.transform.position;
 
