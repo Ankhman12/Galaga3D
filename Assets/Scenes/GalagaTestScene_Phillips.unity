@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wasp
       objectReference: {fileID: 0}
+    - target: {fileID: 907209005221528249, guid: 7558553635c7c1e40b8b911eb4c2178b, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4865551952476292714, guid: 7558553635c7c1e40b8b911eb4c2178b, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -177,6 +181,10 @@ PrefabInstance:
     - target: {fileID: 4865551952476292714, guid: 7558553635c7c1e40b8b911eb4c2178b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7476934838005938389, guid: 7558553635c7c1e40b8b911eb4c2178b, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7558553635c7c1e40b8b911eb4c2178b, type: 3}
@@ -1301,7 +1309,7 @@ MonoBehaviour:
   fireRate: 1
   maxAngle: 1
   bullet: {fileID: 247364553805883082, guid: 0cca8c8cd235084498dfe865bbae03bd, type: 3}
-  projectileForce: 10
+  projectileSpeed: 10
 --- !u!1001 &1077056077
 PrefabInstance:
   m_ObjectHideFlags: 0
