@@ -219,7 +219,7 @@ public class BoidController : MonoBehaviour
         }
             
         //obstacle avoidance
-        if (Physics.Raycast(transform.position, transform.forward, out var hitInfo, localAreaRadius, LayerMask.GetMask("Default")))
+        if (Physics.Raycast(transform.position, transform.forward, out var hitInfo, localAreaRadius, LayerMask.GetMask("Shootable")))
             steering = ((hitInfo.point + hitInfo.normal) - transform.position).normalized;
 
         //apply steering
