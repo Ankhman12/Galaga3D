@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 5710982652803161200}
   - component: {fileID: 3028797150140611645}
   - component: {fileID: 1079159318204393456}
+  - component: {fileID: -8083889248819612594}
   m_Layer: 0
   m_Name: Scorpion
   m_TagString: Untagged
@@ -156,3 +157,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf12a30bb459c9c4e9a253c0719e6ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
+  damage: 1
+--- !u!114 &-8083889248819612594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7847491008794525126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47acb6b3ba410cb45b006e396369738e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entrySpeed: 100
+  warpVFX: {fileID: 237411312540665406, guid: 527406a3d153a534a864f8aecf5a41c4, type: 3}
+  entryTime: 1

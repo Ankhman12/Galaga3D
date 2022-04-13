@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour
     private float currentSpawnTime;
     private bool earnedTimeBonus = false;
 
-
     private void Awake()
     {
         endOfGame = false;

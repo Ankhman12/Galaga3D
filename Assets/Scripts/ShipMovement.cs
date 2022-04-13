@@ -74,20 +74,6 @@ public class ShipMovement : MonoBehaviour
 
     //FX variables
     [SerializeField]
-    List<ParticleSystem> forwardFX;
-    [SerializeField]
-    List<ParticleSystem> backFX;
-    [SerializeField]
-    List<ParticleSystem> upFX;
-    [SerializeField]
-    List<ParticleSystem> downFX;
-    [SerializeField]
-    List<ParticleSystem> leftFX;
-    [SerializeField]
-    List<ParticleSystem> rightFX;
-    [SerializeField]
-    TrailRenderer boostTrail;
-    [SerializeField]
     List<ParticleSystem> boostFX;
     [SerializeField]
     List<ParticleSystem> destructFX;
@@ -115,7 +101,6 @@ public class ShipMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         currentBoostAmount = maxBoostAmount;
-        boostTrail.emitting = true;
         currentLives = 5;
     }
 
@@ -130,11 +115,6 @@ public class ShipMovement : MonoBehaviour
     {
         if (thrust1D > 0) {
             thrusting = true;
-            //forward fx
-            foreach (ParticleSystem p in forwardFX)
-            {
-                p.Play();
-            }
 
             if (boosting)
             {
@@ -145,7 +125,6 @@ public class ShipMovement : MonoBehaviour
                 {
                     p.Play();
                 }
-                boostTrail.emitting = true;
             }
             else
             {
@@ -157,98 +136,47 @@ public class ShipMovement : MonoBehaviour
                 {
                     p.Stop();
                 }
-                boostTrail.emitting = false;
             }
         }
         else if (thrust1D < 0) {
             thrusting = true;
-            //back fx
-            foreach (ParticleSystem p in backFX)
-            {
-                p.Play();
-            }
 
         }
         else
         {
             thrusting = false;
             boostSFX.Stop();
-            foreach (ParticleSystem p in forwardFX)
-            {
-                p.Stop();
-            }
-            foreach (ParticleSystem p in backFX)
-            {
-                p.Stop();
-            }
             foreach (ParticleSystem p in boostFX)
             {
                 p.Stop();
             }
-            boostTrail.emitting = false;
         }
 
         if (upDown1D > 0)
         {
             upDowning = true;
-            //up fx
-            foreach (ParticleSystem p in upFX)
-            {
-                p.Play();
-            }
 
         }
         else if (upDown1D < 0)
         {
             upDowning = true;
-            //down fx
-            foreach (ParticleSystem p in downFX)
-            {
-                p.Play();
-            }
         }
         else
         {
             upDowning = false;
-            foreach (ParticleSystem p in upFX)
-            {
-                p.Stop();
-            }
-            foreach (ParticleSystem p in downFX)
-            {
-                p.Stop();
-            }
         }
 
         if (strafe1D > 0)
         {
-            //right fx
             strafing = true;
-            foreach (ParticleSystem p in rightFX)
-            {
-                p.Play();
-            }
 
         }
         else if (strafe1D < 0)
-        {
-            //left fx
+        { 
             strafing = true;
-            foreach (ParticleSystem p in leftFX)
-            {
-                p.Play();
-            }
         }
         else {
             strafing = false;
-            foreach (ParticleSystem p in leftFX)
-            {
-                p.Stop();
-            }
-            foreach (ParticleSystem p in rightFX)
-            {
-                p.Stop();
-            }
         }
 
         if ((thrusting || upDowning || strafing) && !thrusterSFX.isPlaying)

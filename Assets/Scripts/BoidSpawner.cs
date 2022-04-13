@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -63,7 +64,7 @@ public class BoidSpawner : MonoBehaviour
         }
         for (var i = 0; i < spawnBoids/3; i++)
         {
-            SpawnBoid(scorpionPrefab, 2, scorpions);
+           SpawnBoid(scorpionPrefab, 2, scorpions);
         }
     }
 

@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 134873037463178089}
   - component: {fileID: 5148868993498439543}
   - component: {fileID: 2308767169340635881}
+  - component: {fileID: 4721888021736396334}
   m_Layer: 0
-  m_Name: BlasterHit
+  m_Name: LargeWarpFlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 237411312540665406}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -40,7 +41,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 237411312540665406}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: 99bee54d25a73204c80fffd3a953d8fd, type: 3}
+  m_Asset: {fileID: 8926484042661614526, guid: beddf3dc266bcf443961d32d304a1c82, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 1
   m_StartSeed: 0
@@ -55,10 +56,10 @@ VisualEffect:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 1.7968831, y: 4.924791, z: 0.13310245, w: 1}
+      - m_Value: {x: 0.23205808, y: 1.0892465, z: 4.924791, w: 1}
         m_Name: Color01
         m_Overridden: 1
-      - m_Value: {x: 12.292267, y: 17.09665, z: 0.080644764, w: 0}
+      - m_Value: {x: 0.08951144, y: 3.4044268, z: 17.096653, w: 0}
         m_Name: Color02
         m_Overridden: 1
     m_Uint:
@@ -114,3 +115,15 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &4721888021736396334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237411312540665406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa6bfc738e0ac08458a990646d9ae736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4865551952476292714}
   - component: {fileID: 3939458467668943034}
   - component: {fileID: 2076371384909578182}
+  - component: {fileID: 763239411557747164}
   m_Layer: 0
   m_Name: Wasp
   m_TagString: Untagged
@@ -62,6 +63,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   damage: 1
+--- !u!114 &763239411557747164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907209005221528249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47acb6b3ba410cb45b006e396369738e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entrySpeed: 100
+  warpVFX: {fileID: 237411312540665406, guid: 527406a3d153a534a864f8aecf5a41c4, type: 3}
+  entryTime: 1
 --- !u!1001 &4735603434405226277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -87,7 +103,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8fa778d9a5a29464396e0a7215710d01, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8fa778d9a5a29464396e0a7215710d01, type: 3}
       propertyPath: m_LocalRotation.x
@@ -95,7 +111,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8fa778d9a5a29464396e0a7215710d01, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8fa778d9a5a29464396e0a7215710d01, type: 3}
       propertyPath: m_LocalRotation.z
@@ -107,7 +123,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8fa778d9a5a29464396e0a7215710d01, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8fa778d9a5a29464396e0a7215710d01, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
