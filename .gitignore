@@ -58,3 +58,38 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+# Default ignored files
+/shelf/
+/workspace.xml
+
+# Rider ignored files
+/.idea.Galaga3D.iml
+/projectSettingsUpdater.xml
+/contentModel.xml
+/modules.xml
+
+# Editor-based HTTP Client requests
+/httpRequests/
+
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+
+
+.idea/.idea.Galaga3D/.idea/
+
+Galaga3D.sln.DotSettings
+
+UserSettings/EditorUserSettings.asset
+
+.idea/.idea.Assembly-CSharp.dir/.idea/workspace.xml
+
+.idea/.idea.Assembly-CSharp.dir/.idea/vcs.xml
+
+.idea/.idea.Assembly-CSharp.dir/.idea/.name
+
+.idea/.idea.Assembly-CSharp.dir/.idea/encodings.xml
+
+.idea/.idea.Assembly-CSharp.dir/.idea/indexLayout.xml
+
+.idea/.idea.Assembly-CSharp.dir/.idea/projectSettingsUpdater.xml
