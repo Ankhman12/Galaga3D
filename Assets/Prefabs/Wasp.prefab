@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 3939458467668943034}
   - component: {fileID: 2076371384909578182}
   - component: {fileID: 763239411557747164}
-  m_Layer: 0
+  - component: {fileID: 5315328592313735396}
+  m_Layer: 9
   m_Name: Wasp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,6 +79,22 @@ MonoBehaviour:
   entrySpeed: 100
   warpVFX: {fileID: 237411312540665406, guid: 527406a3d153a534a864f8aecf5a41c4, type: 3}
   entryTime: 1
+--- !u!114 &5315328592313735396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907209005221528249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40c1ccaa109a1214d91d19f65a0bb706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 1
+  maxAngle: 0
+  bullet: {fileID: 247364553805883082, guid: 0cca8c8cd235084498dfe865bbae03bd, type: 3}
+  projectileSpeed: 15
 --- !u!1001 &4735603434405226277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -136,6 +153,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8fa778d9a5a29464396e0a7215710d01, type: 3}
       propertyPath: m_Name
       value: waspShip
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8fa778d9a5a29464396e0a7215710d01, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fa778d9a5a29464396e0a7215710d01, type: 3}
