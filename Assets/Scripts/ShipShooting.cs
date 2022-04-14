@@ -13,7 +13,9 @@ public class ShipShooting : MonoBehaviour
 
     [Header("Hardpoint Settings")]
     [SerializeField]
-    private Transform[] hardPoints;
+    private Transform[] laserHardPoints;
+    [SerializeField]
+    private Transform[] blasterHardPoints;
     [SerializeField]
     private LayerMask shootableMask;
     [SerializeField]
@@ -24,7 +26,9 @@ public class ShipShooting : MonoBehaviour
     [SerializeField]
     private LineRenderer[] lasers;
     [SerializeField]
-    private List<ParticleSystem> laserHitParticles;
+    private List<VisualEffect> laserMuzzleVFX;
+    [SerializeField]
+    private List<VisualEffect> laserHitVFX;
     [SerializeField]
     private float laserDamage = 2f;
     [SerializeField]
@@ -40,6 +44,7 @@ public class ShipShooting : MonoBehaviour
     private bool overHeated = false;
     [SerializeField]
     private AudioSource laserSFX;
+    private bool isLaserFiring = false;
 
     public bool firing;
     private bool isLaser;
@@ -114,7 +119,7 @@ public class ShipShooting : MonoBehaviour
 
     private void FireBlaster()
     {
-        foreach (Transform t in hardPoints) {
+        foreach (Transform t in blasterHardPoints) {
             Instantiate(blasterBolt, t.position, t.rotation);
             blasterMuzzleL.Play();
             blasterMuzzleR.Play();
@@ -127,6 +132,15 @@ public class ShipShooting : MonoBehaviour
         {
             //targetInRange = false;
             FireLaser();
+            foreach (VisualEffect v in laserMuzzleVFX)
+            {
+                if (!isLaserFiring)
+                {
+                    v.Play();
+                    
+                }
+            }
+            isLaserFiring = true;
             if (!laserSFX.isPlaying)
             {
                 laserSFX.Play();
@@ -138,6 +152,15 @@ public class ShipShooting : MonoBehaviour
             {
                 laserSFX.Stop();
             }
+            foreach (VisualEffect v in laserMuzzleVFX)
+            {
+                if (isLaserFiring)
+                {
+                    v.Stop();
+                    
+                }
+            }
+            isLaserFiring = false;
             foreach (var laser in lasers)
             {
                 laser.gameObject.SetActive(false);
@@ -161,6 +184,7 @@ public class ShipShooting : MonoBehaviour
 
     void FireLaser()
     {
+
         RaycastHit hitInfo;
 
         if (TargetInfo.IsTargetInRange(cam.transform.position, cam.transform.forward, out hitInfo, hardpointRange, shootableMask))
@@ -171,8 +195,8 @@ public class ShipShooting : MonoBehaviour
                 ApplyDamage(hitInfo.collider.GetComponentInParent<Asteroid>());
             }
             
-            foreach(ParticleSystem p in laserHitParticles) { 
-                Instantiate(p, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
+            foreach(VisualEffect v in laserHitVFX) { 
+                Instantiate(v, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
             }
 
             foreach(var laser in lasers)
