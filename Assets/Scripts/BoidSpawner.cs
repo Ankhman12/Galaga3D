@@ -1,14 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BoidSpawner : MonoBehaviour
 {
     [Header("Prefabs")]
     [SerializeField]
+    private int waspsCount;
+    [SerializeField]
     private GameObject waspPrefab;
     [SerializeField]
+    private int beetleCount;
+    [SerializeField]
     private GameObject beetlePrefab;
+    [SerializeField]
+    private int scorpionCount;
     [SerializeField]
     private GameObject scorpionPrefab;
 
@@ -18,16 +26,14 @@ public class BoidSpawner : MonoBehaviour
     
     [Header("Spawner Variables")]
     [SerializeField]
-    private int spawnBoids = 100;
-    [SerializeField]
     private float boidSimulationArea = 50f;
 
     [Header("Flocking Controls")] 
-    [SerializeField, Range(0f, 10f)]
+    [SerializeField, Range(0f, 100f)]
     private float separationWeight;
-    [SerializeField, Range(0f, 10f)]
+    [SerializeField, Range(0f, 100f)]
     private float alignmentWeight;
-    [SerializeField, Range(0f, 10f)]
+    [SerializeField, Range(0f, 100f)]
     private float cohesionWeight;
     [SerializeField, Range(0f, 10f)]
     private float targetAggressionWeight;
@@ -48,23 +54,37 @@ public class BoidSpawner : MonoBehaviour
     [SerializeField]
     private List<BoidController> scorpions;
 
+    private void Awake()
+    {
+        target = GameObject.FindGameObjectWithTag("Player");
+    }
+
     private void Start()
     {
         wasps = new List<BoidController>();
         beetles = new List<BoidController>();
         scorpions = new List<BoidController>();
 
-        for (var i = 0; i < spawnBoids/3; i++)
+        if (waspPrefab != null)
         {
-            SpawnBoid(waspPrefab, 0, wasps);
+            for (var i = 0; i < waspsCount; i++)
+            {
+                SpawnBoid(waspPrefab, 0, wasps);
+            }
         }
-        for (var i = 0; i < spawnBoids/3; i++)
+        if (beetlePrefab != null)
         {
-            SpawnBoid(beetlePrefab, 1, beetles);
+            for (var i = 0; i < beetleCount; i++)
+            {
+                SpawnBoid(beetlePrefab, 0, beetles);
+            }
         }
-        for (var i = 0; i < spawnBoids/3; i++)
+        if (scorpionPrefab != null)
         {
-           SpawnBoid(scorpionPrefab, 2, scorpions);
+            for (var i = 0; i < scorpionCount; i++)
+            {
+                SpawnBoid(scorpionPrefab, 0, scorpions);
+            }
         }
     }
 
@@ -159,5 +179,37 @@ public class BoidSpawner : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position, new Vector3(boidSimulationArea * 2, boidSimulationArea * 2, boidSimulationArea * 2));
+    }
+
+    public void ClearEntities()
+    {
+        for (int i = 0; i < waspsCount; i++)
+        {
+            Destroy(wasps[i]);
+        }
+        for (int i = 0; i < beetleCount; i++)
+        {
+            Destroy(beetles[i]);
+        }
+        for (int i = 0; i < scorpionCount; i++)
+        {
+            Destroy(scorpions[i]);
+        }
+    }
+
+    public void DisableShooting()
+    {
+        for (int i = 0; i < waspsCount; i++)
+        {
+            wasps[i].GetComponent<EnemyShooting>().enabled = false;
+        }
+        for (int i = 0; i < beetleCount; i++)
+        {
+            beetles[i].GetComponent<EnemyShooting>().enabled = false;
+        }
+        for (int i = 0; i < scorpionCount; i++)
+        {
+            scorpions[i].GetComponent<EnemyShooting>().enabled = false;
+        }
     }
 }

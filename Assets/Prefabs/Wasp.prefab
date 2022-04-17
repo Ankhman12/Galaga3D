@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4865551952476292714}
   - component: {fileID: 3939458467668943034}
-  - component: {fileID: 2076371384909578182}
   - component: {fileID: 763239411557747164}
   - component: {fileID: 5315328592313735396}
-  m_Layer: 9
+  - component: {fileID: 7222970569130177009}
+  m_Layer: 6
   m_Name: Wasp
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,20 +50,6 @@ MonoBehaviour:
   steering: {x: 0, y: 0, z: 0}
   target: {fileID: 0}
   hasTarget: 0
---- !u!114 &2076371384909578182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907209005221528249}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf12a30bb459c9c4e9a253c0719e6ccf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  damage: 1
 --- !u!114 &763239411557747164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,8 +79,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 1
   maxAngle: 0
-  bullet: {fileID: 247364553805883082, guid: 0cca8c8cd235084498dfe865bbae03bd, type: 3}
-  projectileSpeed: 15
+  bullet: {fileID: 116648004060370619, guid: e8c6edb7a55c56d4ba65729161f36ceb, type: 3}
+  projectileSpeed: 50
+--- !u!65 &7222970569130177009
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907209005221528249}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 60, y: 60, z: 120}
+  m_Center: {x: 0, y: 0.15, z: 60}
 --- !u!1001 &4735603434405226277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -156,7 +155,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8fa778d9a5a29464396e0a7215710d01, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8fa778d9a5a29464396e0a7215710d01, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fa778d9a5a29464396e0a7215710d01, type: 3}
@@ -184,3 +187,22 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2789243184010156306, guid: 8fa778d9a5a29464396e0a7215710d01, type: 3}
+--- !u!114 &2909737441811091170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5582589877194250868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf12a30bb459c9c4e9a253c0719e6ccf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  damage: 1
+  shipMov: {fileID: 0}
+  breakFX:
+  - {fileID: 5731535448016399177, guid: 851f4ba839d6d674d9395dd66096f3b5, type: 3}
+  - {fileID: 8690313661778745817, guid: c500a9cc582b3054eb0e288b03627e22, type: 3}
+  breakSFX: {fileID: 2836353232082677945, guid: 38eb3f79115ee894a8f07c2afa804312, type: 3}

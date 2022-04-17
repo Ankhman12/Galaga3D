@@ -8,6 +8,8 @@ TagManager:
   - AsteroidSpawner
   - GameManager
   - EnemySpawner
+  - Enemy
+  - Projectile
   layers:
   - Default
   - TransparentFX

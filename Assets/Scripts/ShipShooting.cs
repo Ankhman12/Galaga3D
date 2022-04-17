@@ -182,6 +182,17 @@ public class ShipShooting : MonoBehaviour
         
     }
 
+    void ApplyDamage(EnemyStats enemy)
+    {
+        currentTimeBetweenDamage += Time.deltaTime;
+        if (currentTimeBetweenDamage > timeBetweenDamage)
+        {
+            currentTimeBetweenDamage = 0f;
+            enemy.TakeDamage(laserDamage);
+            Debug.Log("Applying damage to: " + enemy.gameObject.name);
+        }
+    }
+
     void FireLaser()
     {
 
@@ -190,15 +201,36 @@ public class ShipShooting : MonoBehaviour
         if (TargetInfo.IsTargetInRange(cam.transform.position, cam.transform.forward, out hitInfo, hardpointRange, shootableMask))
         {
             //targetInRange = true;
-            if (hitInfo.collider.GetComponentInParent<Asteroid>())
+            /*if (hitInfo.collider.GetComponentInParent<Asteroid>())
             {
                 ApplyDamage(hitInfo.collider.GetComponentInParent<Asteroid>());
+                
+                foreach(VisualEffect v in laserHitVFX) { 
+                    Instantiate(v, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
+                }
+
+                foreach(var laser in lasers)
+                {
+                    Vector3 localHitPosition = laser.transform.InverseTransformPoint(hitInfo.point);
+                    laser.gameObject.SetActive(true);
+                    laser.SetPosition(1, localHitPosition);
+                }
+            }*/
+
+            if (!hitInfo.collider.isTrigger)
+            {
+                if (hitInfo.collider.GetComponentInParent<EnemyStats>())
+                {
+                    ApplyDamage(hitInfo.collider.GetComponentInParent<EnemyStats>());
+                }
+                
+                foreach(VisualEffect v in laserHitVFX) { 
+                    Instantiate(v, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
+                }
+
+                
             }
             
-            foreach(VisualEffect v in laserHitVFX) { 
-                Instantiate(v, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
-            }
-
             foreach(var laser in lasers)
             {
                 Vector3 localHitPosition = laser.transform.InverseTransformPoint(hitInfo.point);

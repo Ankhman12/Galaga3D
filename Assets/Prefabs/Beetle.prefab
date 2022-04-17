@@ -10,11 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6822662370785347319}
   - component: {fileID: 6938102445299653204}
-  - component: {fileID: 5117671347027836006}
   - component: {fileID: 7859527660226782618}
   m_Layer: 0
   m_Name: Beetle
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,20 +48,6 @@ MonoBehaviour:
   steering: {x: 0, y: 0, z: 0}
   target: {fileID: 0}
   hasTarget: 0
---- !u!114 &5117671347027836006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3599591017474603576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf12a30bb459c9c4e9a253c0719e6ccf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  damage: 1
 --- !u!114 &7859527660226782618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,6 +122,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: beetleShip
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 304b64064a114024fbede2bd489220c9, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 304b64064a114024fbede2bd489220c9, type: 3}
 --- !u!1 &7781682463728023142 stripped
@@ -163,3 +152,18 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4784730116073992220, guid: 304b64064a114024fbede2bd489220c9, type: 3}
+--- !u!114 &3436509795698019468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7781682463728023142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf12a30bb459c9c4e9a253c0719e6ccf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  damage: 1
+  shipMov: {fileID: 0}
