@@ -15,6 +15,8 @@ public class EnemyShooting : MonoBehaviour
     private Vector3 targetPos;
     private GameObject target;
     private bool startShooting = false;
+    private float initialShootingTimer = 5f;
+    private float timer = 0;
 
     private void Awake()
     {
@@ -23,6 +25,11 @@ public class EnemyShooting : MonoBehaviour
 
     private void Update()
     {
+        if (timer < initialShootingTimer)
+        {
+            startShooting = false;
+        }
+        timer += Time.deltaTime;
         if (Time.time >= nextTimeToFire && startShooting)
         {
             // Check Time
@@ -30,6 +37,7 @@ public class EnemyShooting : MonoBehaviour
             // Is Player in Raycast Cone
             Debug.Log("Shooting at Player.");
             Shoot();
+            
         }
     }
 

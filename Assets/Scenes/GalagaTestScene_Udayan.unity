@@ -1863,6 +1863,14 @@ PrefabInstance:
       value: -10.569992
       objectReference: {fileID: 0}
     - target: {fileID: 5245975907106845218, guid: 01e56857b339aac49bd606728f8943f9, type: 3}
+      propertyPath: fpStrafeThrust
+      value: 750
+      objectReference: {fileID: 0}
+    - target: {fileID: 5245975907106845218, guid: 01e56857b339aac49bd606728f8943f9, type: 3}
+      propertyPath: tpStrafeThrust
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 5245975907106845218, guid: 01e56857b339aac49bd606728f8943f9, type: 3}
       propertyPath: boostFX.Array.size
       value: 1
       objectReference: {fileID: 0}
