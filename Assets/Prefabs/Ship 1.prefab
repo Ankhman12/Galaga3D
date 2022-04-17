@@ -1121,33 +1121,6 @@ MonoBehaviour:
   upDownGlideReduction: 0.277
   leftRightGlideReduction: 0.277
   isThirdPerson: 1
-  forwardFX:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  backFX:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  upFX:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  downFX:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  leftFX:
-  - {fileID: 0}
-  - {fileID: 0}
-  rightFX:
-  - {fileID: 0}
-  - {fileID: 0}
-  boostTrail: {fileID: 0}
   boostFX:
   - {fileID: 2369509302819394747}
   - {fileID: 0}
@@ -1411,7 +1384,7 @@ MonoBehaviour:
   - {fileID: 8356031938876301363}
   laserHitVFX:
   - {fileID: 5987148646732694585, guid: 347168d2f6daffb45b50e661150c8b48, type: 3}
-  laserDamage: 8
+  laserDamage: 24
   timeBetweenDamage: 0.25
   laserHeatThreshold: 20
   laserHeatRate: 0.25

@@ -35,20 +35,37 @@ public class BlasterBolt : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Asteroid a = collision.collider.GetComponentInParent<Asteroid>();
-        bool hit = collision.gameObject.CompareTag("Asteroid");
-        if (hit) {
+        if (collision.gameObject.CompareTag("Asteroid"))
+        {
+            Asteroid a = collision.collider.GetComponentInParent<Asteroid>();
             a.TakeDamage(damage);
             Debug.Log("Applying damage to: " + a.gameObject.name);
             foreach (GameObject v in hitFX)
             {
                 
                 Instantiate(v, collision.transform.position, collision.transform.rotation);
-                //Debug.Log("dkfgh;jhs;fh");
             }
             Destroy(this.gameObject);
             //StartCoroutine(Kill());
         }
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            EnemyStats a = collision.collider.GetComponentInParent<EnemyStats>();
+            a.TakeDamage(damage);
+            Debug.Log("Applying damage to: " + a.gameObject.name);
+            foreach (GameObject v in hitFX)
+            {
+                
+                Instantiate(v, collision.transform.position, collision.transform.rotation);
+            }
+            Destroy(this.gameObject);
+            //StartCoroutine(Kill());
+        }
+        
+   
+ 
+            
+        
         
     }
 

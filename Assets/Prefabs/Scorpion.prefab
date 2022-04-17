@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 5452475444844605079}
   - component: {fileID: 4390126497654282737}
   - component: {fileID: 4044995723639866280}
+  - component: {fileID: 7353579284631233217}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,6 +97,21 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7353579284631233217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2445434006041759347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf12a30bb459c9c4e9a253c0719e6ccf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  damage: 1
+  shipMov: {fileID: 0}
 --- !u!1 &7847491008794525126
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,11 +122,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5710982652803161200}
   - component: {fileID: 3028797150140611645}
-  - component: {fileID: 1079159318204393456}
   - component: {fileID: -8083889248819612594}
   m_Layer: 0
   m_Name: Scorpion
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -145,20 +160,6 @@ MonoBehaviour:
   steering: {x: 0, y: 0, z: 0}
   target: {fileID: 0}
   hasTarget: 0
---- !u!114 &1079159318204393456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7847491008794525126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf12a30bb459c9c4e9a253c0719e6ccf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  damage: 1
 --- !u!114 &-8083889248819612594
 MonoBehaviour:
   m_ObjectHideFlags: 0

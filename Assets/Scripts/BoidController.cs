@@ -145,7 +145,7 @@ public class BoidController : MonoBehaviour
         cohesionCount = 0;
 
         Vector3 follow = Vector3.zero;
-        if (hasTarget)
+        if (hasTarget && target != null)
         {
             follow = target.transform.position;
         }
