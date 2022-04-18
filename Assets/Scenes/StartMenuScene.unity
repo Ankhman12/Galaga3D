@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 924546483}
-  m_IndirectSpecularColor: {r: 0.00009255331, g: 0.0006857345, b: 0.00009255331, a: 1}
+  m_IndirectSpecularColor: {r: 0.0000071635686, g: 0.000053075426, b: 0.0000071635686, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -250,6 +250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
   m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_PointAction: {fileID: 1054132383583890850, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_MoveAction: {fileID: 3710738434707379630, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
@@ -856,7 +857,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Asteroids 3D
+  m_text: Galaga 3D
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4a81061f85adc4f48a121dcbc1f5f0a7, type: 2}
   m_sharedMaterial: {fileID: -1093469933100405518, guid: 4a81061f85adc4f48a121dcbc1f5f0a7, type: 2}
@@ -1244,6 +1245,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 0
   m_Antialiasing: 0
   m_AntialiasingQuality: 2

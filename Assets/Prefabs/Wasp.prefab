@@ -80,7 +80,7 @@ MonoBehaviour:
   fireRate: 1
   maxAngle: 0
   bullet: {fileID: 116648004060370619, guid: e8c6edb7a55c56d4ba65729161f36ceb, type: 3}
-  projectileSpeed: 50
+  projectileSpeed: 75
 --- !u!65 &7222970569130177009
 BoxCollider:
   m_ObjectHideFlags: 0
