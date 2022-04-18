@@ -1,10 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class StartMenu : MonoBehaviour
 {
+    /** Set in editor to different screens of the main menu */
+    [SerializeField] private GameObject[] menuScreens;
+    [SerializeField] private Button initialButton;
+
+    private void Awake()
+    {
+        initialButton.Select();
+    }
+
     public void OnStartEndlessClick()
     {
         Debug.Log("Start Endless Button clicked");
@@ -27,6 +35,29 @@ public class StartMenu : MonoBehaviour
         #else
             Application.Quit();
         #endif
+    }
+
+    public void LoadScreen(int screenIndex)
+    {
+        menuScreens[screenIndex].SetActive(true);
+        for (int i = 0; i < menuScreens.Length; i++)
+        {
+            if (menuScreens[i].activeInHierarchy == true && i != screenIndex)
+            {
+                menuScreens[i].SetActive(false);
+            }
+        }
+    }
+
+    public void SelectButton(GameObject uiElement)
+    {
+        if (uiElement.GetComponent<Button>())
+        {
+            uiElement.GetComponent<Button>().Select();
+        } else if (uiElement.GetComponent<Slider>())
+        {
+            uiElement.GetComponent<Slider>().Select();
+        }
     }
 
 }
