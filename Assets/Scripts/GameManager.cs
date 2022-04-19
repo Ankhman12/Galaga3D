@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -104,7 +105,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        PauseGame();
+        //PauseGame();
         if (retrySelected)
         {
             Debug.Log("Pressed Restart");
@@ -189,6 +190,7 @@ public class GameManager : MonoBehaviour
             FindObjectOfType<UIManager>().hideUI();
             FindObjectOfType<UIManager>().hideWin();
             FindObjectOfType<UIManager>().showGameOver();
+            GameObject.Find("GameOverMenu").GetComponentInChildren<Button>().Select();
             if (FindObjectOfType<ShipMovement>() != null)
             {
                 FindObjectOfType<ShipMovement>().enabled = false;
@@ -269,7 +271,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    void PauseGame()
+    public void PauseGame()
     {
         if (gameIsPaused && !endOfGame)
         {
@@ -279,6 +281,7 @@ public class GameManager : MonoBehaviour
             FindObjectOfType<UIManager>().hideUI();
             Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.Confined;
+            GameObject.Find("PauseMenu").GetComponentInChildren<Button>().Select();
             // Pause Audio
         }
         else if (!gameIsPaused && !endOfGame)

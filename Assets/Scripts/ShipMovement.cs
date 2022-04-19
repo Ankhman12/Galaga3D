@@ -416,6 +416,7 @@ public class ShipMovement : MonoBehaviour
         if (context.performed)
         {
             GameManager.gameIsPaused = !GameManager.gameIsPaused;
+            GameManager.Instance.PauseGame();
         }
 
     }
