@@ -37,7 +37,7 @@ public class Points : MonoBehaviour
                         int levelBonus = GameManager.level * 2500;
                         int timeBonus = (int)FindObjectOfType<Timer>().GetCurrentTime() * 10;            
                         // Display both         
-                        GameManager.points += (levelBonus + timeBonus);
+                        GameManager.Instance.AddPoints(levelBonus + timeBonus);
                         Debug.Log(timeBonus);
                         GameManager.startReset = true;            
                     }

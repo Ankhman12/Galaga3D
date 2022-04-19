@@ -333,7 +333,18 @@ public class ShipMovement : MonoBehaviour
             //this.enabled = false;
             bumpSFX.Play();
         }
-        
+        if (collision.collider.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Collided with Enemy");
+            //this.enabled = false;
+            bumpSFX.Play();
+        }
+        if (collision.collider.gameObject.CompareTag("Projectile"))
+        {
+            Debug.Log("Collided with Projectile");
+            //this.enabled = false;
+            bumpSFX.Play();
+        }
     }
 
     public void OnDestroyed() 

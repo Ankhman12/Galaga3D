@@ -95,14 +95,14 @@ public class UIManager : MonoBehaviour
                 blasterCrosshairImage.SetActive(false);
                 laserCrosshairImage.SetActive(true);
             }
-            currentScoreText.text = "Score: " + GameManager.points;
+            currentScoreText.text = "Score: " + GameManager.Points;
             if (GameManager.levelEndless)
             {
-                highScoreText.text = "High Score: " + GameManager.endlesshighScore;
+                highScoreText.text = "High Score: " + GameManager.EndlessHighScore;
             }
             else
             {
-                highScoreText.text = "High Score: " + GameManager.levelhighScore;
+                highScoreText.text = "High Score: " + GameManager.LevelHighScore;
             }
             if (GameManager.levelEndless)
             {
@@ -120,26 +120,26 @@ public class UIManager : MonoBehaviour
             if (GameManager.levelEndless)
             {
                 gameOverScoreboardText.text =
-                "High Score: " + GameManager.endlesshighScore +
-                "\nBest Time: " + GameManager.bestTime +
-                "\nCurrent Score: " + GameManager.points +
+                "High Score: " + GameManager.EndlessHighScore +
+                "\nBest Time: " + GameManager.BestTime +
+                "\nCurrent Score: " + GameManager.Points +
                 "\nCurrent Time: " + FindObjectOfType<StopWatch>().PrintCurrentTime();
             }
             else
             {
                 gameOverScoreboardText.text =
-                "High Score: " + GameManager.levelhighScore +
-                "\nBest Time: " + GameManager.bestTime +
-                "\nCurrent Score: " + GameManager.points +
+                "High Score: " + GameManager.LevelHighScore +
+                "\nBest Time: " + GameManager.BestTime +
+                "\nCurrent Score: " + GameManager.Points +
                 "\nCurrent Time: " + FindObjectOfType<Timer>().PrintCurrentTime();
             }
         }
         if (GameManager.levelPassed)
         {
             winScoreboardText.text =
-                "High Score: " + GameManager.levelhighScore +
-                "\nBest Time: " + GameManager.bestTime +
-                "\nCurrent Score: " + GameManager.points +
+                "High Score: " + GameManager.LevelHighScore +
+                "\nBest Time: " + GameManager.BestTime +
+                "\nCurrent Score: " + GameManager.Points +
                 "\nCurrent Time: " + FindObjectOfType<Timer>().PrintCurrentTime();
         }
     }
@@ -163,7 +163,7 @@ public class UIManager : MonoBehaviour
 
     public void ExitModeOnClick()
     {
-        GameManager.points = 0;
+        GameManager.Points = 0;
         GameManager.endOfGame = false;
         GameManager.levelPassed = false;
         GameManager.collided = false;
@@ -173,7 +173,7 @@ public class UIManager : MonoBehaviour
 
     private void NextLevelOnClick()
     {
-        GameManager.points = 0;
+        GameManager.Points = 0;
         GameManager.endOfGame = false;
         GameManager.levelPassed = false;
         GameManager.collided = false;
