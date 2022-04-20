@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.VFX;
 using Cinemachine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -74,9 +75,11 @@ public class ShipMovement : MonoBehaviour
 
     //FX variables
     [SerializeField]
-    List<ParticleSystem> boostFX;
+    GameObject boostFX;
     [SerializeField]
     List<ParticleSystem> destructFX;
+    [SerializeField] 
+    GameObject thrusterVFX; 
     [SerializeField]
     AudioSource thrusterSFX;
     bool thrusting = false;
@@ -116,16 +119,17 @@ public class ShipMovement : MonoBehaviour
     {
         if (thrust1D > 0) {
             thrusting = true;
-
             if (boosting)
             {
                 if (!boostSFX.isPlaying) { 
                     boostSFX.Play();
                 }
-                foreach (ParticleSystem p in boostFX)
+                /*foreach (ParticleSystem p in boostFX)
                 {
                     p.Play();
-                }
+                }*/
+                boostFX.SetActive(true);
+                thrusterVFX.SetActive(false);
             }
             else
             {
@@ -133,24 +137,24 @@ public class ShipMovement : MonoBehaviour
                 {
                     boostSFX.Stop();
                 }
-                foreach (ParticleSystem p in boostFX)
+                /*foreach (ParticleSystem p in boostFX)
                 {
                     p.Stop();
-                }
+                }*/
+                boostFX.SetActive(false);
+                thrusterVFX.SetActive(true);
             }
         }
         else if (thrust1D < 0) {
             thrusting = true;
-
+            
         }
         else
         {
             thrusting = false;
             boostSFX.Stop();
-            foreach (ParticleSystem p in boostFX)
-            {
-                p.Stop();
-            }
+            boostFX.SetActive(false);
+            thrusterVFX.SetActive(false);
         }
 
         if (upDown1D > 0)
@@ -180,15 +184,24 @@ public class ShipMovement : MonoBehaviour
             strafing = false;
         }
 
-        if ((thrusting || upDowning || strafing) && !thrusterSFX.isPlaying)
+        if (thrusting || upDowning || strafing)
         {
-            thrusterSFX.Play();
-            //Debug.Log("Yah");
+            if (thrusterSFX != null && !thrusterSFX.isPlaying)
+            {
+                thrusterSFX.Play();
+                //Debug.Log("Yah");
+            }
+            thrusterVFX.SetActive(true);
+
         }
-        else if (!thrusting && !upDowning && !strafing && thrusterSFX.isPlaying)
-        { 
-            thrusterSFX.Stop();
-            //Debug.Log("Yeety");
+        if (!thrusting && !upDowning && !strafing)
+        {
+            if (thrusterSFX.isPlaying) {
+                thrusterSFX.Stop();
+                //Debug.Log("Yeety");
+            }
+
+            thrusterVFX.SetActive(false);
         }
         
     }

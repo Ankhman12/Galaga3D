@@ -56,17 +56,30 @@ public class BlasterBolt : MonoBehaviour
             foreach (GameObject v in hitFX)
             {
                 
-                Instantiate(v, collision.transform.position, collision.transform.rotation);
+                Instantiate(v, collision.GetContact(0).point, collision.transform.rotation);
             }
             Destroy(this.gameObject);
             //StartCoroutine(Kill());
         }
-        
-   
- 
-            
-        
-        
+        if (collision.gameObject.CompareTag("Shield"))
+        {
+            Shield s = collision.collider.GetComponent<Shield>();
+            //a.Hit(damage);
+            //Debug.Log("Hitting shield of: " + a.transform.parent.gameObject.name);
+            foreach (GameObject v in hitFX)
+            {
+
+                Instantiate(v, collision.GetContact(0).point, collision.transform.rotation);
+            }
+            Destroy(this.gameObject);
+            //StartCoroutine(Kill());
+        }
+
+
+
+
+
+
     }
 
     //IEnumerator Kill() {
