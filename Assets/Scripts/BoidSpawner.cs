@@ -92,50 +92,66 @@ public class BoidSpawner : MonoBehaviour
     {
         foreach (var boid in wasps)
         {
-            boid.GetComponent<BoidController>().SimulateMovement(wasps, Time.deltaTime, separationWeight, alignmentWeight, cohesionWeight, targetAggressionWeight);
+            if (boid != null && boid.GetComponent<BoidController>() != null && boid.gameObject.activeInHierarchy)
+            {
+                boid.GetComponent<BoidController>().SimulateMovement(wasps, Time.deltaTime, separationWeight, alignmentWeight, cohesionWeight, targetAggressionWeight);
 
-            var boidPos = boid.transform.position;
+                var boidPos = boid.transform.position;
 
-            if (boidPos.x > boidSimulationArea)
-                boidPos.x -= boidSimulationArea * 2;
-            else if (boidPos.x < -boidSimulationArea)
-                boidPos.x += boidSimulationArea * 2;
+                if (boidPos.x > boidSimulationArea)
+                    boidPos.x -= boidSimulationArea * 2;
+                else if (boidPos.x < -boidSimulationArea)
+                    boidPos.x += boidSimulationArea * 2;
 
-            if (boidPos.y > boidSimulationArea)
-                boidPos.y -= boidSimulationArea * 2;
-            else if (boidPos.y < -boidSimulationArea)
-                boidPos.y += boidSimulationArea * 2;
+                if (boidPos.y > boidSimulationArea)
+                    boidPos.y -= boidSimulationArea * 2;
+                else if (boidPos.y < -boidSimulationArea)
+                    boidPos.y += boidSimulationArea * 2;
 
-            if (boidPos.z > boidSimulationArea)
-                boidPos.z -= boidSimulationArea * 2;
-            else if (boidPos.z < -boidSimulationArea)
-                boidPos.z += boidSimulationArea * 2;
+                if (boidPos.z > boidSimulationArea)
+                    boidPos.z -= boidSimulationArea * 2;
+                else if (boidPos.z < -boidSimulationArea)
+                    boidPos.z += boidSimulationArea * 2;
 
-            boid.transform.position = boidPos;
+                boid.transform.position = boidPos;
+            } else
+            {
+                wasps.Remove(boid);
+                waspsCount--;
+            }
+            
         }
         
         foreach (var boid in beetles)
         {
-            boid.GetComponent<BoidController>().SimulateMovement(beetles, Time.deltaTime, separationWeight, alignmentWeight, cohesionWeight, targetAggressionWeight);
+            if (boid != null && boid.GetComponent<BoidController>() != null && boid.gameObject.activeInHierarchy)
+            {
+                boid.GetComponent<BoidController>().SimulateMovement(beetles, Time.deltaTime, separationWeight, alignmentWeight, cohesionWeight, targetAggressionWeight);
 
-            var boidPos = boid.transform.position;
+                var boidPos = boid.transform.position;
 
-            if (boidPos.x > boidSimulationArea)
-                boidPos.x -= boidSimulationArea * 2;
-            else if (boidPos.x < -boidSimulationArea)
-                boidPos.x += boidSimulationArea * 2;
+                if (boidPos.x > boidSimulationArea)
+                    boidPos.x -= boidSimulationArea * 2;
+                else if (boidPos.x < -boidSimulationArea)
+                    boidPos.x += boidSimulationArea * 2;
 
-            if (boidPos.y > boidSimulationArea)
-                boidPos.y -= boidSimulationArea * 2;
-            else if (boidPos.y < -boidSimulationArea)
-                boidPos.y += boidSimulationArea * 2;
+                if (boidPos.y > boidSimulationArea)
+                    boidPos.y -= boidSimulationArea * 2;
+                else if (boidPos.y < -boidSimulationArea)
+                    boidPos.y += boidSimulationArea * 2;
 
-            if (boidPos.z > boidSimulationArea)
-                boidPos.z -= boidSimulationArea * 2;
-            else if (boidPos.z < -boidSimulationArea)
-                boidPos.z += boidSimulationArea * 2;
+                if (boidPos.z > boidSimulationArea)
+                    boidPos.z -= boidSimulationArea * 2;
+                else if (boidPos.z < -boidSimulationArea)
+                    boidPos.z += boidSimulationArea * 2;
 
-            boid.transform.position = boidPos;
+                boid.transform.position = boidPos;
+            } else
+            {
+                beetles.Remove(boid);
+                beetleCount--;
+            }
+            
         }
         
         foreach (var boid in scorpions)
