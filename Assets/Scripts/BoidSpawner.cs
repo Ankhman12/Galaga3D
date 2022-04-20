@@ -8,15 +8,15 @@ public class BoidSpawner : MonoBehaviour
 {
     [Header("Prefabs")]
     [SerializeField]
-    private int waspsCount;
+    public int waspsCount;
     [SerializeField]
     private GameObject waspPrefab;
     [SerializeField]
-    private int beetleCount;
+    public int beetleCount;
     [SerializeField]
     private GameObject beetlePrefab;
     [SerializeField]
-    private int scorpionCount;
+    public int scorpionCount;
     [SerializeField]
     private GameObject scorpionPrefab;
 

@@ -4,12 +4,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
     // Private Variables
     private static GameManager _instance;
     [SerializeField] private static int _endlessHighScore = 0;
+    [SerializeField] private GameObject hurtImage;
+    private bool gameOver = false;
     public static int EndlessHighScore
     {
         get => _endlessHighScore;
@@ -190,7 +193,13 @@ public class GameManager : MonoBehaviour
             FindObjectOfType<UIManager>().hideUI();
             FindObjectOfType<UIManager>().hideWin();
             FindObjectOfType<UIManager>().showGameOver();
-            GameObject.Find("GameOverMenu").GetComponentInChildren<Button>().Select();
+
+            if (!gameOver)
+            {
+
+                GameObject.Find("GameOverMenu").GetComponentInChildren<Button>().Select();
+                gameOver = true;
+            }
             if (FindObjectOfType<ShipMovement>() != null)
             {
                 FindObjectOfType<ShipMovement>().enabled = false;
@@ -304,5 +313,17 @@ public class GameManager : MonoBehaviour
     public void AddPoints(int val)
     {
         _points += val;
+    }
+
+    public void hurtPlayer()
+    {
+        StartCoroutine(PlayerHurt());
+    }
+    
+    IEnumerator PlayerHurt()
+    {
+        hurtImage.SetActive(true);
+        yield return new WaitForSeconds(.15f);
+        hurtImage.SetActive(false);
     }
 }

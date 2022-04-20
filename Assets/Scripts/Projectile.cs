@@ -23,9 +23,17 @@ public class Projectile : MonoBehaviour
         var shipMov = FindObjectOfType<ShipMovement>();
         shipMov.currentLives--;
 
-        if (FindObjectOfType<ShipMovement>().currentLives > 0) return;
-        //If Game is Over
-        shipMov.OnDestroyed();
-        GameManager.collided = true;
+
+        if (FindObjectOfType<ShipMovement>().currentLives <= 0)
+        {
+
+            //If Game is Over
+            shipMov.OnDestroyed();
+            GameManager.collided = true;
+        } else
+        {
+            GameManager.Instance.hurtPlayer();
+            Destroy(this.gameObject);
+        }
     }
 }

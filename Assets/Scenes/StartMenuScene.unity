@@ -1514,8 +1514,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Sensitivity
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a04843cc9e56a124d8643312ef1e8c78, type: 2}
-  m_sharedMaterial: {fileID: 664894751101478228, guid: a04843cc9e56a124d8643312ef1e8c78, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f91fe584153f1fe42807685cdeae6659, type: 2}
+  m_sharedMaterial: {fileID: 822850040011495400, guid: f91fe584153f1fe42807685cdeae6659, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1760,7 +1760,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 272, y: 148}
-  m_SizeDelta: {x: 249.67, y: 110}
+  m_SizeDelta: {x: 411.43, y: 116.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1293851332
 MonoBehaviour:
@@ -1927,8 +1927,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Back
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a04843cc9e56a124d8643312ef1e8c78, type: 2}
-  m_sharedMaterial: {fileID: 664894751101478228, guid: a04843cc9e56a124d8643312ef1e8c78, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f91fe584153f1fe42807685cdeae6659, type: 2}
+  m_sharedMaterial: {fileID: 822850040011495400, guid: f91fe584153f1fe42807685cdeae6659, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2195,8 +2195,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Settings
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4a81061f85adc4f48a121dcbc1f5f0a7, type: 2}
-  m_sharedMaterial: {fileID: -1093469933100405518, guid: 4a81061f85adc4f48a121dcbc1f5f0a7, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f91fe584153f1fe42807685cdeae6659, type: 2}
+  m_sharedMaterial: {fileID: 822850040011495400, guid: f91fe584153f1fe42807685cdeae6659, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2603,11 +2603,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5432912786822791287, guid: 2f5baa2ec7373ed438a288e5b86a1e01, type: 3}
       propertyPath: waspsCount
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5432912786822791287, guid: 2f5baa2ec7373ed438a288e5b86a1e01, type: 3}
       propertyPath: beetleCount
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5432912786822791287, guid: 2f5baa2ec7373ed438a288e5b86a1e01, type: 3}
+      propertyPath: boidSimulationArea
+      value: 400
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f5baa2ec7373ed438a288e5b86a1e01, type: 3}
