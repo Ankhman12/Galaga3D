@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4742610218423397027}
   - component: {fileID: 9142295536806957748}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BlasterLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.049241543, g: 1, b: 0, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.11185193, a: 1}
   m_Intensity: 100
   m_Range: 20
   m_SpotAngle: 30

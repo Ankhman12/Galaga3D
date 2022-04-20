@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5573322713119036156}
   - component: {fileID: 2629572599285280775}
   - component: {fileID: 6769564077162016665}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BlasterBolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 1107998445864670564}
   - component: {fileID: 4084653826086144117}
   - component: {fileID: 8842730752391633183}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BlasterProjectile_G1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2084925786296584578}
   - component: {fileID: 4395137828843272935}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BlasterTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
