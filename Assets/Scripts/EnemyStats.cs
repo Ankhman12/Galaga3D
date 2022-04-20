@@ -65,7 +65,11 @@ public class EnemyStats : MonoBehaviour
             Instantiate(p.gameObject, transform.position, transform.rotation);
         }
         //Play Explosion SFX
-        Instantiate(breakSFX, transform.position, transform.rotation);
+        if (breakSFX != null)
+        {
+            Instantiate(breakSFX, transform.position, transform.rotation);
+
+        }
         //breakSFX.Play();
     }
     

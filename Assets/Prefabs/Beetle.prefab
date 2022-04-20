@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 6938102445299653204}
   - component: {fileID: 7859527660226782618}
   - component: {fileID: 2525185539611469151}
+  - component: {fileID: 2321843184248854688}
+  - component: {fileID: 9057979389360404537}
+  - component: {fileID: 5151744499121443516}
   m_Layer: 6
   m_Name: Beetle
   m_TagString: Enemy
@@ -84,6 +87,50 @@ MonoBehaviour:
   shipMov: {fileID: 0}
   breakFX: []
   breakSFX: {fileID: 0}
+--- !u!114 &2321843184248854688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3599591017474603576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40c1ccaa109a1214d91d19f65a0bb706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 0
+  maxAngle: 0
+  bullet: {fileID: 6060433150371562116, guid: 501e371d34b4bbb4aba3adbb1763d2e5, type: 3}
+  projectileSpeed: 15
+  type: 0
+  beetleParticles: {fileID: 2179230193515819319}
+--- !u!65 &9057979389360404537
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3599591017474603576}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 60, y: 60, z: 120}
+  m_Center: {x: 0, y: 0.15, z: 60}
+--- !u!65 &5151744499121443516
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3599591017474603576}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 20.1, y: 14.91, z: 34.24}
+  m_Center: {x: 0, y: 0, z: 6.45}
 --- !u!1001 &4077883000652223316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -97,15 +144,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1816914279131566187, guid: ad54795f6f0c37f4a8171bd72da1d99b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1816914279131566187, guid: ad54795f6f0c37f4a8171bd72da1d99b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1816914279131566187, guid: ad54795f6f0c37f4a8171bd72da1d99b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1816914279131566187, guid: ad54795f6f0c37f4a8171bd72da1d99b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -117,7 +164,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1816914279131566187, guid: ad54795f6f0c37f4a8171bd72da1d99b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20.89
+      value: 21.4
       objectReference: {fileID: 0}
     - target: {fileID: 1816914279131566187, guid: ad54795f6f0c37f4a8171bd72da1d99b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -156,6 +203,11 @@ PrefabInstance:
 --- !u!4 &2423346798354629439 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1816914279131566187, guid: ad54795f6f0c37f4a8171bd72da1d99b, type: 3}
+  m_PrefabInstance: {fileID: 4077883000652223316}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &2179230193515819319 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2785936701592838755, guid: ad54795f6f0c37f4a8171bd72da1d99b, type: 3}
   m_PrefabInstance: {fileID: 4077883000652223316}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5103127348628645273
@@ -212,6 +264,10 @@ PrefabInstance:
     - target: {fileID: 5432912786822791286, guid: 2f5baa2ec7373ed438a288e5b86a1e01, type: 3}
       propertyPath: m_Name
       value: BoidSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 5432912786822791286, guid: 2f5baa2ec7373ed438a288e5b86a1e01, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5432912786822791287, guid: 2f5baa2ec7373ed438a288e5b86a1e01, type: 3}
       propertyPath: waspsCount
