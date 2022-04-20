@@ -48,6 +48,7 @@ public class beetleProjectExplosion : MonoBehaviour
             {
                 var shipMov = FindObjectOfType<ShipMovement>();
                 shipMov.currentLives--;
+                GameManager.Instance.hurtPlayer();
             }
         }
     }

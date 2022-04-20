@@ -43,14 +43,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83480c1dc36189c42b5a1a4d530bea99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waspsCount: 0
+  waspsCount: 6
   waspPrefab: {fileID: 907209005221528249, guid: 7558553635c7c1e40b8b911eb4c2178b, type: 3}
-  beetleCount: 0
+  beetleCount: 1
   beetlePrefab: {fileID: 3599591017474603576, guid: 98ab7f21147aaf9409fdc1c8a0c54b02, type: 3}
   scorpionCount: 0
   scorpionPrefab: {fileID: 7847491008794525126, guid: 85a760550074af14bb6d665f8b56d61e, type: 3}
   target: {fileID: 0}
-  boidSimulationArea: 100
+  boidSimulationArea: 300
   separationWeight: 1
   alignmentWeight: 1
   cohesionWeight: 1
