@@ -35,6 +35,7 @@ public class WaveManager : MonoBehaviour
         {
             Destroy(b.gameObject);
         }
+        boidSpawners = new List<BoidSpawner>();
         wave = wave + 1;
         GameObject.Find("WaveText").GetComponent<TMP_Text>().text = "Wave: " + wave;
         for (int i = 0; i < wave / 2; i++)
