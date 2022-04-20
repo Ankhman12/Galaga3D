@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     // Private Variables
     private static GameManager _instance;
     [SerializeField] private static int _endlessHighScore = 0;
+    private bool gameOver = false;
     public static int EndlessHighScore
     {
         get => _endlessHighScore;
@@ -190,7 +191,13 @@ public class GameManager : MonoBehaviour
             FindObjectOfType<UIManager>().hideUI();
             FindObjectOfType<UIManager>().hideWin();
             FindObjectOfType<UIManager>().showGameOver();
-            GameObject.Find("GameOverMenu").GetComponentInChildren<Button>().Select();
+
+            if (!gameOver)
+            {
+
+                GameObject.Find("GameOverMenu").GetComponentInChildren<Button>().Select();
+                gameOver = true;
+            }
             if (FindObjectOfType<ShipMovement>() != null)
             {
                 FindObjectOfType<ShipMovement>().enabled = false;

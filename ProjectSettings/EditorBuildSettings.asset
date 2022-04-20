@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/StartMenuScene.unity
     guid: 325ec7b19952c0d4a821dbca0ad51093
   - enabled: 1
+    path: Assets/Scenes/GalagaPlaySceneWaves.unity
+    guid: 31a836d33af424d45b546253e36da608
+  - enabled: 1
     path: Assets/Scenes/GalagaPlayScene.unity
     guid: 0d6bcffdabcef7341a6fd391e2f98027
   - enabled: 1
