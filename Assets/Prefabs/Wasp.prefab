@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 763239411557747164}
   - component: {fileID: 5315328592313735396}
   - component: {fileID: 7222970569130177009}
+  - component: {fileID: 147325345703364249}
   m_Layer: 6
   m_Name: Wasp
   m_TagString: Enemy
@@ -31,7 +32,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3410942492149345908}
+  - {fileID: 3981414785521791666}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -94,7 +95,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 60, y: 60, z: 120}
   m_Center: {x: 0, y: 0.15, z: 60}
---- !u!1001 &4735603434405226277
+--- !u!114 &147325345703364249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907209005221528249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db1566ba7de6d44a9081d3c060a67ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+--- !u!1001 &3515739945064912217
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -153,56 +167,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: GalagaWaspShip_v2
       objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 8fa778d9a5a29464396e0a7215710d01, type: 3}
+    - target: {fileID: 919132149155446097, guid: 2866f815a5670074f962b865c6bea718, type: 3}
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 8fa778d9a5a29464396e0a7215710d01, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2866f815a5670074f962b865c6bea718, type: 3}
---- !u!1 &2602459031774213326 stripped
+--- !u!1 &4326555215755208712 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2866f815a5670074f962b865c6bea718, type: 3}
-  m_PrefabInstance: {fileID: 2944407900235598239}
+  m_PrefabInstance: {fileID: 3515739945064912217}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &3410942492149345908 stripped
+--- !u!4 &3981414785521791666 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2866f815a5670074f962b865c6bea718, type: 3}
-  m_PrefabInstance: {fileID: 2944407900235598239}
+  m_PrefabInstance: {fileID: 3515739945064912217}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &9085478018569741181
+--- !u!64 &3494610659463294557
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2602459031774213326}
+  m_GameObject: {fileID: 4326555215755208712}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 2789243184010156306, guid: 8fa778d9a5a29464396e0a7215710d01, type: 3}
---- !u!114 &2909737441811091170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5582589877194250868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf12a30bb459c9c4e9a253c0719e6ccf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 10
-  damage: 1
-  shipMov: {fileID: 0}
-  breakFX:
-  - {fileID: 5731535448016399177, guid: 851f4ba839d6d674d9395dd66096f3b5, type: 3}
-  - {fileID: 8690313661778745817, guid: c500a9cc582b3054eb0e288b03627e22, type: 3}
-  breakSFX: {fileID: 2836353232082677945, guid: 38eb3f79115ee894a8f07c2afa804312, type: 3}
+  m_Mesh: {fileID: 1063291256622265515, guid: 2866f815a5670074f962b865c6bea718, type: 3}
