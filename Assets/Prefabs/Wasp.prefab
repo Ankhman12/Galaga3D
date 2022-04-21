@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40c1ccaa109a1214d91d19f65a0bb706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 0.25
+  fireRate: 1
   maxAngle: 0
   bullet: {fileID: 2765953846188132652, guid: 676876bc2ef1cb4499fd96a85086d603, type: 3}
   projectileSpeed: 75
@@ -126,7 +126,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  damage: 1
   shipMov: {fileID: 0}
   breakFX: {fileID: 2696021666858408502, guid: 63c1d1b08cd417e40bcf0161730f23d0, type: 3}
   breakSFX: {fileID: 890839192367168586, guid: 8bf4eb86085adb7488c06dbf57a660dc, type: 3}

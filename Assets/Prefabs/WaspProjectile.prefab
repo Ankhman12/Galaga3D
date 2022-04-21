@@ -122,7 +122,6 @@ GameObject:
   - component: {fileID: 9068272342722955090}
   - component: {fileID: 1107998445864670564}
   - component: {fileID: 4084653826086144117}
-  - component: {fileID: 8842730752391633183}
   - component: {fileID: 4871755957291314906}
   m_Layer: 10
   m_Name: WaspProjectile
@@ -178,23 +177,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8842730752391633183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2765953846188132652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a360b227ceb08546bd05796a6bc544b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boltSpeed: 0
-  lifeTime: 6
-  damage: 0
-  hitFX:
-  - {fileID: 237411312540665406, guid: 2e512e28fb550b54ca02df2a1b8a8bf4, type: 3}
 --- !u!114 &4871755957291314906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,8 +189,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77bb2a94593d1b94c98cdbbcd97dcdca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  despawnTime: 5
-  hitFX: []
+  despawnTime: 10
+  damage: 1
+  hitFX:
+  - {fileID: 237411312540665406, guid: 2e512e28fb550b54ca02df2a1b8a8bf4, type: 3}
 --- !u!1 &7284149948475072181
 GameObject:
   m_ObjectHideFlags: 0

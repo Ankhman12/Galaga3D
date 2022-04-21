@@ -12,7 +12,7 @@ public class WaspProjectile : MonoBehaviour
     [SerializeField]
     List<GameObject> hitFX;
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (timer >= despawnTime)
         {

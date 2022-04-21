@@ -12,7 +12,7 @@ public class beetleProjectExplosion : MonoBehaviour
     [SerializeField] private float radius = 50f;
     private bool exploded = false;
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (timer >= explosionTime && !exploded)
         {

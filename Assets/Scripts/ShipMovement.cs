@@ -368,8 +368,8 @@ public class ShipMovement : MonoBehaviour
 
     public void OnDestroyed() 
     {
-        Instantiate(destructFX.gameObject, transform.position, transform.rotation);
         destructSFX.Play();
+        Instantiate(destructFX.gameObject, transform.position, transform.rotation);
         Destroy(this.gameObject);
     }
 
