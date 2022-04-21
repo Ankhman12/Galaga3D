@@ -9,9 +9,12 @@ using Cinemachine;
 [RequireComponent(typeof(Rigidbody))]
 public class ShipMovement : MonoBehaviour
 {
+
     [Header("Ship General Setting")]
     [SerializeField]
-    public int currentLives = 5;
+    public int currentLives = 3;
+    [SerializeField]
+    public PlayerHealth playerHealth;
     [SerializeField]
     private float mouseSensitivity = 1f;
 
@@ -77,7 +80,9 @@ public class ShipMovement : MonoBehaviour
     [SerializeField]
     GameObject boostFX;
     [SerializeField]
-    List<ParticleSystem> destructFX;
+    VisualEffect destructFX;
+    [SerializeField]
+    AudioSource destructSFX;
     [SerializeField] 
     GameObject thrusterVFX; 
     [SerializeField]
@@ -104,7 +109,7 @@ public class ShipMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         currentBoostAmount = maxBoostAmount;
-        currentLives = 5;
+        currentLives = 3;
         mouseSensitivity = PlayerPrefs.GetFloat("Sensitivity", 1.5f);
     }
 
@@ -363,11 +368,15 @@ public class ShipMovement : MonoBehaviour
 
     public void OnDestroyed() 
     {
-        foreach (ParticleSystem p in destructFX)
-        {
-            Instantiate(p.gameObject, transform.position, transform.rotation);
-        }
+        Instantiate(destructFX.gameObject, transform.position, transform.rotation);
+        destructSFX.Play();
         Destroy(this.gameObject);
+    }
+
+    public void Damage(float damage) {
+        if (!playerHealth.Damage(damage)) {
+            currentLives--;
+        }
     }
 
     #region Input Methods

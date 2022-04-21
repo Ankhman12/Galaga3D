@@ -4,21 +4,14 @@ using UnityEngine;
 
 public class ShieldGenerator : MonoBehaviour
 {
-    [SerializeField] GameObject shield;
-    [SerializeField] int generatorHealth = 3;
+    [SerializeField] Shield shield;
+    [SerializeField] EnemyStats parentStats;
 
-    private void OnTriggerEnter(Collision collision)
+    private void Update()
     {
-        if (collision.gameObject.layer == 11)
+        if ((parentStats.GetCurrentHealth() / parentStats.GetMaxHealth()) < 0.5f)
         {
-            if (generatorHealth > 0)
-            {
-                generatorHealth--;
-            }
-            else
-            {
-                shield.SetActive(false);
-            }
+            shield.KillShield();
         }
     }
 }

@@ -51,8 +51,11 @@ public class BlasterBolt : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             EnemyStats a = collision.collider.GetComponentInParent<EnemyStats>();
-            a.TakeDamage(damage);
-            Debug.Log("Applying damage to: " + a.gameObject.name);
+            if (a != null)
+            {
+                a.TakeDamage(damage);
+                Debug.Log("Applying damage to: " + a.gameObject.name);
+            }
             foreach (GameObject v in hitFX)
             {
                 
@@ -61,7 +64,7 @@ public class BlasterBolt : MonoBehaviour
             Destroy(this.gameObject);
             //StartCoroutine(Kill());
         }
-        if (collision.gameObject.CompareTag("Shield"))
+        /*if (this.gameObject.CompareTag("Enemy") && collision.gameObject.CompareTag("Player"))
         {
             Shield s = collision.collider.GetComponent<Shield>();
             //a.Hit(damage);
@@ -73,7 +76,7 @@ public class BlasterBolt : MonoBehaviour
             }
             Destroy(this.gameObject);
             //StartCoroutine(Kill());
-        }
+        }*/
 
 
 

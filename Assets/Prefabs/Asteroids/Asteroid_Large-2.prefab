@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 4761674866769072454}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 7030426267670232304}
   m_Father: {fileID: 0}
@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd16cce2355eef46a1b216ab307ebc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialForce: 50000
-  initialTorque: 50000
-  health: 5
+  initialForce: 100
+  initialTorque: -100
+  health: 10000
   size: 2
   breakFX:
   - {fileID: 5731535448016399177, guid: 851f4ba839d6d674d9395dd66096f3b5, type: 3}

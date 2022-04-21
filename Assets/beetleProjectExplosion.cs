@@ -3,12 +3,13 @@ using UnityEngine.VFX;
 
 public class beetleProjectExplosion : MonoBehaviour
 {
-    private float explosionTime = 10f;
+    [SerializeField] private float explosionTime = 5f;
+    [SerializeField] private float damage = 3f;
     private float timer = 0;
     [SerializeField] private ParticleSystem normalParticles;
     [SerializeField] private TrailRenderer trail;
     [SerializeField] private VisualEffect explosion;
-    private float radius = 50;
+    [SerializeField] private float radius = 50f;
     private bool exploded = false;
 
     private void Update()
@@ -47,9 +48,14 @@ public class beetleProjectExplosion : MonoBehaviour
             if (c.gameObject.tag == "Player")
             {
                 var shipMov = FindObjectOfType<ShipMovement>();
-                shipMov.currentLives--;
+                shipMov.Damage(damage);
                 GameManager.Instance.hurtPlayer();
             }
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(this.transform.position, radius);
     }
 }

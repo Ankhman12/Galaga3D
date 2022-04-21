@@ -2,23 +2,26 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class EnemyStats : MonoBehaviour
 {
-    [Header("Enemy Stats")] 
-    [SerializeField] private float health = 100f;
+    [Header("Enemy Stats")]
+    [SerializeField] private float maxHealth = 100f;
+    private float health = 100f;
 
-    [SerializeField] private int damage = 1;
+
 
     // Reference to Player
     [SerializeField] private ShipMovement shipMov;
     
-    public List<ParticleSystem> breakFX;
+    public VisualEffect breakFX;
     public AudioSource breakSFX;
 
     private void Awake()
     {
         shipMov = FindObjectOfType<ShipMovement>();
+        health = maxHealth;
     }
     
     public void TakeDamage(float damage)
@@ -39,7 +42,7 @@ public class EnemyStats : MonoBehaviour
         {
             Debug.Log("Collided with Player");
             // Subtract Player's Life
-            shipMov.currentLives--;
+            shipMov.Damage(1f);
 
             if (shipMov.currentLives <= 0)
             {
@@ -60,10 +63,7 @@ public class EnemyStats : MonoBehaviour
     private void DestroySequence()
     {
         //Instantiate Destruction Particles
-        foreach (ParticleSystem p in breakFX)
-        {
-            Instantiate(p.gameObject, transform.position, transform.rotation);
-        }
+         Instantiate(breakFX.gameObject, transform.position, transform.rotation);
         //Play Explosion SFX
         if (breakSFX != null)
         {
@@ -72,5 +72,15 @@ public class EnemyStats : MonoBehaviour
         }
         //breakSFX.Play();
     }
-    
+
+    public float GetCurrentHealth() 
+    {
+        return this.health;    
+    }
+
+    public float GetMaxHealth()
+    {
+        return this.maxHealth;
+    }
+
 }
