@@ -20,15 +20,15 @@ public class BoidSpawner : MonoBehaviour
     [SerializeField]
     private GameObject scorpionPrefab;
 
-    [Header("Target")] 
-    [SerializeField] 
+    [Header("Target")]
+    [SerializeField]
     private GameObject target;
-    
+
     [Header("Spawner Variables")]
     [SerializeField]
     private float boidSimulationArea = 50f;
 
-    [Header("Flocking Controls")] 
+    [Header("Flocking Controls")]
     [SerializeField, Range(0f, 100f)]
     private float separationWeight;
     [SerializeField, Range(0f, 100f)]
@@ -37,7 +37,7 @@ public class BoidSpawner : MonoBehaviour
     private float cohesionWeight;
     [SerializeField, Range(0f, 10f)]
     private float targetAggressionWeight;
-    
+
     [Header("Default Flocking Variables")]
     // Separation
     [SerializeField] private float noClumpingRadius = 100f;
@@ -46,13 +46,14 @@ public class BoidSpawner : MonoBehaviour
     // Speed
     [SerializeField] private float speed = 10f;
     [SerializeField] private float steeringSpeed = 100f;
-    
+
     [SerializeField]
     private List<BoidController> wasps;
     [SerializeField]
     private List<BoidController> beetles;
     [SerializeField]
     private List<BoidController> scorpions;
+    private bool removing = false;
 
     private void Awake()
     {
@@ -90,11 +91,77 @@ public class BoidSpawner : MonoBehaviour
 
     private void Update()
     {
-        foreach (var boid in wasps)
+        if (!removing)
         {
-            if (boid != null && boid.GetComponent<BoidController>() != null && boid.gameObject.activeInHierarchy)
+            foreach (var boid in wasps)
             {
-                boid.GetComponent<BoidController>().SimulateMovement(wasps, Time.deltaTime, separationWeight, alignmentWeight, cohesionWeight, targetAggressionWeight);
+                if (boid != null && boid.GetComponent<BoidController>() != null && boid.gameObject.activeInHierarchy)
+                {
+                    boid.GetComponent<BoidController>().SimulateMovement(wasps, Time.deltaTime, separationWeight, alignmentWeight, cohesionWeight, targetAggressionWeight);
+
+                    var boidPos = boid.transform.position;
+
+                    if (boidPos.x > boidSimulationArea)
+                        boidPos.x -= boidSimulationArea * 2;
+                    else if (boidPos.x < -boidSimulationArea)
+                        boidPos.x += boidSimulationArea * 2;
+
+                    if (boidPos.y > boidSimulationArea)
+                        boidPos.y -= boidSimulationArea * 2;
+                    else if (boidPos.y < -boidSimulationArea)
+                        boidPos.y += boidSimulationArea * 2;
+
+                    if (boidPos.z > boidSimulationArea)
+                        boidPos.z -= boidSimulationArea * 2;
+                    else if (boidPos.z < -boidSimulationArea)
+                        boidPos.z += boidSimulationArea * 2;
+
+                    boid.transform.position = boidPos;
+                }
+                else
+                {
+                    wasps.Remove(boid);
+                    waspsCount--;
+                }
+
+            }
+
+            foreach (var boid in beetles)
+            {
+                if (boid != null && boid.GetComponent<BoidController>() != null && boid.gameObject.activeInHierarchy)
+                {
+                    boid.GetComponent<BoidController>().SimulateMovement(beetles, Time.deltaTime, separationWeight, alignmentWeight, cohesionWeight, targetAggressionWeight);
+
+                    var boidPos = boid.transform.position;
+
+                    if (boidPos.x > boidSimulationArea)
+                        boidPos.x -= boidSimulationArea * 2;
+                    else if (boidPos.x < -boidSimulationArea)
+                        boidPos.x += boidSimulationArea * 2;
+
+                    if (boidPos.y > boidSimulationArea)
+                        boidPos.y -= boidSimulationArea * 2;
+                    else if (boidPos.y < -boidSimulationArea)
+                        boidPos.y += boidSimulationArea * 2;
+
+                    if (boidPos.z > boidSimulationArea)
+                        boidPos.z -= boidSimulationArea * 2;
+                    else if (boidPos.z < -boidSimulationArea)
+                        boidPos.z += boidSimulationArea * 2;
+
+                    boid.transform.position = boidPos;
+                }
+                else
+                {
+                    beetles.Remove(boid);
+                    beetleCount--;
+                }
+
+            }
+
+            foreach (var boid in scorpions)
+            {
+                boid.GetComponent<BoidController>().SimulateMovement(scorpions, Time.deltaTime, separationWeight, alignmentWeight, cohesionWeight, targetAggressionWeight);
 
                 var boidPos = boid.transform.position;
 
@@ -114,68 +181,7 @@ public class BoidSpawner : MonoBehaviour
                     boidPos.z += boidSimulationArea * 2;
 
                 boid.transform.position = boidPos;
-            } else
-            {
-                wasps.Remove(boid);
-                waspsCount--;
             }
-            
-        }
-        
-        foreach (var boid in beetles)
-        {
-            if (boid != null && boid.GetComponent<BoidController>() != null && boid.gameObject.activeInHierarchy)
-            {
-                boid.GetComponent<BoidController>().SimulateMovement(beetles, Time.deltaTime, separationWeight, alignmentWeight, cohesionWeight, targetAggressionWeight);
-
-                var boidPos = boid.transform.position;
-
-                if (boidPos.x > boidSimulationArea)
-                    boidPos.x -= boidSimulationArea * 2;
-                else if (boidPos.x < -boidSimulationArea)
-                    boidPos.x += boidSimulationArea * 2;
-
-                if (boidPos.y > boidSimulationArea)
-                    boidPos.y -= boidSimulationArea * 2;
-                else if (boidPos.y < -boidSimulationArea)
-                    boidPos.y += boidSimulationArea * 2;
-
-                if (boidPos.z > boidSimulationArea)
-                    boidPos.z -= boidSimulationArea * 2;
-                else if (boidPos.z < -boidSimulationArea)
-                    boidPos.z += boidSimulationArea * 2;
-
-                boid.transform.position = boidPos;
-            } else
-            {
-                beetles.Remove(boid);
-                beetleCount--;
-            }
-            
-        }
-        
-        foreach (var boid in scorpions)
-        {
-            boid.GetComponent<BoidController>().SimulateMovement(scorpions, Time.deltaTime, separationWeight, alignmentWeight, cohesionWeight, targetAggressionWeight);
-
-            var boidPos = boid.transform.position;
-
-            if (boidPos.x > boidSimulationArea)
-                boidPos.x -= boidSimulationArea * 2;
-            else if (boidPos.x < -boidSimulationArea)
-                boidPos.x += boidSimulationArea * 2;
-
-            if (boidPos.y > boidSimulationArea)
-                boidPos.y -= boidSimulationArea * 2;
-            else if (boidPos.y < -boidSimulationArea)
-                boidPos.y += boidSimulationArea * 2;
-
-            if (boidPos.z > boidSimulationArea)
-                boidPos.z -= boidSimulationArea * 2;
-            else if (boidPos.z < -boidSimulationArea)
-                boidPos.z += boidSimulationArea * 2;
-
-            boid.transform.position = boidPos;
         }
     }
 
@@ -191,7 +197,7 @@ public class BoidSpawner : MonoBehaviour
 
         list.Add(boidController);
     }
-    
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position, new Vector3(boidSimulationArea * 2, boidSimulationArea * 2, boidSimulationArea * 2));
@@ -227,5 +233,19 @@ public class BoidSpawner : MonoBehaviour
         {
             scorpions[i].GetComponent<EnemyShooting>().enabled = false;
         }
+    }
+
+    public void removeBoid(BoidController b)
+    {
+        removing = true;
+        if (wasps.Remove(b))
+        {
+            waspsCount--;
+        }
+        if (beetles.Remove(b))
+        {
+            beetleCount--;
+        }
+        removing = false;
     }
 }
