@@ -3,12 +3,12 @@ using UnityEngine.VFX;
 
 public class beetleProjectExplosion : MonoBehaviour
 {
-    private float explosionTime = 10f;
+    private float explosionTime = 3f;
     private float timer = 0;
     [SerializeField] private ParticleSystem normalParticles;
     [SerializeField] private TrailRenderer trail;
     [SerializeField] private VisualEffect explosion;
-    private float radius = 50;
+    private float radius = 60;
     private bool exploded = false;
 
     private void Update()
