@@ -3,12 +3,12 @@ using UnityEngine.VFX;
 
 public class beetleProjectExplosion : MonoBehaviour
 {
-    private float explosionTime = 3f;
+    private float explosionTime = 5f;
     private float timer = 0;
     [SerializeField] private ParticleSystem normalParticles;
     [SerializeField] private TrailRenderer trail;
     [SerializeField] private VisualEffect explosion;
-    private float radius = 60;
+    private float radius = 55;
     private bool exploded = false;
 
     private void Update()
@@ -17,7 +17,7 @@ public class beetleProjectExplosion : MonoBehaviour
         {
             Explosion();
         }
-        if (timer >= explosionTime + 1)
+        if (timer >= explosionTime + .5)
         {
             Destroy(this.gameObject);
         }
