@@ -27,6 +27,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject[] livesImages;
     //Player UI: Boost Bar
     [SerializeField] private Image boostBarImage;
+    //Player UI: Shield Bar
+    [SerializeField] private Image shieldBarImage;
     //Player UI: Blaster Crosshair
     [SerializeField] private GameObject blasterCrosshairImage;
     //Player UI: Laser Crosshair
@@ -113,6 +115,7 @@ public class UIManager : MonoBehaviour
                 timerText.text = FindObjectOfType<Timer>().PrintCurrentTime();
             }
             boostBarImage.fillAmount = shipMovement.currentBoostAmount / shipMovement.maxBoostAmount;
+            shieldBarImage.fillAmount = shipMovement.playerHealth.shieldHealth / shipMovement.playerHealth.maxShieldHealth;
             UpdateLives();
         }
         if (GameManager.endOfGame)
@@ -191,24 +194,24 @@ public class UIManager : MonoBehaviour
                 livesImages[0].SetActive(true);
                 livesImages[1].SetActive(false);
                 livesImages[2].SetActive(false);
-                livesImages[3].SetActive(false);
-                livesImages[4].SetActive(false);
+                //livesImages[3].SetActive(false);
+                //livesImages[4].SetActive(false);
                 break;
             case 2:
                 livesImages[0].SetActive(true);
                 livesImages[1].SetActive(true);
                 livesImages[2].SetActive(false);
-                livesImages[3].SetActive(false);
-                livesImages[4].SetActive(false);
+                //livesImages[3].SetActive(false);
+                //livesImages[4].SetActive(false);
                 break;
             case 3:
                 livesImages[0].SetActive(true);
                 livesImages[1].SetActive(true);
                 livesImages[2].SetActive(true);
-                livesImages[3].SetActive(false);
-                livesImages[4].SetActive(false);
+                //livesImages[3].SetActive(false);
+                //livesImages[4].SetActive(false);
                 break;
-            case 4:
+            /*case 4:
                 livesImages[0].SetActive(true);
                 livesImages[1].SetActive(true);
                 livesImages[2].SetActive(true);
@@ -221,7 +224,7 @@ public class UIManager : MonoBehaviour
                 livesImages[2].SetActive(true);
                 livesImages[3].SetActive(true);
                 livesImages[4].SetActive(true);
-                break;
+                break;*/
             default:
                 break;
         }

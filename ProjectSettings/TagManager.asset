@@ -10,6 +10,7 @@ TagManager:
   - EnemySpawner
   - Enemy
   - Projectile
+  - Shield
   layers:
   - Default
   - TransparentFX
@@ -21,10 +22,10 @@ TagManager:
   - Weapon
   - PostProcessing
   - Wasp
-  - WaspBullet
-  - 
-  - 
-  - 
+  - EnemyProjectile
+  - PlayerProjectile
+  - EnemyShield
+  - PlayerShield
   - 
   - 
   - 

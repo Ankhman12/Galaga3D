@@ -50,11 +50,11 @@ MonoBehaviour:
   scorpionCount: 0
   scorpionPrefab: {fileID: 7847491008794525126, guid: 85a760550074af14bb6d665f8b56d61e, type: 3}
   target: {fileID: 0}
-  boidSimulationArea: 3000
+  boidSimulationArea: 6000
   separationWeight: 1
   alignmentWeight: 1
-  cohesionWeight: 1.2
-  targetAggressionWeight: 3
+  cohesionWeight: 1.3
+  targetAggressionWeight: 1.6
   noClumpingRadius: 150
   localAreaRadius: 20
   speed: 30

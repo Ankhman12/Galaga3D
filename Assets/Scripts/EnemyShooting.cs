@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using TMPro;
 
 public class EnemyShooting : MonoBehaviour
 {
@@ -85,10 +86,12 @@ public class EnemyShooting : MonoBehaviour
                     } else
                     {
                         float deltat = Time.deltaTime;
-                        if (chargingBeetleBullet.gameObject.transform.localScale.x < 10)
+                        if (chargingBeetleBullet.gameObject.transform.localScale.x < 12)
                         {
                             float newScale = chargingBeetleBullet.gameObject.transform.localScale.x + .05f;
                             chargingBeetleBullet.gameObject.transform.localScale = new Vector3(newScale, newScale, newScale);
+                            //Set particle system scale, for some reason it doesn't scale with the parent (its the first child / index 0)
+                            chargingBeetleBullet.gameObject.transform.GetChild(0).localScale = new Vector3(newScale, newScale, newScale);
                         }
                         beetleTimer += deltat;
                     }
@@ -123,20 +126,25 @@ public class EnemyShooting : MonoBehaviour
         var distanceFromPlayer = (targetPos - transform.position).magnitude;
         var projectileAirTime = distanceFromPlayer / projectileSpeed;
         if (projectileAirTime > 1f) projectileAirTime = 1f;
+        if (type == EnemyType.Beetle && projectileAirTime > 0.5f) {
+            projectileAirTime = 0.5f;
+        }
         var predictPlayerPos = targetPos;
         if (target != null)
-            predictPlayerPos = targetPos + target.GetComponent<Rigidbody>().velocity * projectileAirTime;
+        {
+            predictPlayerPos = targetPos + target.GetComponentInChildren<Rigidbody>().velocity * projectileAirTime;
+        }
         var direction = (predictPlayerPos - transform.position).normalized;
         Quaternion projectileRotation = Quaternion.LookRotation(direction, transform.up);
         if (type == EnemyType.Wasp)
         {
             var shotBullet = Instantiate(bullet, transform.position, projectileRotation);
-            /** ignore collisions between the wasps (layer 9) and their bullets (layer 10) */
-            Physics.IgnoreLayerCollision(9, 10, true);
+            /** ignore collisions between the wasps (layer 6) and their bullets (layer 10) */
+            Physics.IgnoreLayerCollision(6, 10, true);
             shotBullet.GetComponent<Rigidbody>().velocity = direction * projectileSpeed;
         } else if (type == EnemyType.Beetle)
         {
-            Physics.IgnoreLayerCollision(9, 10, true);
+            Physics.IgnoreLayerCollision(6, 10, true);
             chargingBeetleBullet.GetComponent<Rigidbody>().velocity = direction * projectileSpeed * 3f;
         }
         

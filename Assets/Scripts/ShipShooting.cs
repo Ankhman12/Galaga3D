@@ -26,6 +26,8 @@ public class ShipShooting : MonoBehaviour
     [SerializeField]
     private LineRenderer[] lasers;
     [SerializeField]
+    private Material laserMat;
+    [SerializeField]
     private List<VisualEffect> laserMuzzleVFX;
     [SerializeField]
     private List<VisualEffect> laserHitVFX;
@@ -72,8 +74,14 @@ public class ShipShooting : MonoBehaviour
 
     private void Awake()
     {
-        isLaser = true;
-        fireMode = FireMode.Laser;
+        isLaser = false;
+        isLaserFiring = false;
+        foreach (LineRenderer laser in lasers)
+        {
+            laser.gameObject.SetActive(false);
+        }
+
+        fireMode = FireMode.Blaster;
         ship = GetComponent<ShipMovement>();
         if (ship.isThirdPerson)
         {
@@ -134,10 +142,11 @@ public class ShipShooting : MonoBehaviour
             FireLaser();
             foreach (VisualEffect v in laserMuzzleVFX)
             {
+                Debug.Log("Yolololo");
+                
                 if (!isLaserFiring)
                 {
                     v.Play();
-                    
                 }
             }
             isLaserFiring = true;
@@ -161,7 +170,7 @@ public class ShipShooting : MonoBehaviour
                 }
             }
             isLaserFiring = false;
-            foreach (var laser in lasers)
+            foreach (LineRenderer laser in lasers)
             {
                 laser.gameObject.SetActive(false);
             }
@@ -231,7 +240,7 @@ public class ShipShooting : MonoBehaviour
                 
             }
             
-            foreach(var laser in lasers)
+            foreach(LineRenderer laser in lasers)
             {
                 Vector3 localHitPosition = laser.transform.InverseTransformPoint(hitInfo.point);
                 laser.gameObject.SetActive(true);
@@ -241,11 +250,17 @@ public class ShipShooting : MonoBehaviour
         else
         {
             //targetInRange = false;
-            foreach (var laser in lasers)
+            foreach (LineRenderer laser in lasers)
             {
                 laser.gameObject.SetActive(true);
                 laser.SetPosition(1, new Vector3(0, 0, hardpointRange));
             }
+        }
+
+        //Tile laser texture to match length of beam
+        foreach (LineRenderer laser in lasers) {
+            float length = laser.GetPosition(1).z;
+            laserMat.SetVector("Tiling_", new Vector2((.04f * length), 1f));
         }
 
         HeatLaser();
