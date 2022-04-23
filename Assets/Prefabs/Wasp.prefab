@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40c1ccaa109a1214d91d19f65a0bb706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 1
+  fireRate: 0.9
   maxAngle: 0
   bullet: {fileID: 2765953846188132652, guid: 676876bc2ef1cb4499fd96a85086d603, type: 3}
   projectileSpeed: 75

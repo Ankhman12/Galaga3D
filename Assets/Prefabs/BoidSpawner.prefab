@@ -54,7 +54,7 @@ MonoBehaviour:
   separationWeight: 1
   alignmentWeight: 1
   cohesionWeight: 1.3
-  targetAggressionWeight: 1.6
+  targetAggressionWeight: 1.8
   noClumpingRadius: 150
   localAreaRadius: 20
   speed: 30

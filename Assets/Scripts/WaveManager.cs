@@ -14,9 +14,9 @@ public class WaveManager : MonoBehaviour
         wave = 1;
         GameObject.Find("WaveText").GetComponent<TMP_Text>().text = "Wave: 1";
         boidSpawners = new List<BoidSpawner>();
-        int x = Random.Range(-100, 100);
-        int y = Random.Range(-100, 100);
-        int z = Random.Range(-100, 100);
+        int x = Random.Range(-150, 150);
+        int y = Random.Range(-150, 150);
+        int z = Random.Range(-150, 150);
         Vector3 pos = new Vector3(x, y, z);
         boidSpawners.Add(Instantiate(boidSpawner, pos, Quaternion.identity).GetComponent<BoidSpawner>());
     }
@@ -40,9 +40,9 @@ public class WaveManager : MonoBehaviour
         GameObject.Find("WaveText").GetComponent<TMP_Text>().text = "Wave: " + wave;
         for (int i = 0; i < wave / 2; i++)
         {
-            int x = Random.Range(-100, 100);
-            int y = Random.Range(-100, 100);
-            int z = Random.Range(-100, 100);
+            int x = Random.Range(-300, 300);
+            int y = Random.Range(-300, 300);
+            int z = Random.Range(-300, 300);
             Vector3 pos = new Vector3(x, y, z);
             boidSpawners.Add(Instantiate(boidSpawner, pos, Quaternion.identity).GetComponent<BoidSpawner>());
         }
