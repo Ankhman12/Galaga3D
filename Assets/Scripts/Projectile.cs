@@ -15,25 +15,26 @@ public class Projectile : MonoBehaviour
         timer += Time.deltaTime;
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision other)
     {
-        if (!other.CompareTag("Player")) return;
-        Debug.Log("Collided with Player");
-        // Subtract Player's Life
-        var shipMov = FindObjectOfType<ShipMovement>();
-        shipMov.currentLives--;
+        if (other.gameObject.transform.CompareTag("Player") || other.gameObject.transform.CompareTag("Shield")) {
+            Debug.Log("Collided with Player / Shield");
+            // Subtract Player's Life
+            var shipMov = FindObjectOfType<ShipMovement>();
+            shipMov.currentLives--;
 
 
-        if (FindObjectOfType<ShipMovement>().currentLives <= 0)
-        {
+            if (FindObjectOfType<ShipMovement>().currentLives <= 0)
+            {
 
-            //If Game is Over
-            shipMov.OnDestroyed();
-            GameManager.collided = true;
-        } else
-        {
-            GameManager.Instance.hurtPlayer();
-            Destroy(this.gameObject);
+                //If Game is Over
+                shipMov.OnDestroyed();
+                GameManager.collided = true;
+            } else
+            {
+                GameManager.Instance.hurtPlayer();
+                Destroy(this.gameObject);
+            }
         }
     }
 }

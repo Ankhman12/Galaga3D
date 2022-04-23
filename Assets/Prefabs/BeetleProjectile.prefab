@@ -4821,7 +4821,7 @@ GameObject:
   - component: {fileID: 1880488987611265672}
   m_Layer: 10
   m_Name: BeetleProjectile
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4839,7 +4839,7 @@ Transform:
   m_Children:
   - {fileID: 6839739732883354459}
   - {fileID: 4908326012476126985}
-  - {fileID: 2122394016588356807}
+  - {fileID: 1732086215401986985}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4935,7 +4935,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalParticles: {fileID: 8402743795086047243}
   trail: {fileID: 1923679613806953834}
-  explosion: {fileID: 7852570222205199076}
+  explosion: {fileID: 1732086215401986984}
 --- !u!1 &9190524952300956629
 GameObject:
   m_ObjectHideFlags: 0
@@ -5065,82 +5065,74 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!1001 &6732069114746930931
+--- !u!1001 &5832996565783845217
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 3991298363578496895}
     m_Modifications:
-    - target: {fileID: 421910639707493778, guid: 8b53d76833d0cc644afa66a3581260c7, type: 3}
-      propertyPath: m_Name
-      value: BeetleBoom
-      objectReference: {fileID: 0}
-    - target: {fileID: 4618827543547959860, guid: 8b53d76833d0cc644afa66a3581260c7, type: 3}
+    - target: {fileID: 5258916032201638600, guid: 7809a1b0d2ec7eb4c806c83f2a6920de, type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 4618827543547959860, guid: 8b53d76833d0cc644afa66a3581260c7, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4618827543547959860, guid: 8b53d76833d0cc644afa66a3581260c7, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4618827543547959860, guid: 8b53d76833d0cc644afa66a3581260c7, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4618827543547959860, guid: 8b53d76833d0cc644afa66a3581260c7, type: 3}
+    - target: {fileID: 5258916032201638600, guid: 7809a1b0d2ec7eb4c806c83f2a6920de, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4618827543547959860, guid: 8b53d76833d0cc644afa66a3581260c7, type: 3}
+    - target: {fileID: 5258916032201638600, guid: 7809a1b0d2ec7eb4c806c83f2a6920de, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4618827543547959860, guid: 8b53d76833d0cc644afa66a3581260c7, type: 3}
+    - target: {fileID: 5258916032201638600, guid: 7809a1b0d2ec7eb4c806c83f2a6920de, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4618827543547959860, guid: 8b53d76833d0cc644afa66a3581260c7, type: 3}
+    - target: {fileID: 5258916032201638600, guid: 7809a1b0d2ec7eb4c806c83f2a6920de, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4618827543547959860, guid: 8b53d76833d0cc644afa66a3581260c7, type: 3}
+    - target: {fileID: 5258916032201638600, guid: 7809a1b0d2ec7eb4c806c83f2a6920de, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4618827543547959860, guid: 8b53d76833d0cc644afa66a3581260c7, type: 3}
+    - target: {fileID: 5258916032201638600, guid: 7809a1b0d2ec7eb4c806c83f2a6920de, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4618827543547959860, guid: 8b53d76833d0cc644afa66a3581260c7, type: 3}
+    - target: {fileID: 5258916032201638600, guid: 7809a1b0d2ec7eb4c806c83f2a6920de, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4618827543547959860, guid: 8b53d76833d0cc644afa66a3581260c7, type: 3}
+    - target: {fileID: 5258916032201638600, guid: 7809a1b0d2ec7eb4c806c83f2a6920de, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4618827543547959860, guid: 8b53d76833d0cc644afa66a3581260c7, type: 3}
+    - target: {fileID: 5258916032201638600, guid: 7809a1b0d2ec7eb4c806c83f2a6920de, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4618827543547959860, guid: 8b53d76833d0cc644afa66a3581260c7, type: 3}
+    - target: {fileID: 5258916032201638600, guid: 7809a1b0d2ec7eb4c806c83f2a6920de, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5258916032201638601, guid: 7809a1b0d2ec7eb4c806c83f2a6920de, type: 3}
+      propertyPath: m_InitialEventNameOverriden
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258916032201638603, guid: 7809a1b0d2ec7eb4c806c83f2a6920de, type: 3}
+      propertyPath: m_Name
+      value: BeetleProjBoom
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8b53d76833d0cc644afa66a3581260c7, type: 3}
---- !u!4 &2122394016588356807 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: 7809a1b0d2ec7eb4c806c83f2a6920de, type: 3}
+--- !u!4 &1732086215401986985 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 4618827543547959860, guid: 8b53d76833d0cc644afa66a3581260c7, type: 3}
-  m_PrefabInstance: {fileID: 6732069114746930931}
+  m_CorrespondingSourceObject: {fileID: 5258916032201638600, guid: 7809a1b0d2ec7eb4c806c83f2a6920de, type: 3}
+  m_PrefabInstance: {fileID: 5832996565783845217}
   m_PrefabAsset: {fileID: 0}
---- !u!2083052967 &7852570222205199076 stripped
+--- !u!2083052967 &1732086215401986984 stripped
 VisualEffect:
-  m_CorrespondingSourceObject: {fileID: 3572746701905552407, guid: 8b53d76833d0cc644afa66a3581260c7, type: 3}
-  m_PrefabInstance: {fileID: 6732069114746930931}
+  m_CorrespondingSourceObject: {fileID: 5258916032201638601, guid: 7809a1b0d2ec7eb4c806c83f2a6920de, type: 3}
+  m_PrefabInstance: {fileID: 5832996565783845217}
   m_PrefabAsset: {fileID: 0}

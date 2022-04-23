@@ -61,7 +61,7 @@ public class BlasterBolt : MonoBehaviour
             Destroy(this.gameObject);
             //StartCoroutine(Kill());
         }
-        if (collision.gameObject.CompareTag("Shield"))
+        /*if (collision.gameObject.CompareTag("Shield"))
         {
             Shield s = collision.collider.GetComponent<Shield>();
             //a.Hit(damage);
@@ -73,7 +73,7 @@ public class BlasterBolt : MonoBehaviour
             }
             Destroy(this.gameObject);
             //StartCoroutine(Kill());
-        }
+        }*/
 
 
 

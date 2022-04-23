@@ -7,7 +7,7 @@ public class ShieldGenerator : MonoBehaviour
     [SerializeField] GameObject shield;
     [SerializeField] int generatorHealth = 3;
 
-    private void OnTriggerEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.layer == 11)
         {

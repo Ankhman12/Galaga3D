@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shield
+  m_Name: BeetleShipShield
   m_Shader: {fileID: -6465566751694194690, guid: 2da3d843fd5f3974287a80b8d67a9406, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -79,7 +79,7 @@ Material:
     - Boolean_3d90aa45df1c49b68d50bf9edb25acc3: 0
     - Boolean_77b32a1e98194743b4eaf8560d86e492: 0
     - FresnelStrength_: 3
-    - IsHit_: 0
+    - IsHit_: 1
     - IsPlanet_: 0
     - Vector1_3b29c736a1544731920aec277df5a48a: 3
     - _AlphaClip: 0
@@ -110,8 +110,8 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - AtmosColor_: {r: 1.203468, g: 0.5268639, b: 1.06482, a: 0}
-    - HitColor_: {r: 3.623529, g: 0.01568628, b: 0.09411765, a: 0}
-    - MainColor_: {r: 0.2555356, g: 3.566911, b: 3.660377, a: 0}
+    - HitColor_: {r: 2.643608, g: 0.6858418, b: 0.89386433, a: 0}
+    - MainColor_: {r: 3.6603773, g: 1.8198656, b: 0.26829976, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
