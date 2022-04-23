@@ -54,6 +54,11 @@ public class EnemyStats : MonoBehaviour
     {
         GameManager.Instance.AddPoints(100);
         DestroySequence();
+        BoidSpawner b = this.gameObject.GetComponentInParent<BoidSpawner>();
+        if (b != null)
+        {
+            b.removeBoid(this.gameObject.GetComponent<BoidController>());
+        }
         Destroy(this.gameObject);
     }
     
@@ -65,7 +70,11 @@ public class EnemyStats : MonoBehaviour
             Instantiate(p.gameObject, transform.position, transform.rotation);
         }
         //Play Explosion SFX
-        Instantiate(breakSFX, transform.position, transform.rotation);
+        if (breakSFX != null)
+        {
+            Instantiate(breakSFX, transform.position, transform.rotation);
+
+        }
         //breakSFX.Play();
     }
     

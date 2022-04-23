@@ -3,12 +3,16 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
     // Private Variables
     private static GameManager _instance;
     [SerializeField] private static int _endlessHighScore = 0;
+    [SerializeField] private GameObject hurtImage;
+    private bool gameOver = false;
     public static int EndlessHighScore
     {
         get => _endlessHighScore;
@@ -104,7 +108,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        PauseGame();
+        //PauseGame();
         if (retrySelected)
         {
             Debug.Log("Pressed Restart");
@@ -189,6 +193,13 @@ public class GameManager : MonoBehaviour
             FindObjectOfType<UIManager>().hideUI();
             FindObjectOfType<UIManager>().hideWin();
             FindObjectOfType<UIManager>().showGameOver();
+
+            if (!gameOver)
+            {
+
+                GameObject.Find("GameOverMenu").GetComponentInChildren<Button>().Select();
+                gameOver = true;
+            }
             if (FindObjectOfType<ShipMovement>() != null)
             {
                 FindObjectOfType<ShipMovement>().enabled = false;
@@ -269,7 +280,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    void PauseGame()
+    public void PauseGame()
     {
         if (gameIsPaused && !endOfGame)
         {
@@ -279,6 +290,7 @@ public class GameManager : MonoBehaviour
             FindObjectOfType<UIManager>().hideUI();
             Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.Confined;
+            GameObject.Find("PauseMenu").GetComponentInChildren<Button>().Select();
             // Pause Audio
         }
         else if (!gameIsPaused && !endOfGame)
@@ -301,5 +313,17 @@ public class GameManager : MonoBehaviour
     public void AddPoints(int val)
     {
         _points += val;
+    }
+
+    public void hurtPlayer()
+    {
+        StartCoroutine(PlayerHurt());
+    }
+    
+    IEnumerator PlayerHurt()
+    {
+        hurtImage.SetActive(true);
+        yield return new WaitForSeconds(.15f);
+        hurtImage.SetActive(false);
     }
 }

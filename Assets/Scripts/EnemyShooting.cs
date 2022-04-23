@@ -17,6 +17,25 @@ public class EnemyShooting : MonoBehaviour
     private bool startShooting = false;
     private float initialShootingTimer = 5f;
     private float timer = 0;
+    [SerializeField] enum EnemyType
+    {
+        Beetle,
+        Wasp
+    }
+    [SerializeField] private EnemyType type;
+    enum BeetleState
+    {
+        Idle,
+        Charging,
+        Fire,
+        Sleep
+    }
+    private BeetleState beetleState = BeetleState.Idle;
+    private float beetleTimer = 0;
+    private float beetleChargeTime = 1.5f;
+    private GameObject chargingBeetleBullet;
+    private float beetleSleepTime = 3f;
+    [SerializeField] ParticleSystem beetleParticles;
 
     private void Awake()
     {
@@ -27,17 +46,74 @@ public class EnemyShooting : MonoBehaviour
     {
         if (timer < initialShootingTimer)
         {
-            startShooting = false;
+            timer += Time.deltaTime;
+            return;
         }
-        timer += Time.deltaTime;
-        if (Time.time >= nextTimeToFire && startShooting)
+        if (type == EnemyType.Wasp)
         {
-            // Check Time
-            nextTimeToFire = Time.time + 1f / fireRate;
-            // Is Player in Raycast Cone
-            Debug.Log("Shooting at Player.");
-            Shoot();
-            
+            if (Time.time >= nextTimeToFire && startShooting)
+            {
+                // Check Time
+                nextTimeToFire = Time.time + 1f / fireRate;
+                // Is Player in Raycast Cone
+                Debug.Log("Shooting at Player.");
+                Shoot();
+
+            }
+        } else if (type == EnemyType.Beetle)
+        {
+            switch(beetleState)
+            {
+                case BeetleState.Idle:
+                    //Debug.Log("idle");
+                    if (startShooting)
+                    {
+                        beetleParticles.Play();
+                        beetleTimer = 0;
+                        beetleState = BeetleState.Charging;
+                        chargingBeetleBullet = Instantiate(bullet, beetleParticles.gameObject.transform.position, transform.rotation);
+                        chargingBeetleBullet.transform.parent = this.gameObject.transform;
+                        chargingBeetleBullet.gameObject.transform.localScale = new Vector3(.1f, .1f, .1f);
+                    }
+                    break;
+                case BeetleState.Charging:
+                    //Debug.Log("charging");
+                    if (beetleTimer >= beetleChargeTime)
+                    {
+                        beetleState = BeetleState.Fire;
+                        beetleParticles.Stop();
+                    } else
+                    {
+                        float deltat = Time.deltaTime;
+                        if (chargingBeetleBullet.gameObject.transform.localScale.x < 10)
+                        {
+                            float newScale = chargingBeetleBullet.gameObject.transform.localScale.x + .05f;
+                            chargingBeetleBullet.gameObject.transform.localScale = new Vector3(newScale, newScale, newScale);
+                        }
+                        beetleTimer += deltat;
+                    }
+                    break;
+                case BeetleState.Fire:
+                    //Debug.Log("Fire");
+                    chargingBeetleBullet.transform.parent = null;
+                    Shoot();
+                    beetleTimer = 0;
+                    beetleState = BeetleState.Sleep;
+                    break;
+                case BeetleState.Sleep:
+                    //Debug.Log("sleepy");
+                    if (beetleTimer >= beetleSleepTime)
+                    {
+                        beetleState = BeetleState.Idle;
+                    } else
+                    {
+                        beetleTimer += Time.deltaTime;
+                    }
+                    break;
+                default:
+                    break;
+            }
+
         }
     }
 
@@ -52,10 +128,18 @@ public class EnemyShooting : MonoBehaviour
             predictPlayerPos = targetPos + target.GetComponent<Rigidbody>().velocity * projectileAirTime;
         var direction = (predictPlayerPos - transform.position).normalized;
         Quaternion projectileRotation = Quaternion.LookRotation(direction, transform.up);
-        var shotBullet = Instantiate(bullet, transform.position, projectileRotation);
-        /** ignore collisions between the wasps (layer 9) and their bullets (layer 10) */
-        Physics.IgnoreLayerCollision(9, 10, true);
-        shotBullet.GetComponent<Rigidbody>().velocity = direction * projectileSpeed;
+        if (type == EnemyType.Wasp)
+        {
+            var shotBullet = Instantiate(bullet, transform.position, projectileRotation);
+            /** ignore collisions between the wasps (layer 9) and their bullets (layer 10) */
+            Physics.IgnoreLayerCollision(9, 10, true);
+            shotBullet.GetComponent<Rigidbody>().velocity = direction * projectileSpeed;
+        } else if (type == EnemyType.Beetle)
+        {
+            Physics.IgnoreLayerCollision(9, 10, true);
+            chargingBeetleBullet.GetComponent<Rigidbody>().velocity = direction * projectileSpeed * 3f;
+        }
+        
     }
 
     private void OnTriggerEnter(Collider other)

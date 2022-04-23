@@ -154,37 +154,41 @@ public class BoidController : MonoBehaviour
 
         foreach (BoidController boid in other)
         {
-            Transform boidTransfrom = boid.transform;
-            //skip self
-            if (boid == this)
-                continue;
-
-            var distance = Vector3.Distance(boid.transform.position, this.transform.position);
-
-            //identify local neighbour
-            if (distance < noClumpingRadius)
+            if (boid != null)
             {
-                separationDirection += boid.transform.position - transform.position;
-                separationCount++;
-            }
+                Transform boidTransfrom = boid.transform;
+                //skip self
+                if (boid == this)
+                    continue;
 
-            //identify local neighbour
-            if (distance < localAreaRadius && boid.SwarmIndex == this.SwarmIndex)
-            {
-                alignmentDirection += boid.transform.forward;
-                alignmentCount++;
+                var distance = Vector3.Distance(boid.transform.position, this.transform.position);
 
-                cohesionDirection += boidTransfrom.position - transform.position;
-                cohesionCount++;
-
-                //identify leader
-                var angle = Vector3.Angle(boidTransfrom.position - transform.position, transform.forward);
-                if (angle < leaderAngle && angle < 90f)
+                //identify local neighbour
+                if (distance < noClumpingRadius)
                 {
-                    leaderBoid = boid;
-                    leaderAngle = angle;
+                    separationDirection += boid.transform.position - transform.position;
+                    separationCount++;
+                }
+
+                //identify local neighbour
+                if (distance < localAreaRadius && boid.SwarmIndex == this.SwarmIndex)
+                {
+                    alignmentDirection += boid.transform.forward;
+                    alignmentCount++;
+
+                    cohesionDirection += boidTransfrom.position - transform.position;
+                    cohesionCount++;
+
+                    //identify leader
+                    var angle = Vector3.Angle(boidTransfrom.position - transform.position, transform.forward);
+                    if (angle < leaderAngle && angle < 90f)
+                    {
+                        leaderBoid = boid;
+                        leaderAngle = angle;
+                    }
                 }
             }
+            
         }
 
         if (separationCount > 0)

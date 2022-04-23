@@ -168,6 +168,7 @@ public class UIManager : MonoBehaviour
         GameManager.levelPassed = false;
         GameManager.collided = false;
         GameManager.ranOut = false;
+        Time.timeScale = 1f;
         SceneManager.LoadScene(0);
     }
 
@@ -178,6 +179,7 @@ public class UIManager : MonoBehaviour
         GameManager.levelPassed = false;
         GameManager.collided = false;
         GameManager.ranOut = false;
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

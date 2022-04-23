@@ -9,15 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/StartMenuScene.unity
     guid: 325ec7b19952c0d4a821dbca0ad51093
   - enabled: 1
-    path: Assets/Scenes/EndlessModeScene.unity
-    guid: 86b426bf07463dc449f4e4ae3b8166bd
-  - enabled: 1
-    path: Assets/Scenes/Level1Scene.unity
-    guid: 14221a87d66d9b8468135a80f8f87786
-  - enabled: 1
-    path: Assets/Scenes/Level2Scene.unity
-    guid: c632ab6e2a6f44d438ebd459b67431be
-  - enabled: 1
-    path: Assets/Scenes/Level3Scene.unity
-    guid: 0c0257ea3611a7048807a880c1342316
+    path: Assets/Scenes/GalagaPlaySceneWaves.unity
+    guid: 31a836d33af424d45b546253e36da608
   m_configObjects: {}

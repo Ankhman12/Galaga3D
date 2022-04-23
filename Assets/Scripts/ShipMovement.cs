@@ -105,6 +105,7 @@ public class ShipMovement : MonoBehaviour
         rb.useGravity = false;
         currentBoostAmount = maxBoostAmount;
         currentLives = 5;
+        mouseSensitivity = PlayerPrefs.GetFloat("Sensitivity", 1.5f);
     }
 
     void FixedUpdate()
@@ -428,6 +429,7 @@ public class ShipMovement : MonoBehaviour
         if (context.performed)
         {
             GameManager.gameIsPaused = !GameManager.gameIsPaused;
+            GameManager.Instance.PauseGame();
         }
 
     }
