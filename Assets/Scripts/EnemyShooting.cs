@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using TMPro;
 
 public class EnemyShooting : MonoBehaviour
 {
@@ -122,21 +123,40 @@ public class EnemyShooting : MonoBehaviour
     public void Shoot()
     {
         if (target != null) targetPos = target.transform.position;
+
+       // GameObject.Find("WaveText").GetComponent<TMP_Text>().text = "1";
         var distanceFromPlayer = (targetPos - transform.position).magnitude;
+       // GameObject.Find("WaveText").GetComponent<TMP_Text>().text = "2";
         var projectileAirTime = distanceFromPlayer / projectileSpeed;
+        //GameObject.Find("WaveText").GetComponent<TMP_Text>().text = "3";
         if (projectileAirTime > 1f) projectileAirTime = 1f;
+        //GameObject.Find("WaveText").GetComponent<TMP_Text>().text = "4";
         if (type == EnemyType.Beetle && projectileAirTime > 0.5f) {
             projectileAirTime = 0.5f;
         }
-
+        //GameObject.Find("WaveText").GetComponent<TMP_Text>().text = "5";
         var predictPlayerPos = targetPos;
+        //GameObject.Find("WaveText").GetComponent<TMP_Text>().text = "6";
         if (target != null)
-            predictPlayerPos = targetPos + target.GetComponent<Rigidbody>().velocity * projectileAirTime;
+        {
+            GameObject.Find("WaveText").GetComponent<TMP_Text>().text = "6.25";
+            if (target.GetComponent<ShipMovement>() == null)
+            {
+                GameObject.Find("WaveText").GetComponent<TMP_Text>().text = "null rigid";
+            }
+            predictPlayerPos = targetPos + target.GetComponentInChildren<Rigidbody>().velocity * projectileAirTime;
+        }
+            
+        //GameObject.Find("WaveText").GetComponent<TMP_Text>().text = "6.5";
         var direction = (predictPlayerPos - transform.position).normalized;
+        //GameObject.Find("WaveText").GetComponent<TMP_Text>().text = "7";
         Quaternion projectileRotation = Quaternion.LookRotation(direction, transform.up);
+        //GameObject.Find("WaveText").GetComponent<TMP_Text>().text = "8";
         if (type == EnemyType.Wasp)
         {
             var shotBullet = Instantiate(bullet, transform.position, projectileRotation);
+            //GameObject.Find("WaveText").GetComponent<TMP_Text>().text = "9";
+            //GameObject.Find("WaveText").GetComponent<TMP_Text>().text = "9";
             /** ignore collisions between the wasps (layer 6) and their bullets (layer 10) */
             Physics.IgnoreLayerCollision(6, 10, true);
             shotBullet.GetComponent<Rigidbody>().velocity = direction * projectileSpeed;
