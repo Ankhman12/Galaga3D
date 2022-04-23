@@ -57,6 +57,11 @@ public class EnemyStats : MonoBehaviour
     {
         GameManager.Instance.AddPoints(100);
         DestroySequence();
+        BoidSpawner b = this.gameObject.GetComponentInParent<BoidSpawner>();
+        if (b != null)
+        {
+            b.removeBoid(this.gameObject.GetComponent<BoidController>());
+        }
         Destroy(this.gameObject);
     }
     

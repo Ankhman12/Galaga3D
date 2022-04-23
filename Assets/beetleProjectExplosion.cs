@@ -9,7 +9,7 @@ public class beetleProjectExplosion : MonoBehaviour
     [SerializeField] private ParticleSystem normalParticles;
     [SerializeField] private TrailRenderer trail;
     [SerializeField] private VisualEffect explosion;
-    [SerializeField] private float radius = 50f;
+    [SerializeField] private float radius = 54f;
     private bool exploded = false;
 
     private void FixedUpdate()
@@ -18,7 +18,7 @@ public class beetleProjectExplosion : MonoBehaviour
         {
             Explosion();
         }
-        if (timer >= explosionTime + 1)
+        if (timer >= explosionTime + .5)
         {
             Destroy(this.gameObject);
         }
