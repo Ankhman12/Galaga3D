@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.VFX;
@@ -122,38 +119,25 @@ public class ShipMovement : MonoBehaviour
 
     void HandleFX() 
     {
-        if (thrust1D > 0) {
+        if (boosting)
+        {
+            if (!boostSFX.isPlaying)
+            {
+                boostSFX.Play();
+            }
+            /*foreach (ParticleSystem p in boostFX)
+            {
+                p.Play();
+            }*/
+            boostFX.SetActive(true);
+            thrusterVFX.SetActive(false);
+        }
+        else if (thrust1D > 0) {
             thrusting = true;
-            if (boosting)
-            {
-                if (!boostSFX.isPlaying) { 
-                    boostSFX.Play();
-                }
-                /*foreach (ParticleSystem p in boostFX)
-                {
-                    p.Play();
-                }*/
-                boostFX.SetActive(true);
-                thrusterVFX.SetActive(false);
-            }
-            else
-            {
-                if (boostSFX.isPlaying)
-                {
-                    boostSFX.Stop();
-                }
-                /*foreach (ParticleSystem p in boostFX)
-                {
-                    p.Stop();
-                }*/
-                boostFX.SetActive(false);
-                thrusterVFX.SetActive(true);
-            }
         }
         else if (thrust1D < 0) {
             thrusting = true;
-            
-        }
+        } 
         else
         {
             thrusting = false;
@@ -242,18 +226,17 @@ public class ShipMovement : MonoBehaviour
             rb.AddRelativeTorque(Vector3.up * Mathf.Clamp(pitchYaw.x, -1f, 1f) * tpYawTorque * Time.fixedDeltaTime);
 
             // Thrust
-            if (thrust1D > 0.1f || thrust1D < -0.1f)
+            if (boosting)
             {
                 float currentThrust;
-
-                if (boosting)
-                {
-                    currentThrust = tpThrust * boostMultiplier;
-                }
-                else
-                {
-                    currentThrust = tpThrust;
-                }
+                currentThrust = tpThrust * boostMultiplier;
+                rb.AddForce(transform.forward * currentThrust * Time.fixedDeltaTime);
+                glide = thrust1D * currentThrust;
+            }
+            else if (thrust1D > 0.1f || thrust1D < -0.1f)
+            {
+                float currentThrust;
+                currentThrust = tpThrust;
                 rb.AddForce(transform.forward * thrust1D * currentThrust * Time.fixedDeltaTime);
                 glide = thrust1D * currentThrust;
             }

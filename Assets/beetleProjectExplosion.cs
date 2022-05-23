@@ -10,6 +10,7 @@ public class beetleProjectExplosion : MonoBehaviour
     [SerializeField] private TrailRenderer trail;
     [SerializeField] private VisualEffect explosion;
     [SerializeField] private float radius = 54f;
+    public LayerMask l;
     private bool exploded = false;
 
     private void FixedUpdate()
@@ -26,9 +27,9 @@ public class beetleProjectExplosion : MonoBehaviour
         timer += Time.deltaTime;
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision collision)
     {
-        if (!exploded && other.gameObject.tag == "Player")
+        if (!exploded && collision.gameObject.CompareTag("Player"))
         {
             Explosion();
         }
@@ -42,10 +43,11 @@ public class beetleProjectExplosion : MonoBehaviour
         normalParticles.Stop();
         Destroy(trail.gameObject);
         explosion.Play();
-        Collider[] collisions = Physics.OverlapSphere(this.transform.position, radius);
+        Collider[] collisions = Physics.OverlapSphere(this.transform.position, radius, l);
         foreach(Collider c in collisions)
         {
-            if (c.gameObject.tag == "Player")
+            
+            if (c.gameObject.CompareTag("Player"))
             {
                 var shipMov = FindObjectOfType<ShipMovement>();
                 shipMov.Damage(damage);

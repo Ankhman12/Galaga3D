@@ -55,7 +55,7 @@ public class EnemyShooting : MonoBehaviour
             if (Time.time >= nextTimeToFire && startShooting)
             {
                 // Check Time
-                nextTimeToFire = Time.time + 1f / fireRate;
+                nextTimeToFire = Time.time + 1f / fireRate + UnityEngine.Random.Range(.01f, .1f);
                 // Is Player in Raycast Cone
                 Debug.Log("Shooting at Player.");
                 Shoot();
