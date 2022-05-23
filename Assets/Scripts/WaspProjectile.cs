@@ -70,8 +70,6 @@ public class WaspProjectile : MonoBehaviour
                 }
                 //Destroy(this.gameObject);
                 //StartCoroutine(Kill());
-
-                GameManager.Instance.hurtPlayer();
                 Destroy(this.gameObject);
             }
 

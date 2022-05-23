@@ -443,7 +443,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.333
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -570,7 +570,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.333
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -697,7 +697,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.45
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -827,7 +827,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a2286ba90a3cec4fa132596a461ebfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldMAT: {fileID: 2100000, guid: ab3d54155635a814e9c2dbae110f0d69, type: 2}
+  shieldRenderer: {fileID: 3966553736485408980}
+  shieldMats:
+  - {fileID: 2100000, guid: ab3d54155635a814e9c2dbae110f0d69, type: 2}
+  - {fileID: 2100000, guid: ab3d54155635a814e9c2dbae110f0d69, type: 2}
   hitFlashTime: 1
   growShrinkScale: 0.1
 --- !u!1 &2136451630681232448
@@ -951,7 +954,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.75
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1277,7 +1280,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5245975907076262241}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.83, z: -10.569992}
+  m_LocalPosition: {x: 0, y: 3.829998, z: -10.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5245975908024628560}
@@ -1976,7 +1979,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5245975908662555755}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.42099953, z: 1.7899933}
+  m_LocalPosition: {x: 0, y: 0.42100143, z: 1.7900009}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5245975908526947976}
@@ -2673,14 +2676,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f69f37e3a0495d4c97003ed1b01f5a0, type: 3}
---- !u!4 &8356031938876301364 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8623618914889117094, guid: 1f69f37e3a0495d4c97003ed1b01f5a0, type: 3}
-  m_PrefabInstance: {fileID: 314030898284875154}
-  m_PrefabAsset: {fileID: 0}
 --- !u!2083052967 &8356031938876301363 stripped
 VisualEffect:
   m_CorrespondingSourceObject: {fileID: 8623618914889117089, guid: 1f69f37e3a0495d4c97003ed1b01f5a0, type: 3}
+  m_PrefabInstance: {fileID: 314030898284875154}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8356031938876301364 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8623618914889117094, guid: 1f69f37e3a0495d4c97003ed1b01f5a0, type: 3}
   m_PrefabInstance: {fileID: 314030898284875154}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2363706158840319056
@@ -2759,6 +2762,11 @@ PrefabInstance:
 --- !u!4 &2830278475333102523 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 504e42278b3914c46887839ca9d7538a, type: 3}
+  m_PrefabInstance: {fileID: 2363706158840319056}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &3966553736485408980 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 504e42278b3914c46887839ca9d7538a, type: 3}
   m_PrefabInstance: {fileID: 2363706158840319056}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4592592150383059945
@@ -3063,11 +3071,6 @@ PrefabInstance:
 --- !u!4 &6839320998822368536 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3290019817769268343, guid: 39181f65d79df5b4fa19fd8b16bfffd7, type: 3}
-  m_PrefabInstance: {fileID: 8305299213022699887}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &2369509302819394747 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 6025932341221012948, guid: 39181f65d79df5b4fa19fd8b16bfffd7, type: 3}
   m_PrefabInstance: {fileID: 8305299213022699887}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9110497763095197598

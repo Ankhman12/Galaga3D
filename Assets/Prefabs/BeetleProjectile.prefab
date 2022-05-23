@@ -4941,7 +4941,7 @@ MonoBehaviour:
   radius: 50
   l:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 8192
 --- !u!1 &9190524952300956629
 GameObject:
   m_ObjectHideFlags: 0

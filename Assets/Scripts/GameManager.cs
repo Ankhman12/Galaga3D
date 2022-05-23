@@ -322,8 +322,8 @@ public class GameManager : MonoBehaviour
     
     IEnumerator PlayerHurt()
     {
-        //hurtImage.SetActive(true);
-        yield return new WaitForSeconds(.15f);
-        //hurtImage.SetActive(false);
+        hurtImage.SetActive(true);
+        yield return new WaitForSeconds(.4f);
+        hurtImage.SetActive(false);
     }
 }

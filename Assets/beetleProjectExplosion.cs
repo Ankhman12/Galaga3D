@@ -44,15 +44,10 @@ public class beetleProjectExplosion : MonoBehaviour
         Destroy(trail.gameObject);
         explosion.Play();
         Collider[] collisions = Physics.OverlapSphere(this.transform.position, radius, l);
-        foreach(Collider c in collisions)
+        if(collisions.Length > 0)
         {
-            
-            if (c.gameObject.CompareTag("Player"))
-            {
-                var shipMov = FindObjectOfType<ShipMovement>();
-                shipMov.Damage(damage);
-                GameManager.Instance.hurtPlayer();
-            }
+            var shipMov = FindObjectOfType<ShipMovement>();
+            shipMov.Damage(damage);
         }
     }
 

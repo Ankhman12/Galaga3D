@@ -134,9 +134,15 @@ public class ShipMovement : MonoBehaviour
         }
         else if (thrust1D > 0) {
             thrusting = true;
+            boostSFX.Stop();
+            boostFX.SetActive(false);
+            thrusterVFX.SetActive(false);
         }
         else if (thrust1D < 0) {
             thrusting = true;
+            boostSFX.Stop();
+            boostFX.SetActive(false);
+            thrusterVFX.SetActive(false);
         } 
         else
         {
@@ -279,18 +285,18 @@ public class ShipMovement : MonoBehaviour
             rb.AddRelativeTorque(Vector3.up * Mathf.Clamp(pitchYaw.x, -1f, 1f) * tpYawTorque * Time.fixedDeltaTime);
 
             // Thrust
-            if (thrust1D > 0.1f || thrust1D < -0.1f)
+            if (boosting)
+            {
+                float currentThrust;
+                currentThrust = fpThrust * boostMultiplier;
+                rb.AddForce(shipFirstPersonCam.transform.forward * currentThrust * Time.fixedDeltaTime);
+                glide = thrust1D * currentThrust;
+            }
+            else if (thrust1D > 0.1f || thrust1D < -0.1f)
             {
                 float currentThrust;
 
-                if (boosting)
-                {
-                    currentThrust = fpThrust * boostMultiplier;
-                }
-                else
-                {
-                    currentThrust = fpThrust;
-                }
+                currentThrust = fpThrust;
                 rb.AddForce(shipFirstPersonCam.transform.forward * thrust1D * currentThrust * Time.fixedDeltaTime);
                 glide = thrust1D * currentThrust;
             }
@@ -359,6 +365,8 @@ public class ShipMovement : MonoBehaviour
     public void Damage(float damage) {
         if (!playerHealth.Damage(damage)) {
             currentLives--;
+            GameManager.Instance.hurtPlayer();
+            playerHealth.shieldHealth = playerHealth.maxShieldHealth;
         }
     }
 

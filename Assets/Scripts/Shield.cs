@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Shield : MonoBehaviour
 {
-    [SerializeField] private Material shieldMAT;
+    [SerializeField] private MeshRenderer shieldRenderer;
+    /** Two different shield materials to switch between */
+    [SerializeField] private Material[] shieldMats;
     private bool isHit = false;
     [SerializeField] private float hitFlashTime = 0.5f;
     private float hitTimer = 0f;
@@ -17,7 +19,7 @@ public class Shield : MonoBehaviour
 
     private void Start()
     {
-        shieldMAT.SetInt("IsHit_", 0);
+        shieldRenderer.material = shieldMats[0];
         isHit = false;
         isShrinking = false;
         isKilled = false;
@@ -55,7 +57,7 @@ public class Shield : MonoBehaviour
             hitTimer += Time.deltaTime;
             if (hitTimer > hitFlashTime)
             {
-                shieldMAT.SetInt("IsHit_", 0);
+                shieldRenderer.material = shieldMats[0];
                 isHit = false;
                 hitTimer = 0;
             }
@@ -103,7 +105,7 @@ public class Shield : MonoBehaviour
         if ((this.gameObject.layer == 13 && collision.gameObject.CompareTag("Enemy")) || (this.gameObject.layer == 12))
         {
 
-            shieldMAT.SetInt("IsHit_", 1);
+            shieldRenderer.material = shieldMats[1];
             isHit = true;
             //isShrinking = true;
             SetShrinking();
