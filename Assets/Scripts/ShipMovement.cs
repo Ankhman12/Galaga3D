@@ -357,6 +357,7 @@ public class ShipMovement : MonoBehaviour
 
     public void OnDestroyed() 
     {
+        destructSFX.transform.SetParent(null);
         destructSFX.Play();
         Instantiate(destructFX.gameObject, transform.position, transform.rotation);
         Destroy(this.gameObject);
@@ -367,6 +368,11 @@ public class ShipMovement : MonoBehaviour
             currentLives--;
             GameManager.Instance.hurtPlayer();
             playerHealth.shieldHealth = playerHealth.maxShieldHealth;
+        }
+        if (currentLives <= 0)
+        {
+            GameManager.collided = true;
+            OnDestroyed();
         }
     }
 

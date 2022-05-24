@@ -10,6 +10,7 @@ public class beetleProjectExplosion : MonoBehaviour
     [SerializeField] private TrailRenderer trail;
     [SerializeField] private VisualEffect explosion;
     [SerializeField] private float radius = 54f;
+    [SerializeField] private AudioSource explosionSFX;
     public LayerMask l;
     private bool exploded = false;
 
@@ -43,6 +44,7 @@ public class beetleProjectExplosion : MonoBehaviour
         normalParticles.Stop();
         Destroy(trail.gameObject);
         explosion.Play();
+        explosionSFX.Play();
         Collider[] collisions = Physics.OverlapSphere(this.transform.position, radius, l);
         if(collisions.Length > 0)
         {
