@@ -152,7 +152,7 @@ public class ShipMovement : MonoBehaviour
             thrusterVFX.SetActive(false);
         }
 
-        if (upDown1D > 0)
+        /*if (upDown1D > 0)
         {
             upDowning = true;
 
@@ -164,9 +164,9 @@ public class ShipMovement : MonoBehaviour
         else
         {
             upDowning = false;
-        }
+        }*/
 
-        if (strafe1D > 0)
+        /*if (strafe1D > 0)
         {
             strafing = true;
 
@@ -177,9 +177,9 @@ public class ShipMovement : MonoBehaviour
         }
         else {
             strafing = false;
-        }
+        }*/
 
-        if (thrusting || upDowning || strafing)
+        if (thrusting) // || upDowning || strafing)
         {
             if (thrusterSFX != null && !thrusterSFX.isPlaying)
             {
@@ -189,7 +189,7 @@ public class ShipMovement : MonoBehaviour
             thrusterVFX.SetActive(true);
 
         }
-        if (!thrusting && !upDowning && !strafing)
+        if (!thrusting)  //&& !upDowning && !strafing)
         {
             if (thrusterSFX.isPlaying) {
                 thrusterSFX.Stop();
@@ -225,7 +225,7 @@ public class ShipMovement : MonoBehaviour
         if (isThirdPerson)
         {
             // Roll
-            rb.AddRelativeTorque(Vector3.back * roll1D * tpRollTorque * Time.fixedDeltaTime);
+            rb.AddRelativeTorque(Vector3.back * strafe1D * tpRollTorque * Time.fixedDeltaTime); //roll1D
             // Pitch
             rb.AddRelativeTorque(Vector3.right * Mathf.Clamp(-pitchYaw.y, -1f, 1f) * tpPitchTorque * Time.fixedDeltaTime);
             // Yaw
@@ -253,7 +253,7 @@ public class ShipMovement : MonoBehaviour
             }
 
             // Up/Down
-            if (upDown1D > 0.1f || upDown1D < -0.1f)
+            /*if (upDown1D > 0.1f || upDown1D < -0.1f)
             {
                 rb.AddRelativeForce(Vector3.up * upDown1D * tpUpThrust * Time.fixedDeltaTime);
                 verticalGlide = upDown1D * tpUpThrust;
@@ -262,9 +262,9 @@ public class ShipMovement : MonoBehaviour
             {
                 rb.AddRelativeForce(Vector3.up * verticalGlide * Time.fixedDeltaTime);
                 verticalGlide *= upDownGlideReduction;
-            }
+            }*/
             // Strafing
-            if (strafe1D > 0.1f || strafe1D < -0.1f)
+            /*if (strafe1D > 0.1f || strafe1D < -0.1f)
             {
                 rb.AddRelativeForce(Vector3.right * strafe1D * tpStrafeThrust * Time.fixedDeltaTime);
                 horizontalGlide = strafe1D * tpStrafeThrust;
@@ -273,12 +273,12 @@ public class ShipMovement : MonoBehaviour
             {
                 rb.AddRelativeForce(Vector3.right * horizontalGlide * Time.fixedDeltaTime);
                 horizontalGlide *= leftRightGlideReduction;
-            }
+            }*/
         }
         else
         {
             // Roll
-            rb.AddTorque(-shipFirstPersonCam.transform.forward * roll1D * fpRollTorque * Time.fixedDeltaTime);
+            rb.AddTorque(-shipFirstPersonCam.transform.forward * strafe1D * fpRollTorque * Time.fixedDeltaTime); //roll1D
             // Pitch
             rb.AddRelativeTorque(Vector3.right * Mathf.Clamp(-pitchYaw.y, -1f, 1f) * tpPitchTorque * Time.fixedDeltaTime);
             // Yaw

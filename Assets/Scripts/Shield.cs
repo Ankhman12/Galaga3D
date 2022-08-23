@@ -102,7 +102,7 @@ public class Shield : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if ((this.gameObject.layer == 13 && collision.gameObject.CompareTag("Enemy")) || (this.gameObject.layer == 12))
+        if ((this.gameObject.layer == 13 && collision.gameObject.layer == 10) || (this.gameObject.layer == 12))
         {
 
             shieldRenderer.material = shieldMats[1];

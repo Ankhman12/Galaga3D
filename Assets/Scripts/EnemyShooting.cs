@@ -37,6 +37,8 @@ public class EnemyShooting : MonoBehaviour
     private GameObject chargingBeetleBullet;
     private float beetleSleepTime = 3f;
     [SerializeField] ParticleSystem beetleParticles;
+    [SerializeField] AudioSource beetleChargeSound;
+    [SerializeField] AudioSource ShootSound;
 
     private void Awake()
     {
@@ -75,6 +77,7 @@ public class EnemyShooting : MonoBehaviour
                         chargingBeetleBullet = Instantiate(bullet, beetleParticles.gameObject.transform.position, transform.rotation);
                         chargingBeetleBullet.transform.parent = this.gameObject.transform;
                         chargingBeetleBullet.gameObject.transform.localScale = new Vector3(.1f, .1f, .1f);
+                        beetleChargeSound.Play();
                     }
                     break;
                 case BeetleState.Charging:
@@ -83,6 +86,7 @@ public class EnemyShooting : MonoBehaviour
                     {
                         beetleState = BeetleState.Fire;
                         beetleParticles.Stop();
+                        beetleChargeSound.Stop();
                     } else
                     {
                         float deltat = Time.deltaTime;
@@ -147,6 +151,7 @@ public class EnemyShooting : MonoBehaviour
             Physics.IgnoreLayerCollision(6, 10, true);
             chargingBeetleBullet.GetComponent<Rigidbody>().velocity = direction * projectileSpeed * 3f;
         }
+        ShootSound.Play();
         
     }
 

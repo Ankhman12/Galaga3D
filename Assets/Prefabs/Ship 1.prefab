@@ -651,10 +651,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 46ade43d766378d4080422ce803e7c1c, type: 2}
-  m_audioClip: {fileID: 8300000, guid: c47e262ae10cba24da56177eaeff3340, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5beaedccfd285394192a15305b438e00, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 0.5
+  m_Pitch: 0.89
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -1388,7 +1388,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5245975907076262241}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.83, z: -10.569992}
+  m_LocalPosition: {x: 0, y: 3.829998, z: -10.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5245975908024628560}
@@ -1445,6 +1445,7 @@ GameObject:
   - component: {fileID: 9075716479326648188}
   - component: {fileID: 2564068006024263426}
   - component: {fileID: 7764556649249862655}
+  - component: {fileID: -5927256535122329552}
   m_Layer: 3
   m_Name: Ship 1
   m_TagString: Player
@@ -1492,17 +1493,17 @@ MonoBehaviour:
   currentLives: 3
   playerHealth: {fileID: 7764556649249862655}
   mouseSensitivity: 0.4
-  tpYawTorque: 175
-  tpPitchTorque: 175
-  tpRollTorque: 75
+  tpYawTorque: 300
+  tpPitchTorque: 300
+  tpRollTorque: 200
   tpThrust: 2000
   tpUpThrust: 1750
-  tpStrafeThrust: 500
+  tpStrafeThrust: 100
   fpRollTorque: 250
   fpThrust: 2000
   fpUpThrust: 1750
   fpStrafeThrust: 750
-  maxBoostAmount: 20
+  maxBoostAmount: 10
   boostDegenerationRate: 0.1
   boostRechargeRate: 0.15
   boostMultiplier: 7
@@ -1776,8 +1777,8 @@ MonoBehaviour:
   - {fileID: 8356031938876301363}
   laserHitVFX:
   - {fileID: 5987148646732694585, guid: 347168d2f6daffb45b50e661150c8b48, type: 3}
-  laserDamage: 24
-  timeBetweenDamage: 0.25
+  laserDamage: 25
+  timeBetweenDamage: 0.1
   laserHeatThreshold: 20
   laserHeatRate: 0.1
   laserCoolRate: 0.5
@@ -1810,6 +1811,24 @@ MonoBehaviour:
   shieldRegenWaitTime: 3
   regenRate: 0.37
   isRolling: 0
+--- !u!114 &-5927256535122329552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5245975907106845231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a2286ba90a3cec4fa132596a461ebfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldRenderer: {fileID: 3966553736485408980}
+  shieldMats:
+  - {fileID: 2100000, guid: ab3d54155635a814e9c2dbae110f0d69, type: 2}
+  - {fileID: 2100000, guid: 0c1362918f3e19f4fa3ec9448dda9974, type: 2}
+  hitFlashTime: 0.2
+  growShrinkScale: 5
 --- !u!1 &5245975907417200162
 GameObject:
   m_ObjectHideFlags: 0
@@ -2087,7 +2106,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5245975908662555755}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.42099953, z: 1.7899933}
+  m_LocalPosition: {x: 0, y: 0.42100143, z: 1.7900009}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5245975908526947976}
@@ -3044,14 +3063,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 504e42278b3914c46887839ca9d7538a, type: 3}
---- !u!23 &3966553736485408980 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 504e42278b3914c46887839ca9d7538a, type: 3}
-  m_PrefabInstance: {fileID: 2363706158840319056}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2830278475333102523 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 504e42278b3914c46887839ca9d7538a, type: 3}
+  m_PrefabInstance: {fileID: 2363706158840319056}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &3966553736485408980 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 504e42278b3914c46887839ca9d7538a, type: 3}
   m_PrefabInstance: {fileID: 2363706158840319056}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4592592150383059945
