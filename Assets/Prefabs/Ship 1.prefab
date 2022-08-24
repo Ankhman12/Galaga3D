@@ -1493,8 +1493,8 @@ MonoBehaviour:
   currentLives: 3
   playerHealth: {fileID: 7764556649249862655}
   mouseSensitivity: 0.4
-  tpYawTorque: 300
-  tpPitchTorque: 300
+  tpYawTorque: 200
+  tpPitchTorque: 200
   tpRollTorque: 200
   tpThrust: 2000
   tpUpThrust: 1750
