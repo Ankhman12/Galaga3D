@@ -890,7 +890,7 @@ GameObject:
   - component: {fileID: 6623877009503347681}
   m_Layer: 13
   m_Name: PlayerShield
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -921,8 +921,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.4, y: 1.5, z: 3.5}
-  m_Center: {x: 0, y: 0, z: 0.25}
+  m_Size: {x: 10, y: 4, z: 10}
+  m_Center: {x: 0, y: 0.2, z: 0.25}
 --- !u!114 &6623877009503347681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -930,7 +930,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002884509109316707}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a2286ba90a3cec4fa132596a461ebfd, type: 3}
   m_Name: 
@@ -938,9 +938,9 @@ MonoBehaviour:
   shieldRenderer: {fileID: 3966553736485408980}
   shieldMats:
   - {fileID: 2100000, guid: ab3d54155635a814e9c2dbae110f0d69, type: 2}
-  - {fileID: 2100000, guid: ab3d54155635a814e9c2dbae110f0d69, type: 2}
-  hitFlashTime: 1
-  growShrinkScale: 0.1
+  - {fileID: 2100000, guid: b805a5b0f932c8549ae60a7d4ce56579, type: 2}
+  hitFlashTime: 0.2
+  growShrinkScale: 0.2
 --- !u!1 &2136451630681232448
 GameObject:
   m_ObjectHideFlags: 0
@@ -1445,7 +1445,7 @@ GameObject:
   - component: {fileID: 9075716479326648188}
   - component: {fileID: 2564068006024263426}
   - component: {fileID: 7764556649249862655}
-  - component: {fileID: -5927256535122329552}
+  - component: {fileID: 33458232359353799}
   m_Layer: 3
   m_Name: Ship 1
   m_TagString: Player
@@ -1492,10 +1492,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLives: 3
   playerHealth: {fileID: 7764556649249862655}
-  mouseSensitivity: 0.4
-  tpYawTorque: 200
-  tpPitchTorque: 200
-  tpRollTorque: 200
+  mouseSensitivity: 0.6
+  tpYawTorque: 400
+  tpPitchTorque: 400
+  tpRollTorque: 250
   tpThrust: 2000
   tpUpThrust: 1750
   tpStrafeThrust: 100
@@ -1811,7 +1811,7 @@ MonoBehaviour:
   shieldRegenWaitTime: 3
   regenRate: 0.37
   isRolling: 0
---- !u!114 &-5927256535122329552
+--- !u!114 &33458232359353799
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1826,9 +1826,9 @@ MonoBehaviour:
   shieldRenderer: {fileID: 3966553736485408980}
   shieldMats:
   - {fileID: 2100000, guid: ab3d54155635a814e9c2dbae110f0d69, type: 2}
-  - {fileID: 2100000, guid: 0c1362918f3e19f4fa3ec9448dda9974, type: 2}
+  - {fileID: 2100000, guid: b805a5b0f932c8549ae60a7d4ce56579, type: 2}
   hitFlashTime: 0.2
-  growShrinkScale: 5
+  growShrinkScale: 0.2
 --- !u!1 &5245975907417200162
 GameObject:
   m_ObjectHideFlags: 0
