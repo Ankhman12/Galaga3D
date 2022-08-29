@@ -57,7 +57,7 @@ MonoBehaviour:
   targetAggressionWeight: 6
   noClumpingRadius: 150
   localAreaRadius: 20
-  speed: 30
+  speed: 50
   steeringSpeed: 100
   wasps: []
   beetles: []
