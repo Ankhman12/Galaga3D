@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.VFX;
 using Cinemachine;
+using System.Collections;
 
 [RequireComponent(typeof(Rigidbody))]
 public class ShipMovement : MonoBehaviour
@@ -364,7 +365,8 @@ public class ShipMovement : MonoBehaviour
     }
 
     public void Damage(float damage) {
-        if (!playerHealth.Damage(damage)) {
+        StartCoroutine(ImpactSlowdown());
+        if (!playerHealth.Damage(damage)) { //playerHealth returns false if the player has no remaining shields
             currentLives--;
             GameManager.Instance.hurtPlayer();
             playerHealth.shieldHealth = playerHealth.maxShieldHealth;
@@ -374,6 +376,13 @@ public class ShipMovement : MonoBehaviour
             GameManager.collided = true;
             OnDestroyed();
         }
+    }
+
+    IEnumerator ImpactSlowdown() 
+    {
+        Time.timeScale = .25f;
+        yield return new WaitForSeconds(0.025f);
+        Time.timeScale = 1f;
     }
 
     #region Input Methods

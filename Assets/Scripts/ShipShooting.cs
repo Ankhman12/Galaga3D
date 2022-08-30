@@ -142,7 +142,7 @@ public class ShipShooting : MonoBehaviour
             FireLaser();
             foreach (VisualEffect v in laserMuzzleVFX)
             {
-                Debug.Log("Yolololo");
+                //Debug.Log("Yolololo");
                 
                 if (!isLaserFiring)
                 {
@@ -207,7 +207,7 @@ public class ShipShooting : MonoBehaviour
 
         RaycastHit hitInfo;
 
-        if (TargetInfo.IsTargetInRange(cam.transform.position, cam.transform.forward, out hitInfo, hardpointRange, shootableMask))
+        if (Physics.SphereCast(cam.transform.position + (cam.transform.forward * 10), 3f, cam.transform.forward * hardpointRange, out hitInfo))//TargetInfo.IsTargetInRange(cam.transform.position, cam.transform.forward, out hitInfo, hardpointRange, shootableMask))
         {
             //targetInRange = true;
             /*if (hitInfo.collider.GetComponentInParent<Asteroid>())

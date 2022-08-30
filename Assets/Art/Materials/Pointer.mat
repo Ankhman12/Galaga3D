@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6637618449185673002
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 4
 --- !u!21 &2100000
 Material:
   serializedVersion: 6
@@ -20,26 +7,19 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LaserMAT
-  m_Shader: {fileID: -6465566751694194690, guid: fa533ac94a91573459fd7b23547db655, type: 3}
-  m_ShaderKeywords: 
+  m_Name: Pointer
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2000
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - MainTex_:
-        m_Texture: {fileID: 2800000, guid: e277a48376e61654c858a398e3bd4c39, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Mask_:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -97,9 +77,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - AlphaClip_: 0.225
-    - DistortionAmt_: 0.15
-    - DistortionScale_: 3
+    - Boolean_3d90aa45df1c49b68d50bf9edb25acc3: 0
+    - Boolean_77b32a1e98194743b4eaf8560d86e492: 0
+    - FresnelStrength_: 2.5
+    - IsHit_: 0
+    - IsPlanet_: 0
+    - Vector1_3b29c736a1544731920aec277df5a48a: 3
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -127,13 +110,24 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_: {r: 1.2973537, g: 6.883182, b: 0.6486769, a: 1}
-    - DistortionSpeed_: {r: -10, g: 0, b: 0, a: 0}
-    - MainTexSpeed_: {r: -8, g: 0, b: 0, a: 0}
-    - Tiling_: {r: 151.92047, g: 1, b: 0, a: 0}
-    - Vector2_65f46c429e24477abe60610ef50480d6: {r: 0.05, g: 1, b: 0, a: 0}
+    - AtmosColor_: {r: 1.203468, g: 0.5268639, b: 1.06482, a: 0}
+    - HitColor_: {r: 3.893885, g: 0.8275652, b: 4.0800886, a: 0}
+    - MainColor_: {r: 0.4954041, g: 4.237095, b: 0.31057224, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 1.6862745, g: 0, b: 0.07058824, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
+--- !u!114 &7150768633500238854
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 4

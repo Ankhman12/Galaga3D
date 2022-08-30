@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a360b227ceb08546bd05796a6bc544b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boltSpeed: 10
+  boltSpeed: 15
   lifeTime: 3
   damage: 3
   hitFX:
