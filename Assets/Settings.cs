@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,5 +11,12 @@ public class Settings : MonoBehaviour
     private void Awake()
     {
         GameObject.Find("Sensitivity").GetComponent<Slider>().value = PlayerPrefs.GetFloat("Sensitivity", 1.5f);
+        GameObject.Find("Volume").GetComponent<Slider>().value = PlayerPrefs.GetFloat("Volume", 1f);
+    }
+
+    public void SetVolume(System.Single volume)
+    {
+        PlayerPrefs.SetFloat("Volume", volume);
+        AudioListener.volume = volume;
     }
 }

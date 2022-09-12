@@ -130,7 +130,7 @@ Material:
     - Color_: {r: 1.2973537, g: 6.883182, b: 0.6486769, a: 1}
     - DistortionSpeed_: {r: -10, g: 0, b: 0, a: 0}
     - MainTexSpeed_: {r: -8, g: 0, b: 0, a: 0}
-    - Tiling_: {r: 14, g: 1, b: 0, a: 0}
+    - Tiling_: {r: 0.35000002, g: 1, b: 0, a: 0}
     - Vector2_65f46c429e24477abe60610ef50480d6: {r: 0.05, g: 1, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

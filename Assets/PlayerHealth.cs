@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
@@ -14,12 +12,12 @@ public class PlayerHealth : MonoBehaviour
 
 
     [SerializeField] private float invincibilityTime = 1f;
-    [SerializeField] private float shieldRegenWaitTime = 3f;
+    [SerializeField] private float shieldRegenWaitTime = 1.5f;
     private float invincibilityTimer = 0f;
     private float shieldRegenTimer = 0f;
     private bool regenShield;
     private bool isInvincible;
-    [SerializeField] private float regenRate;
+    [SerializeField] private float regenRate = .37f;
 
     public bool isRolling;
     
@@ -90,6 +88,8 @@ public class PlayerHealth : MonoBehaviour
         }
 
         isInvincible = true;
+        regenShield = false;
+        shieldRegenTimer = 0;
 
         return true;
     }

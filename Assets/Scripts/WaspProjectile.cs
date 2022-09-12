@@ -52,12 +52,13 @@ public class WaspProjectile : MonoBehaviour
             var shipMov = FindObjectOfType<ShipMovement>();
             shipMov.Damage(damage);
 
-
             if (FindObjectOfType<ShipMovement>().currentLives <= 0)
             {
+                /** Delegated to Shipmovement.Damage
                 //If Game is Over
                 shipMov.OnDestroyed();
                 GameManager.collided = true;
+                */
             }
             else
             {
@@ -70,8 +71,6 @@ public class WaspProjectile : MonoBehaviour
                 }
                 //Destroy(this.gameObject);
                 //StartCoroutine(Kill());
-
-                GameManager.Instance.hurtPlayer();
                 Destroy(this.gameObject);
             }
 

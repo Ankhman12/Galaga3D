@@ -19,20 +19,6 @@ public class GameManager : MonoBehaviour
         set => _endlessHighScore = value;
     }
     
-    [SerializeField] private static int _levelHighScore = 0;
-    public static int LevelHighScore
-    {
-        get => _levelHighScore;
-        set => _levelHighScore = value;
-    }
-    
-    [SerializeField] private static string _bestTime;
-    public static string BestTime
-    {
-        get => _bestTime;
-        set => _bestTime = value;
-    }
-    
     [SerializeField] private static int _points = 0;
     public static int Points
     {
@@ -67,7 +53,7 @@ public class GameManager : MonoBehaviour
     public static bool retrySelected = false;
     [SerializeField] private float spawnTime = 20;
     private float currentSpawnTime;
-    private bool earnedTimeBonus = false;
+    //private bool earnedTimeBonus = false;
 
     public static GameManager Instance
     {
@@ -104,6 +90,7 @@ public class GameManager : MonoBehaviour
         }
 
         Cursor.lockState = CursorLockMode.Locked;
+        _endlessHighScore = PlayerPrefs.GetInt("High Score", 0);
     }
 
     void Update()
@@ -162,32 +149,20 @@ public class GameManager : MonoBehaviour
             {
                 FindObjectOfType<StopWatch>().StopStopWatch();
                 // Add Point bonus to points
+                /**
                 if (!earnedTimeBonus)
                 {
                     _points += (int) FindObjectOfType<StopWatch>().GetCurrentTime();
                     earnedTimeBonus = true;
                 }
-            }
-            else
-            {
-                FindObjectOfType<Timer>().StopTimer();
-                // Add Point bonus to points
-                if (!earnedTimeBonus)
-                {
-                    _points += (int) FindObjectOfType<Timer>().GetCurrentTime();
-                    earnedTimeBonus = true;
-                }
+                */
             }
 
             if (levelEndless && _points > _endlessHighScore)
             {
                 _endlessHighScore = _points;
-                _bestTime = FindObjectOfType<StopWatch>().PrintCurrentTime();
-            }
-            else if (!levelEndless && _points > _levelHighScore)
-            {
-                _levelHighScore = _points;
-                _bestTime = FindObjectOfType<Timer>().PrintCurrentTime();
+                //_bestTime = FindObjectOfType<StopWatch>().PrintCurrentTime();
+                PlayerPrefs.SetInt("High Score", _points);
             }
 
             FindObjectOfType<UIManager>().hideUI();
@@ -207,43 +182,6 @@ public class GameManager : MonoBehaviour
             }
             //Debug.Log("GAME OVER");
         }
-        //WIN CONDITION
-        // If finished the game, display success screen
-        else if (asteroidSpawner.transform.childCount == 0 && !levelEndless)
-        {
-            Cursor.lockState = CursorLockMode.Confined;
-            levelPassed = true;
-            endOfGame = true;
-            FindObjectOfType<ShipShooting>().firing = false;
-            //Debug.Log("Player has won level");
-            FindObjectOfType<Timer>().StopTimer();
-            // Add Point bonus to points
-            if (!earnedTimeBonus)
-            {
-                _points += (int) FindObjectOfType<Timer>().GetCurrentTime();
-                earnedTimeBonus = true;
-            }
-
-            // DisplaySuccess if level is complete
-            if (_points > _levelHighScore)
-            {
-                _levelHighScore = _points;
-                _bestTime = FindObjectOfType<Timer>().PrintCurrentTime();
-            }
-
-            FindObjectOfType<UIManager>().hideUI();
-            FindObjectOfType<UIManager>().hideGameOver();
-            FindObjectOfType<UIManager>().showWin();
-            if (FindObjectOfType<ShipMovement>() != null)
-            {
-                FindObjectOfType<ShipMovement>().enabled = false;
-                FindObjectOfType<ShipShooting>().enabled = false;
-            }
-            // Transition to Next Level
-        }
-        // DisplayPoints
-        // DisplayHighScore
-        // LevelSelection: Retry or Back to Main Menu
     }
 
     void Restart()
@@ -322,8 +260,8 @@ public class GameManager : MonoBehaviour
     
     IEnumerator PlayerHurt()
     {
-        //hurtImage.SetActive(true);
-        yield return new WaitForSeconds(.15f);
-        //hurtImage.SetActive(false);
+        hurtImage.SetActive(true);
+        yield return new WaitForSeconds(.4f);
+        hurtImage.SetActive(false);
     }
 }

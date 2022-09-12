@@ -102,10 +102,6 @@ public class UIManager : MonoBehaviour
             {
                 highScoreText.text = "High Score: " + GameManager.EndlessHighScore;
             }
-            else
-            {
-                highScoreText.text = "High Score: " + GameManager.LevelHighScore;
-            }
             if (GameManager.levelEndless)
             {
                 timerText.text = FindObjectOfType<StopWatch>().PrintCurrentTime();
@@ -123,20 +119,11 @@ public class UIManager : MonoBehaviour
             if (GameManager.levelEndless)
             {
                 gameOverScoreboardText.text =
-                "High Score: " + GameManager.EndlessHighScore +
-                "\nBest Time: " + GameManager.BestTime +
-                "\nCurrent Score: " + GameManager.Points +
-                "\nCurrent Time: " + FindObjectOfType<StopWatch>().PrintCurrentTime();
-            }
-            else
-            {
-                gameOverScoreboardText.text =
-                "High Score: " + GameManager.LevelHighScore +
-                "\nBest Time: " + GameManager.BestTime +
-                "\nCurrent Score: " + GameManager.Points +
-                "\nCurrent Time: " + FindObjectOfType<Timer>().PrintCurrentTime();
+                "Your Score: " + GameManager.Points +
+                "\n\nHigh Score: " + GameManager.EndlessHighScore;
             }
         }
+        /** Something leftover from asteroids
         if (GameManager.levelPassed)
         {
             winScoreboardText.text =
@@ -145,6 +132,7 @@ public class UIManager : MonoBehaviour
                 "\nCurrent Score: " + GameManager.Points +
                 "\nCurrent Time: " + FindObjectOfType<Timer>().PrintCurrentTime();
         }
+        */
     }
 
     private void RestartOnClick()

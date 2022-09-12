@@ -45,7 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a2286ba90a3cec4fa132596a461ebfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldMAT: {fileID: 2100000, guid: bacb7bf1266376c498212bca92a6ee7b, type: 2}
+  shieldRenderer: {fileID: 5641889570316926275}
+  shieldMats:
+  - {fileID: 2100000, guid: bacb7bf1266376c498212bca92a6ee7b, type: 2}
+  - {fileID: 2100000, guid: 0c1362918f3e19f4fa3ec9448dda9974, type: 2}
   hitFlashTime: 0.2
   growShrinkScale: 5
 --- !u!64 &4632521795402218528
@@ -146,5 +149,10 @@ PrefabInstance:
 --- !u!4 &6775428629001618988 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2978c6f0cc67d2c4c9a325216adce625, type: 3}
+  m_PrefabInstance: {fileID: 6452973329435992519}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5641889570316926275 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 2978c6f0cc67d2c4c9a325216adce625, type: 3}
   m_PrefabInstance: {fileID: 6452973329435992519}
   m_PrefabAsset: {fileID: 0}

@@ -84,10 +84,4 @@ public class BlasterBolt : MonoBehaviour
 
 
     }
-
-    //IEnumerator Kill() {
-    //   yield return new WaitForSeconds(.1f);
-    //    Destroy(this.gameObject);
-        //yield return null;
-    //}
-}
+    }
