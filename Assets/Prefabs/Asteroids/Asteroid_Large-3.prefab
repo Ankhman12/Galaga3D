@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialForce: 50000
   initialTorque: 50000
-  health: 5
+  health: 10000
   size: 2
   breakFX:
   - {fileID: 5731535448016399177, guid: 851f4ba839d6d674d9395dd66096f3b5, type: 3}

@@ -142,7 +142,7 @@ public class ShipShooting : MonoBehaviour
             FireLaser();
             foreach (VisualEffect v in laserMuzzleVFX)
             {
-                Debug.Log("Yolololo");
+                //Debug.Log("Yolololo");
                 
                 if (!isLaserFiring)
                 {
@@ -207,7 +207,7 @@ public class ShipShooting : MonoBehaviour
 
         RaycastHit hitInfo;
 
-        if (TargetInfo.IsTargetInRange(cam.transform.position, cam.transform.forward, out hitInfo, hardpointRange, shootableMask))
+        if (Physics.SphereCast(cam.transform.position + (cam.transform.forward * 10), 3f, cam.transform.forward * hardpointRange, out hitInfo, hardpointRange, shootableMask))//TargetInfo.IsTargetInRange(cam.transform.position, cam.transform.forward, out hitInfo, hardpointRange, shootableMask))
         {
             //targetInRange = true;
             /*if (hitInfo.collider.GetComponentInParent<Asteroid>())
@@ -260,7 +260,7 @@ public class ShipShooting : MonoBehaviour
         //Tile laser texture to match length of beam
         foreach (LineRenderer laser in lasers) {
             float length = laser.GetPosition(1).z;
-            laserMat.SetVector("Tiling_", new Vector2((.04f * length), 1f));
+            laserMat.SetVector("Tiling_", new Vector2((.001f * length), 1f));
         }
 
         HeatLaser();
