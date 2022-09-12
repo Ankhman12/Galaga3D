@@ -11,7 +11,8 @@
                     "id": "bc004f40-408e-4d54-8594-616467d569e8",
                     "expectedControlType": "Axis",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Strafe",
@@ -19,7 +20,8 @@
                     "id": "7d0ed8b7-0ea1-46f9-ab8b-ea50ff21bf54",
                     "expectedControlType": "Axis",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "UpDown",
@@ -27,7 +29,8 @@
                     "id": "4b318676-4b50-471d-b244-cc842f63316f",
                     "expectedControlType": "Axis",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Roll",
@@ -35,7 +38,8 @@
                     "id": "9fef8f3c-3bb6-48cb-8341-0d0d583d0075",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "PitchYaw",
@@ -43,7 +47,8 @@
                     "id": "8bb0b766-4157-4897-9adb-d00468d11f79",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "LookMovement",
@@ -51,7 +56,8 @@
                     "id": "18515eea-1417-4b9b-9d13-67ca5b3874c6",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Boost",
@@ -59,7 +65,8 @@
                     "id": "5477e5ec-c40d-41e1-b855-0ccd3592791b",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press"
+                    "interactions": "Press",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "ToggleCamera",
@@ -67,7 +74,8 @@
                     "id": "971e044f-e0d0-4241-bddc-30f0dc56ab66",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press"
+                    "interactions": "Press",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Fire",
@@ -75,7 +83,8 @@
                     "id": "25bd265f-b457-428f-86ad-765dcd23027c",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press"
+                    "interactions": "Press",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Pause",
@@ -83,7 +92,8 @@
                     "id": "68d275f1-807d-4396-9f6d-cfa64584a887",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press"
+                    "interactions": "Press",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "SwitchWeapon",
@@ -91,7 +101,8 @@
                     "id": "8f6bde15-a471-4107-85bc-bf73d49b726e",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press"
+                    "interactions": "Press",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [

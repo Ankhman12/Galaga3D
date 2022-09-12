@@ -35,26 +35,53 @@ public class BlasterBolt : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Asteroid a = collision.collider.GetComponentInParent<Asteroid>();
-        bool hit = collision.gameObject.CompareTag("Asteroid");
-        if (hit) {
+        if (collision.gameObject.CompareTag("Asteroid"))
+        {
+            Asteroid a = collision.collider.GetComponentInParent<Asteroid>();
             a.TakeDamage(damage);
             Debug.Log("Applying damage to: " + a.gameObject.name);
             foreach (GameObject v in hitFX)
             {
                 
                 Instantiate(v, collision.transform.position, collision.transform.rotation);
-                //Debug.Log("dkfgh;jhs;fh");
             }
             Destroy(this.gameObject);
             //StartCoroutine(Kill());
         }
-        
-    }
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            EnemyStats a = collision.collider.GetComponentInParent<EnemyStats>();
+            if (a != null)
+            {
+                a.TakeDamage(damage);
+                Debug.Log("Applying damage to: " + a.gameObject.name);
+            }
+            foreach (GameObject v in hitFX)
+            {
+                
+                Instantiate(v, collision.GetContact(0).point, collision.transform.rotation);
+            }
+            Destroy(this.gameObject);
+            //StartCoroutine(Kill());
+        }
+        /*if (this.gameObject.CompareTag("Enemy") && collision.gameObject.CompareTag("Player"))
+        {
+            Shield s = collision.collider.GetComponent<Shield>();
+            //a.Hit(damage);
+            //Debug.Log("Hitting shield of: " + a.transform.parent.gameObject.name);
+            foreach (GameObject v in hitFX)
+            {
 
-    //IEnumerator Kill() {
-    //   yield return new WaitForSeconds(.1f);
-    //    Destroy(this.gameObject);
-        //yield return null;
-    //}
-}
+                Instantiate(v, collision.GetContact(0).point, collision.transform.rotation);
+            }
+            Destroy(this.gameObject);
+            //StartCoroutine(Kill());
+        }*/
+
+
+
+
+
+
+    }
+    }

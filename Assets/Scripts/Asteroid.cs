@@ -81,13 +81,6 @@ public class Asteroid : MonoBehaviour
     {
         if (!GameManager.endOfGame)
         {
-            CollisionChecker();
-            bool hit = false;
-            // bool hit = HitChecker();
-            if (hit)
-            {
-                health -= 1;
-            }
             if (health <= 0)
             {
                 Destroyed();
@@ -114,7 +107,7 @@ public class Asteroid : MonoBehaviour
         // Split each asteroid into two other asteroids if it is big enough
         if (size == 2)
         {
-            GameManager.points += 100;
+            GameManager.Instance.AddPoints(100);
             GameManager.asteroidSpawner.SpawnAsteroid(this.transform.position, 1);
             
             Destroy(this.gameObject);
@@ -123,7 +116,7 @@ public class Asteroid : MonoBehaviour
         }
         else if (size == 1)
         {
-            GameManager.points += 250;
+            GameManager.Instance.AddPoints(250);
             GameManager.asteroidSpawner.SpawnAsteroid(this.transform.position, 0);
             //OnDestroyed();
             Destroy(this.gameObject);
@@ -132,7 +125,7 @@ public class Asteroid : MonoBehaviour
         }
         else
         {
-            GameManager.points += 500;
+            GameManager.Instance.AddPoints(500);
             //OnDestroyed();
             Destroy(this.gameObject);
             //GameManager.asteroidArray[id] = null;
@@ -140,32 +133,29 @@ public class Asteroid : MonoBehaviour
         //OnDestroyed();
     }
     
-    void CollisionChecker()
-    {
-        //if distance(spaceship, asteroid) < ##
-        //{
-        //  Globals.collided = true;  
-        //
-    }
-
     void OnCollisionEnter(Collision collisionInfo)
     {
         if (collisionInfo.collider.tag == "Player")
         {
             Debug.Log("Collided with Player");
-            // Subtract Player's Life
+
+            //Damage Player
             ShipMovement shipMov = FindObjectOfType<ShipMovement>();
-            shipMov.currentLives--;
+            shipMov.Damage(10);
 
-            if (FindObjectOfType<ShipMovement>().currentLives <= 0)
-            {
-                //If Game is Over
-                shipMov.OnDestroyed();
-                GameManager.collided = true;
-            }
+            // Subtract Player's Life
+            //ShipMovement shipMov = FindObjectOfType<ShipMovement>();
+            //shipMov.currentLives--;
+
+            //if (FindObjectOfType<ShipMovement>().currentLives <= 0)
+            //{
+            //If Game is Over
+            //shipMov.OnDestroyed();
+            //  GameManager.collided = true;
+            //}
 
 
-              
+
         }
     }
 

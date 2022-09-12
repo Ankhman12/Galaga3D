@@ -7,21 +7,25 @@ TagManager:
   - Asteroid
   - AsteroidSpawner
   - GameManager
+  - EnemySpawner
+  - Enemy
+  - Projectile
+  - Shield
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Shootable
   - Weapon
   - PostProcessing
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Wasp
+  - EnemyProjectile
+  - PlayerProjectile
+  - EnemyShield
+  - PlayerShield
   - 
   - 
   - 

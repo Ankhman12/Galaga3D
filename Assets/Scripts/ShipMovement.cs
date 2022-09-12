@@ -1,16 +1,18 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.VFX;
 using Cinemachine;
+using System.Collections;
 
 [RequireComponent(typeof(Rigidbody))]
 public class ShipMovement : MonoBehaviour
 {
+
     [Header("Ship General Setting")]
     [SerializeField]
-    public int currentLives = 5;
+    public int currentLives = 3;
+    [SerializeField]
+    public PlayerHealth playerHealth;
     [SerializeField]
     private float mouseSensitivity = 1f;
 
@@ -74,23 +76,13 @@ public class ShipMovement : MonoBehaviour
 
     //FX variables
     [SerializeField]
-    List<ParticleSystem> forwardFX;
+    GameObject boostFX;
     [SerializeField]
-    List<ParticleSystem> backFX;
+    VisualEffect destructFX;
     [SerializeField]
-    List<ParticleSystem> upFX;
-    [SerializeField]
-    List<ParticleSystem> downFX;
-    [SerializeField]
-    List<ParticleSystem> leftFX;
-    [SerializeField]
-    List<ParticleSystem> rightFX;
-    [SerializeField]
-    TrailRenderer boostTrail;
-    [SerializeField]
-    List<ParticleSystem> boostFX;
-    [SerializeField]
-    List<ParticleSystem> destructFX;
+    AudioSource destructSFX;
+    [SerializeField] 
+    GameObject thrusterVFX; 
     [SerializeField]
     AudioSource thrusterSFX;
     bool thrusting = false;
@@ -115,8 +107,8 @@ public class ShipMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         currentBoostAmount = maxBoostAmount;
-        boostTrail.emitting = true;
-        currentLives = 5;
+        currentLives = 3;
+        mouseSensitivity = PlayerPrefs.GetFloat("Sensitivity", 1.5f);
     }
 
     void FixedUpdate()
@@ -128,138 +120,84 @@ public class ShipMovement : MonoBehaviour
 
     void HandleFX() 
     {
-        if (thrust1D > 0) {
-            thrusting = true;
-            //forward fx
-            foreach (ParticleSystem p in forwardFX)
+        if (boosting)
+        {
+            if (!boostSFX.isPlaying)
+            {
+                boostSFX.Play();
+            }
+            /*foreach (ParticleSystem p in boostFX)
             {
                 p.Play();
-            }
-
-            if (boosting)
-            {
-                if (!boostSFX.isPlaying) { 
-                    boostSFX.Play();
-                }
-                foreach (ParticleSystem p in boostFX)
-                {
-                    p.Play();
-                }
-                boostTrail.emitting = true;
-            }
-            else
-            {
-                if (boostSFX.isPlaying)
-                {
-                    boostSFX.Stop();
-                }
-                foreach (ParticleSystem p in boostFX)
-                {
-                    p.Stop();
-                }
-                boostTrail.emitting = false;
-            }
+            }*/
+            boostFX.SetActive(true);
+            thrusterVFX.SetActive(false);
+        }
+        else if (thrust1D > 0) {
+            thrusting = true;
+            boostSFX.Stop();
+            boostFX.SetActive(false);
+            thrusterVFX.SetActive(false);
         }
         else if (thrust1D < 0) {
             thrusting = true;
-            //back fx
-            foreach (ParticleSystem p in backFX)
-            {
-                p.Play();
-            }
-
-        }
+            boostSFX.Stop();
+            boostFX.SetActive(false);
+            thrusterVFX.SetActive(false);
+        } 
         else
         {
             thrusting = false;
             boostSFX.Stop();
-            foreach (ParticleSystem p in forwardFX)
-            {
-                p.Stop();
-            }
-            foreach (ParticleSystem p in backFX)
-            {
-                p.Stop();
-            }
-            foreach (ParticleSystem p in boostFX)
-            {
-                p.Stop();
-            }
-            boostTrail.emitting = false;
+            boostFX.SetActive(false);
+            thrusterVFX.SetActive(false);
         }
 
-        if (upDown1D > 0)
+        /*if (upDown1D > 0)
         {
             upDowning = true;
-            //up fx
-            foreach (ParticleSystem p in upFX)
-            {
-                p.Play();
-            }
 
         }
         else if (upDown1D < 0)
         {
             upDowning = true;
-            //down fx
-            foreach (ParticleSystem p in downFX)
-            {
-                p.Play();
-            }
         }
         else
         {
             upDowning = false;
-            foreach (ParticleSystem p in upFX)
-            {
-                p.Stop();
-            }
-            foreach (ParticleSystem p in downFX)
-            {
-                p.Stop();
-            }
-        }
+        }*/
 
-        if (strafe1D > 0)
+        /*if (strafe1D > 0)
         {
-            //right fx
             strafing = true;
-            foreach (ParticleSystem p in rightFX)
-            {
-                p.Play();
-            }
 
         }
         else if (strafe1D < 0)
-        {
-            //left fx
+        { 
             strafing = true;
-            foreach (ParticleSystem p in leftFX)
-            {
-                p.Play();
-            }
         }
         else {
             strafing = false;
-            foreach (ParticleSystem p in leftFX)
-            {
-                p.Stop();
-            }
-            foreach (ParticleSystem p in rightFX)
-            {
-                p.Stop();
-            }
-        }
+        }*/
 
-        if ((thrusting || upDowning || strafing) && !thrusterSFX.isPlaying)
+        if (thrusting) // || upDowning || strafing)
         {
-            thrusterSFX.Play();
-            //Debug.Log("Yah");
+            if (thrusterSFX != null && !thrusterSFX.isPlaying)
+            {
+                thrusterSFX.Play();
+                //Debug.Log("Yah");
+            }
+            thrusterVFX.SetActive(true);
+
         }
-        else if (!thrusting && !upDowning && !strafing && thrusterSFX.isPlaying)
-        { 
-            thrusterSFX.Stop();
-            //Debug.Log("Yeety");
+        if (!thrusting)  //&& !upDowning && !strafing)
+        {
+            if (thrusterSFX.isPlaying) {
+                thrusterSFX.Stop();
+                //Debug.Log("Yeety");
+            }
+
+            thrusterVFX.SetActive(false);
         }
         
     }
@@ -288,25 +226,24 @@ public class ShipMovement : MonoBehaviour
         if (isThirdPerson)
         {
             // Roll
-            rb.AddRelativeTorque(Vector3.back * roll1D * tpRollTorque * Time.fixedDeltaTime);
+            rb.AddRelativeTorque(Vector3.back * strafe1D * tpRollTorque * Time.fixedDeltaTime); //roll1D
             // Pitch
             rb.AddRelativeTorque(Vector3.right * Mathf.Clamp(-pitchYaw.y, -1f, 1f) * tpPitchTorque * Time.fixedDeltaTime);
             // Yaw
             rb.AddRelativeTorque(Vector3.up * Mathf.Clamp(pitchYaw.x, -1f, 1f) * tpYawTorque * Time.fixedDeltaTime);
 
             // Thrust
-            if (thrust1D > 0.1f || thrust1D < -0.1f)
+            if (boosting)
             {
                 float currentThrust;
-
-                if (boosting)
-                {
-                    currentThrust = tpThrust * boostMultiplier;
-                }
-                else
-                {
-                    currentThrust = tpThrust;
-                }
+                currentThrust = tpThrust * boostMultiplier;
+                rb.AddForce(transform.forward * currentThrust * Time.fixedDeltaTime);
+                glide = thrust1D * currentThrust;
+            }
+            else if (thrust1D > 0.1f || thrust1D < -0.1f)
+            {
+                float currentThrust;
+                currentThrust = tpThrust;
                 rb.AddForce(transform.forward * thrust1D * currentThrust * Time.fixedDeltaTime);
                 glide = thrust1D * currentThrust;
             }
@@ -317,7 +254,7 @@ public class ShipMovement : MonoBehaviour
             }
 
             // Up/Down
-            if (upDown1D > 0.1f || upDown1D < -0.1f)
+            /*if (upDown1D > 0.1f || upDown1D < -0.1f)
             {
                 rb.AddRelativeForce(Vector3.up * upDown1D * tpUpThrust * Time.fixedDeltaTime);
                 verticalGlide = upDown1D * tpUpThrust;
@@ -326,9 +263,9 @@ public class ShipMovement : MonoBehaviour
             {
                 rb.AddRelativeForce(Vector3.up * verticalGlide * Time.fixedDeltaTime);
                 verticalGlide *= upDownGlideReduction;
-            }
+            }*/
             // Strafing
-            if (strafe1D > 0.1f || strafe1D < -0.1f)
+            /*if (strafe1D > 0.1f || strafe1D < -0.1f)
             {
                 rb.AddRelativeForce(Vector3.right * strafe1D * tpStrafeThrust * Time.fixedDeltaTime);
                 horizontalGlide = strafe1D * tpStrafeThrust;
@@ -337,30 +274,30 @@ public class ShipMovement : MonoBehaviour
             {
                 rb.AddRelativeForce(Vector3.right * horizontalGlide * Time.fixedDeltaTime);
                 horizontalGlide *= leftRightGlideReduction;
-            }
+            }*/
         }
         else
         {
             // Roll
-            rb.AddTorque(-shipFirstPersonCam.transform.forward * roll1D * fpRollTorque * Time.fixedDeltaTime);
+            rb.AddTorque(-shipFirstPersonCam.transform.forward * strafe1D * fpRollTorque * Time.fixedDeltaTime); //roll1D
             // Pitch
             rb.AddRelativeTorque(Vector3.right * Mathf.Clamp(-pitchYaw.y, -1f, 1f) * tpPitchTorque * Time.fixedDeltaTime);
             // Yaw
             rb.AddRelativeTorque(Vector3.up * Mathf.Clamp(pitchYaw.x, -1f, 1f) * tpYawTorque * Time.fixedDeltaTime);
 
             // Thrust
-            if (thrust1D > 0.1f || thrust1D < -0.1f)
+            if (boosting)
+            {
+                float currentThrust;
+                currentThrust = fpThrust * boostMultiplier;
+                rb.AddForce(shipFirstPersonCam.transform.forward * currentThrust * Time.fixedDeltaTime);
+                glide = thrust1D * currentThrust;
+            }
+            else if (thrust1D > 0.1f || thrust1D < -0.1f)
             {
                 float currentThrust;
 
-                if (boosting)
-                {
-                    currentThrust = fpThrust * boostMultiplier;
-                }
-                else
-                {
-                    currentThrust = fpThrust;
-                }
+                currentThrust = fpThrust;
                 rb.AddForce(shipFirstPersonCam.transform.forward * thrust1D * currentThrust * Time.fixedDeltaTime);
                 glide = thrust1D * currentThrust;
             }
@@ -405,16 +342,47 @@ public class ShipMovement : MonoBehaviour
             //this.enabled = false;
             bumpSFX.Play();
         }
-        
+        if (collision.collider.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Collided with Enemy");
+            //this.enabled = false;
+            bumpSFX.Play();
+        }
+        if (collision.collider.gameObject.CompareTag("Projectile"))
+        {
+            Debug.Log("Collided with Projectile");
+            //this.enabled = false;
+            bumpSFX.Play();
+        }
     }
 
     public void OnDestroyed() 
     {
-        foreach (ParticleSystem p in destructFX)
-        {
-            Instantiate(p.gameObject, transform.position, transform.rotation);
-        }
+        destructSFX.transform.SetParent(null);
+        destructSFX.Play();
+        Instantiate(destructFX.gameObject, transform.position, transform.rotation);
         Destroy(this.gameObject);
+    }
+
+    public void Damage(float damage) {
+        StartCoroutine(ImpactSlowdown());
+        if (!playerHealth.Damage(damage)) { //playerHealth returns false if the player has no remaining shields
+            currentLives--;
+            GameManager.Instance.hurtPlayer();
+            playerHealth.shieldHealth = playerHealth.maxShieldHealth;
+        }
+        if (currentLives <= 0)
+        {
+            GameManager.collided = true;
+            OnDestroyed();
+        }
+    }
+
+    IEnumerator ImpactSlowdown() 
+    {
+        Time.timeScale = .25f;
+        yield return new WaitForSeconds(0.025f);
+        Time.timeScale = 1f;
     }
 
     #region Input Methods
@@ -476,6 +444,7 @@ public class ShipMovement : MonoBehaviour
         if (context.performed)
         {
             GameManager.gameIsPaused = !GameManager.gameIsPaused;
+            GameManager.Instance.PauseGame();
         }
 
     }

@@ -1,36 +1,80 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
-
-    public static int endlesshighScore = 0;
-    public static int levelhighScore = 0;
-    public static string bestTime;
-    public static int points = 0;
-    public static int level = 0;
+    // Private Variables
+    private static GameManager _instance;
+    [SerializeField] private static int _endlessHighScore = 0;
+    [SerializeField] private GameObject hurtImage;
+    private bool gameOver = false;
+    public static int EndlessHighScore
+    {
+        get => _endlessHighScore;
+        set => _endlessHighScore = value;
+    }
+    
+    [SerializeField] private static int _points = 0;
+    public static int Points
+    {
+        get => _points;
+        set => _points = value;
+    }
+    
+    [SerializeField] public static int level = 0;
+    public int Level
+    {
+        get => level;
+        set => level = value;
+    }
+    
     public static bool levelEndless = false;
     public static bool levelPassed = false;
     public static bool startReset = false;
     public static bool endOfGame = false;
     public static bool onMenu = true;
-    public static AsteroidSpawner asteroidSpawner;
-    public static int currentID = 0;
+    [SerializeField] public static AsteroidSpawner asteroidSpawner;
+    [SerializeField] private List<GameObject> squads;
+    [SerializeField] public static int currentID = 0;
+    public static int CurrentID
+    {
+        get => currentID;
+        set => currentID = value;
+    }
+
     public static bool collided = false;
     public static bool ranOut = false;
     public static bool gameIsPaused = false;
     public static bool retrySelected = false;
-    public float spawnTime = 20;
+    [SerializeField] private float spawnTime = 20;
     private float currentSpawnTime;
-    private bool earnedTimeBonus = false;
+    //private bool earnedTimeBonus = false;
 
+    public static GameManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = new GameManager();
+            }
+
+            return _instance;
+        }
+    }
 
     private void Awake()
     {
+        _instance = this;
         endOfGame = false;
         levelEndless = FindObjectOfType<ModeSelecter>().isEndlessMode;
         asteroidSpawner = FindObjectOfType<AsteroidSpawner>();
+        squads = GameObject.FindGameObjectsWithTag("EnemySpawner").ToList();
         FindObjectOfType<UIManager>().hidePaused();
         FindObjectOfType<UIManager>().hideGameOver();
         FindObjectOfType<UIManager>().hideWin();
@@ -44,12 +88,14 @@ public class GameManager : MonoBehaviour
         {
             FindObjectOfType<Timer>().StartTimer();
         }
+
         Cursor.lockState = CursorLockMode.Locked;
+        _endlessHighScore = PlayerPrefs.GetInt("High Score", 0);
     }
 
     void Update()
     {
-        PauseGame();
+        //PauseGame();
         if (retrySelected)
         {
             Debug.Log("Pressed Restart");
@@ -61,8 +107,8 @@ public class GameManager : MonoBehaviour
                 FindObjectOfType<UIManager>().showUI();
                 Time.timeScale = 1f;
             }
-            
         }
+
         currentSpawnTime -= Time.deltaTime;
         if (levelEndless && currentSpawnTime <= 0)
         {
@@ -75,10 +121,11 @@ public class GameManager : MonoBehaviour
     private void FixedUpdate()
     {
         if (!levelEndless && FindObjectOfType<Timer>().GetCurrentTime() <= 0)
-        //if (!levelEndless && !FindObjectOfType<Timer>().GetTimerActive() || FindObjectOfType<Timer>().GetCurrentTime() <= 0)
+            //if (!levelEndless && !FindObjectOfType<Timer>().GetTimerActive() || FindObjectOfType<Timer>().GetCurrentTime() <= 0)
         {
             ranOut = true;
         }
+
         //Debug.Log("Points: " + points);
         EndGame();
     }
@@ -90,6 +137,10 @@ public class GameManager : MonoBehaviour
         // If collided or ran out of time, display game over screen
         if (collided || ranOut)
         {
+            foreach (var t in squads)
+            {
+                t.GetComponent<BoidSpawner>().DisableShooting();
+            }
             Cursor.lockState = CursorLockMode.Confined;
             endOfGame = true;
             //Debug.Log("Player has lost level");
@@ -98,82 +149,39 @@ public class GameManager : MonoBehaviour
             {
                 FindObjectOfType<StopWatch>().StopStopWatch();
                 // Add Point bonus to points
+                /**
                 if (!earnedTimeBonus)
                 {
-                    points += (int)FindObjectOfType<StopWatch>().GetCurrentTime();
+                    _points += (int) FindObjectOfType<StopWatch>().GetCurrentTime();
                     earnedTimeBonus = true;
                 }
+                */
             }
-            else
+
+            if (levelEndless && _points > _endlessHighScore)
             {
-                FindObjectOfType<Timer>().StopTimer();
-                // Add Point bonus to points
-                if (!earnedTimeBonus)
-                {
-                    points += (int)FindObjectOfType<Timer>().GetCurrentTime();
-                    earnedTimeBonus = true;
-                }
-            }
-            if (levelEndless && points > endlesshighScore)
-            {
-                endlesshighScore = points;
-                bestTime = FindObjectOfType<StopWatch>().PrintCurrentTime();
-            }
-            else if (!levelEndless && points > levelhighScore)
-            {
-                levelhighScore = points;
-                bestTime = FindObjectOfType<Timer>().PrintCurrentTime();
+                _endlessHighScore = _points;
+                //_bestTime = FindObjectOfType<StopWatch>().PrintCurrentTime();
+                PlayerPrefs.SetInt("High Score", _points);
             }
 
             FindObjectOfType<UIManager>().hideUI();
             FindObjectOfType<UIManager>().hideWin();
             FindObjectOfType<UIManager>().showGameOver();
+
+            if (!gameOver)
+            {
+
+                GameObject.Find("GameOverMenu").GetComponentInChildren<Button>().Select();
+                gameOver = true;
+            }
             if (FindObjectOfType<ShipMovement>() != null)
             {
                 FindObjectOfType<ShipMovement>().enabled = false;
                 FindObjectOfType<ShipShooting>().enabled = false;
             }
             //Debug.Log("GAME OVER");
-
         }
-        //WIN CONDITION
-        // If finished the game, display success screen
-        else if (asteroidSpawner.transform.childCount == 0 && !levelEndless)
-        {
-            Cursor.lockState = CursorLockMode.Confined;
-            levelPassed = true;
-            endOfGame = true;
-            FindObjectOfType<ShipShooting>().firing = false;
-            //Debug.Log("Player has won level");
-            FindObjectOfType<Timer>().StopTimer();
-            // Add Point bonus to points
-            if (!earnedTimeBonus)
-            {
-                points += (int)FindObjectOfType<Timer>().GetCurrentTime();
-                earnedTimeBonus = true;
-            }
-            
-            // DisplaySuccess if level is complete
-            if (points > levelhighScore)
-            {
-                levelhighScore = points;
-                bestTime = FindObjectOfType<Timer>().PrintCurrentTime();
-            }
-            FindObjectOfType<UIManager>().hideUI();
-            FindObjectOfType<UIManager>().hideGameOver();
-            FindObjectOfType<UIManager>().showWin();
-            if (FindObjectOfType<ShipMovement>() != null)
-            {
-                FindObjectOfType<ShipMovement>().enabled = false;
-                FindObjectOfType<ShipShooting>().enabled = false;
-            }
-            // Transition to Next Level
-        }
-        // DisplayPoints
-        // DisplayHighScore
-        // LevelSelection: Retry or Back to Main Menu
-
-
     }
 
     void Restart()
@@ -182,6 +190,12 @@ public class GameManager : MonoBehaviour
         {
             GameObject.Destroy(child.gameObject);
         }
+
+        foreach (var squad in squads)
+        {
+            squad.GetComponent<BoidSpawner>().ClearEntities();
+        }
+
         asteroidSpawner.SpawnAsteroids();
         if (levelEndless)
         {
@@ -194,17 +208,17 @@ public class GameManager : MonoBehaviour
             FindObjectOfType<Timer>().StartTimer();
             level = 0;
         }
-        points = 0;
+
+        _points = 0;
         endOfGame = false;
         levelPassed = false;
         collided = false;
         ranOut = false;
         retrySelected = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
     }
 
-    void PauseGame()
+    public void PauseGame()
     {
         if (gameIsPaused && !endOfGame)
         {
@@ -214,6 +228,7 @@ public class GameManager : MonoBehaviour
             FindObjectOfType<UIManager>().hideUI();
             Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.Confined;
+            GameObject.Find("PauseMenu").GetComponentInChildren<Button>().Select();
             // Pause Audio
         }
         else if (!gameIsPaused && !endOfGame)
@@ -231,5 +246,22 @@ public class GameManager : MonoBehaviour
     void SpawnAsteroids()
     {
         asteroidSpawner.SpawnAsteroids();
+    }
+
+    public void AddPoints(int val)
+    {
+        _points += val;
+    }
+
+    public void hurtPlayer()
+    {
+        StartCoroutine(PlayerHurt());
+    }
+    
+    IEnumerator PlayerHurt()
+    {
+        hurtImage.SetActive(true);
+        yield return new WaitForSeconds(.4f);
+        hurtImage.SetActive(false);
     }
 }

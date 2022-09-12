@@ -13,7 +13,9 @@ public class ShipShooting : MonoBehaviour
 
     [Header("Hardpoint Settings")]
     [SerializeField]
-    private Transform[] hardPoints;
+    private Transform[] laserHardPoints;
+    [SerializeField]
+    private Transform[] blasterHardPoints;
     [SerializeField]
     private LayerMask shootableMask;
     [SerializeField]
@@ -24,7 +26,11 @@ public class ShipShooting : MonoBehaviour
     [SerializeField]
     private LineRenderer[] lasers;
     [SerializeField]
-    private List<ParticleSystem> laserHitParticles;
+    private Material laserMat;
+    [SerializeField]
+    private List<VisualEffect> laserMuzzleVFX;
+    [SerializeField]
+    private List<VisualEffect> laserHitVFX;
     [SerializeField]
     private float laserDamage = 2f;
     [SerializeField]
@@ -40,6 +46,7 @@ public class ShipShooting : MonoBehaviour
     private bool overHeated = false;
     [SerializeField]
     private AudioSource laserSFX;
+    private bool isLaserFiring = false;
 
     public bool firing;
     private bool isLaser;
@@ -67,8 +74,14 @@ public class ShipShooting : MonoBehaviour
 
     private void Awake()
     {
-        isLaser = true;
-        fireMode = FireMode.Laser;
+        isLaser = false;
+        isLaserFiring = false;
+        foreach (LineRenderer laser in lasers)
+        {
+            laser.gameObject.SetActive(false);
+        }
+
+        fireMode = FireMode.Blaster;
         ship = GetComponent<ShipMovement>();
         if (ship.isThirdPerson)
         {
@@ -114,7 +127,7 @@ public class ShipShooting : MonoBehaviour
 
     private void FireBlaster()
     {
-        foreach (Transform t in hardPoints) {
+        foreach (Transform t in blasterHardPoints) {
             Instantiate(blasterBolt, t.position, t.rotation);
             blasterMuzzleL.Play();
             blasterMuzzleR.Play();
@@ -127,6 +140,16 @@ public class ShipShooting : MonoBehaviour
         {
             //targetInRange = false;
             FireLaser();
+            foreach (VisualEffect v in laserMuzzleVFX)
+            {
+                //Debug.Log("Yolololo");
+                
+                if (!isLaserFiring)
+                {
+                    v.Play();
+                }
+            }
+            isLaserFiring = true;
             if (!laserSFX.isPlaying)
             {
                 laserSFX.Play();
@@ -138,7 +161,16 @@ public class ShipShooting : MonoBehaviour
             {
                 laserSFX.Stop();
             }
-            foreach (var laser in lasers)
+            foreach (VisualEffect v in laserMuzzleVFX)
+            {
+                if (isLaserFiring)
+                {
+                    v.Stop();
+                    
+                }
+            }
+            isLaserFiring = false;
+            foreach (LineRenderer laser in lasers)
             {
                 laser.gameObject.SetActive(false);
             }
@@ -159,23 +191,56 @@ public class ShipShooting : MonoBehaviour
         
     }
 
+    void ApplyDamage(EnemyStats enemy)
+    {
+        currentTimeBetweenDamage += Time.deltaTime;
+        if (currentTimeBetweenDamage > timeBetweenDamage)
+        {
+            currentTimeBetweenDamage = 0f;
+            enemy.TakeDamage(laserDamage);
+            Debug.Log("Applying damage to: " + enemy.gameObject.name);
+        }
+    }
+
     void FireLaser()
     {
+
         RaycastHit hitInfo;
 
-        if (TargetInfo.IsTargetInRange(cam.transform.position, cam.transform.forward, out hitInfo, hardpointRange, shootableMask))
+        if (Physics.SphereCast(cam.transform.position + (cam.transform.forward * 10), 3f, cam.transform.forward * hardpointRange, out hitInfo, hardpointRange, shootableMask))//TargetInfo.IsTargetInRange(cam.transform.position, cam.transform.forward, out hitInfo, hardpointRange, shootableMask))
         {
             //targetInRange = true;
-            if (hitInfo.collider.GetComponentInParent<Asteroid>())
+            /*if (hitInfo.collider.GetComponentInParent<Asteroid>())
             {
                 ApplyDamage(hitInfo.collider.GetComponentInParent<Asteroid>());
+                
+                foreach(VisualEffect v in laserHitVFX) { 
+                    Instantiate(v, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
+                }
+
+                foreach(var laser in lasers)
+                {
+                    Vector3 localHitPosition = laser.transform.InverseTransformPoint(hitInfo.point);
+                    laser.gameObject.SetActive(true);
+                    laser.SetPosition(1, localHitPosition);
+                }
+            }*/
+
+            if (!hitInfo.collider.isTrigger)
+            {
+                if (hitInfo.collider.GetComponentInParent<EnemyStats>())
+                {
+                    ApplyDamage(hitInfo.collider.GetComponentInParent<EnemyStats>());
+                }
+                
+                foreach(VisualEffect v in laserHitVFX) { 
+                    Instantiate(v, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
+                }
+
+                
             }
             
-            foreach(ParticleSystem p in laserHitParticles) { 
-                Instantiate(p, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
-            }
-
-            foreach(var laser in lasers)
+            foreach(LineRenderer laser in lasers)
             {
                 Vector3 localHitPosition = laser.transform.InverseTransformPoint(hitInfo.point);
                 laser.gameObject.SetActive(true);
@@ -185,11 +250,17 @@ public class ShipShooting : MonoBehaviour
         else
         {
             //targetInRange = false;
-            foreach (var laser in lasers)
+            foreach (LineRenderer laser in lasers)
             {
                 laser.gameObject.SetActive(true);
                 laser.SetPosition(1, new Vector3(0, 0, hardpointRange));
             }
+        }
+
+        //Tile laser texture to match length of beam
+        foreach (LineRenderer laser in lasers) {
+            float length = laser.GetPosition(1).z;
+            laserMat.SetVector("Tiling_", new Vector2((.001f * length), 1f));
         }
 
         HeatLaser();
