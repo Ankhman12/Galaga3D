@@ -117,7 +117,7 @@ MonoBehaviour:
   fireRate: 0.7
   maxAngle: 0
   bullet: {fileID: 2765953846188132652, guid: 676876bc2ef1cb4499fd96a85086d603, type: 3}
-  projectileSpeed: 75
+  projectileSpeed: 120
   type: 1
   beetleParticles: {fileID: 0}
   beetleChargeSound: {fileID: 0}

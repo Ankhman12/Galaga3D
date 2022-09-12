@@ -136,7 +136,7 @@ public class EnemyShooting : MonoBehaviour
         var predictPlayerPos = targetPos;
         if (target != null)
         {
-            predictPlayerPos = targetPos + target.GetComponentInChildren<Rigidbody>().velocity * projectileAirTime;
+            predictPlayerPos = targetPos + target.GetComponent<Rigidbody>().velocity * projectileAirTime;
         }
         var direction = (predictPlayerPos - transform.position).normalized;
         Quaternion projectileRotation = Quaternion.LookRotation(direction, transform.up);

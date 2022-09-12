@@ -110,7 +110,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - AtmosColor_: {r: 1.203468, g: 0.5268639, b: 1.06482, a: 0}
-    - HitColor_: {r: 3.893885, g: 0.8275652, b: 4.0800886, a: 0}
+    - HitColor_: {r: 4.080088, g: 0.83310694, b: 1.5415943, a: 0}
     - MainColor_: {r: 0.3105724, g: 4.237095, b: 2.1296391, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

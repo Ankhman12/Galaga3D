@@ -4940,7 +4940,7 @@ MonoBehaviour:
   normalParticles: {fileID: 8402743795086047243}
   trail: {fileID: 1923679613806953834}
   explosion: {fileID: 6655505030412687652}
-  radius: 50
+  radius: 200
   explosionSFX: {fileID: 8638833460075871343}
   idleSFX: {fileID: -8462580737519082827}
   l:
@@ -5280,15 +5280,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5258916032201638600, guid: 7809a1b0d2ec7eb4c806c83f2a6920de, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5258916032201638600, guid: 7809a1b0d2ec7eb4c806c83f2a6920de, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5258916032201638600, guid: 7809a1b0d2ec7eb4c806c83f2a6920de, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5258916032201638600, guid: 7809a1b0d2ec7eb4c806c83f2a6920de, type: 3}
       propertyPath: m_LocalPosition.x

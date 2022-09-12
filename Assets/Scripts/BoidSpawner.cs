@@ -248,4 +248,11 @@ public class BoidSpawner : MonoBehaviour
         }
         removing = false;
     }
+
+    public List<BoidController> GetEnemies() {
+        List<BoidController> enemies = new List<BoidController>();
+        enemies.AddRange(wasps);
+        enemies.AddRange(beetles);
+        return enemies;
+    } 
 }
