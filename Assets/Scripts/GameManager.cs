@@ -216,6 +216,7 @@ public class GameManager : MonoBehaviour
         ranOut = false;
         retrySelected = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1;
     }
 
     public void PauseGame()

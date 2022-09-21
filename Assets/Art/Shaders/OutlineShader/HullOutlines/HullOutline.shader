@@ -3,7 +3,8 @@ Shader "Outlines/HullOutline"
     Properties
     {
         _Thickness("Thickness", float) = 1 //the amount to extrude the outline mesh
-        _Color("Color", Color) = (1, 1, 1, 1) // the color of the outline
+
+        [HDR] _Color("Color", Color) = (1, 1, 1, 1) // the color of the outline
     }
     SubShader
     {
